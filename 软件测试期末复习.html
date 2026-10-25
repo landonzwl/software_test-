@@ -1,0 +1,2854 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>软件测试期末复习手册｜12章考点·例题·术语·自测</title>
+<style>
+:root{
+  --bg:#f3f5fa; --card:#ffffff; --ink:#1f2937; --muted:#64748b;
+  --brand:#1d4ed8; --brand-dark:#0f2557; --accent:#f59e0b;
+  --line:#e5e7eb; --soft:#f8fafc; --good:#047857; --bad:#b91c1c;
+  --shadow:0 8px 28px rgba(15,37,87,.06);
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;background:var(--bg);color:var(--ink);line-height:1.75;
+  font-family:"Segoe UI","Microsoft YaHei","PingFang SC","Noto Sans SC",sans-serif;
+  font-size:15px;-webkit-font-smoothing:antialiased;
+}
+::selection{background:#bfdbfe;color:#0f2557}
+#topProgress{position:fixed;left:0;top:0;height:3px;width:0;z-index:1000;
+  background:linear-gradient(90deg,#2563eb,#f59e0b);transition:width .1s linear}
+.hero{position:relative;overflow:hidden;color:#fff;padding:56px 24px 40px;
+  background:radial-gradient(circle at 12% 18%,#1e40af 0%,#0f2557 46%,#07132b 100%)}
+.hero:before,.hero:after{content:"";position:absolute;border-radius:50%;pointer-events:none}
+.hero:before{width:420px;height:420px;right:-140px;top:-180px;background:rgba(245,158,11,.13);filter:blur(4px)}
+.hero:after{width:300px;height:300px;left:42%;bottom:-220px;background:rgba(37,99,235,.28)}
+.hero-inner{max-width:1180px;margin:0 auto;position:relative;z-index:1}
+.eyebrow{margin:0 0 10px;font-size:12px;letter-spacing:.16em;font-weight:800;color:#fcd34d;text-transform:uppercase}
+.hero h1{margin:0;font-size:clamp(30px,4.4vw,50px);line-height:1.15;letter-spacing:-.02em}
+.hero .sub{max-width:760px;margin:14px 0 0;color:#dbeafe;font-size:16px}
+.hero-actions{display:flex;flex-wrap:wrap;gap:10px;margin-top:22px}
+.btn{appearance:none;border:1px solid rgba(255,255,255,.28);border-radius:999px;background:rgba(255,255,255,.08);
+  color:#fff;padding:9px 16px;font-size:13px;font-weight:700;cursor:pointer;transition:.2s}
+.btn:hover{background:rgba(255,255,255,.16);transform:translateY(-1px)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:#111827}
+.btn.primary:hover{background:#fbbf24}
+.hero-meta{display:flex;flex-wrap:wrap;gap:9px;margin-top:20px;font-size:12.5px;color:#dbeafe}
+.hero-meta span{padding:5px 11px;border:1px solid rgba(255,255,255,.18);border-radius:999px;background:rgba(255,255,255,.07)}
+.layout{max-width:1180px;margin:0 auto;display:grid;grid-template-columns:252px minmax(0,1fr);
+  gap:26px;padding:26px 20px 90px;align-items:start}
+.sidebar{position:sticky;top:18px;max-height:calc(100vh - 36px);overflow:auto;background:var(--card);
+  border:1px solid var(--line);border-radius:16px;padding:16px;box-shadow:var(--shadow);z-index:50}
+.side-head{display:flex;align-items:center;justify-content:space-between;padding:0 6px 4px}
+.side-title{font-size:12px;letter-spacing:.14em;font-weight:800;color:#94a3b8;text-transform:uppercase}
+.icon-btn{display:none;border:none;background:#f1f5f9;color:#334155;width:28px;height:28px;border-radius:8px;cursor:pointer;font-size:18px;line-height:1}
+.progress-wrap{margin:8px 4px 6px;padding:10px;background:var(--soft);border:1px solid var(--line);border-radius:10px}
+.progress-label{display:flex;justify-content:space-between;font-size:12px;color:var(--muted)}
+.progress-bar{height:8px;margin-top:6px;background:#e2e8f0;border-radius:999px;overflow:hidden}
+#progressFill{height:100%;width:0;background:linear-gradient(90deg,#2563eb,#22c55e);transition:width .3s}
+.nav-group{margin:16px 8px 6px;font-size:10.5px;letter-spacing:.13em;font-weight:800;color:#94a3b8;text-transform:uppercase}
+.nav-link{display:block;padding:8px 10px;border-left:3px solid transparent;border-radius:8px;
+  color:#334155;text-decoration:none;font-size:13.5px;transition:.15s}
+.nav-link:hover{background:#f1f5f9;color:var(--brand)}
+.nav-link.active{background:#eef2ff;border-left-color:var(--brand);color:var(--brand);font-weight:800}
+.side-note{margin:16px 4px 2px;padding:10px;border-radius:10px;background:#fffbeb;border:1px solid #fde68a;
+  color:#92400e;font-size:12px;line-height:1.6}
+main{min-width:0}
+.section{background:var(--card);border:1px solid var(--line);border-radius:18px;padding:26px 28px;
+  margin-bottom:22px;box-shadow:var(--shadow);scroll-margin-top:18px}
+.section-head{display:flex;align-items:flex-start;justify-content:space-between;gap:14px;margin-bottom:8px}
+.chapter-kicker{margin:0 0 4px;font-size:10.5px;letter-spacing:.16em;font-weight:800;color:var(--brand);text-transform:uppercase}
+h2{margin:0;font-size:26px;line-height:1.3;color:var(--brand-dark);letter-spacing:-.01em}
+h3{margin:26px 0 10px;padding-left:11px;border-left:4px solid var(--brand);font-size:18px;line-height:1.4;color:#1e3a8a}
+h4{margin:18px 0 7px;font-size:15px;color:#111827}
+p{margin:8px 0}
+ul,ol{margin:8px 0 10px 22px;padding:0}
+li{margin:4px 0}
+strong{color:var(--brand-dark)}
+.lead{font-size:15.5px;color:#334155}
+.note{font-size:12.5px;color:var(--muted)}
+.tags{display:flex;flex-wrap:wrap;gap:7px;margin:10px 0 4px}
+.tag{display:inline-flex;align-items:center;padding:2px 9px;border-radius:999px;font-size:11.5px;font-weight:800;line-height:1.9}
+.tag.high{background:#fee2e2;color:#b91c1c}
+.tag.mid{background:#fef3c7;color:#92400e}
+.tag.low{background:#e0f2fe;color:#0369a1}
+.tag.ok{background:#dcfce7;color:#166534}
+.tag.gray{background:#f1f5f9;color:#475569}
+.review-check{display:inline-flex;align-items:center;gap:6px;white-space:nowrap;cursor:pointer;
+  padding:6px 10px;border:1px solid #e2e8f0;border-radius:999px;background:var(--soft);
+  font-size:12.5px;color:#475569;user-select:none}
+.review-check input{accent-color:#2563eb;cursor:pointer}
+.table-wrap{margin:12px 0;overflow-x:auto;border:1px solid var(--line);border-radius:12px}
+table{width:100%;min-width:540px;border-collapse:collapse;font-size:13.5px}
+thead th{padding:10px 12px;background:#eef2ff;color:#1e3a8a;text-align:left;font-weight:800;
+  border-bottom:1px solid #dbeafe;white-space:nowrap}
+tbody td{padding:9px 12px;border-bottom:1px solid #f1f5f9;vertical-align:top}
+tbody tr:last-child td{border-bottom:none}
+tbody tr:hover{background:#fafbff}
+code{font-family:ui-monospace,SFMono-Regular,Menlo,Consolas,monospace;font-size:.92em;
+  padding:1px 5px;border-radius:5px;background:#eef2ff;color:#1e3a8a;white-space:nowrap}
+.grid2{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:13px}
+.grid3{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:13px}
+.mini-card{padding:13px 14px;border:1px solid var(--line);border-radius:12px;background:#fcfdff}
+.mini-card h4{margin:0 0 5px;font-size:14px;color:#1e3a8a}
+.mini-card p{margin:0;font-size:13px;color:#475569}
+.num-card{position:relative;padding-left:42px}
+.num-card .num{position:absolute;left:12px;top:12px;width:22px;height:22px;border-radius:50%;
+  display:grid;place-items:center;background:#e0e7ff;color:#1e40af;font-size:11.5px;font-weight:900}
+.callout{margin:14px 0;padding:13px 15px;border:1px solid;border-radius:12px;background:var(--soft)}
+.callout .label{display:block;margin-bottom:4px;font-size:10.5px;letter-spacing:.12em;font-weight:900;text-transform:uppercase}
+.callout p:last-child,.callout ul:last-child{margin-bottom:0}
+.callout.tip{border-color:#bfdbfe;background:#eff6ff}
+.callout.tip .label{color:#1d4ed8}
+.callout.warn{border-color:#fecaca;background:#fef2f2}
+.callout.warn .label{color:#b91c1c}
+.callout.exam{border-color:#fcd34d;background:#fffbeb}
+.callout.exam .label{color:#92400e}
+.callout.mnemonic{border-color:#a7f3d0;background:#ecfdf5}
+.callout.mnemonic .label{color:#047857}
+.example{margin:16px 0;border:1px solid #dbeafe;border-radius:14px;overflow:hidden;background:#fff}
+.example-q{padding:14px 16px;background:#f8faff;border-bottom:1px solid var(--line)}
+.q-label{display:inline-block;margin-right:7px;padding:1px 8px;border-radius:6px;background:#1d4ed8;color:#fff;
+  font-size:11px;font-weight:900;vertical-align:1px}
+details.answer{background:#fff}
+details.answer summary{display:flex;align-items:center;justify-content:space-between;gap:10px;cursor:pointer;
+  padding:11px 16px;font-size:13.5px;font-weight:800;color:var(--brand);list-style:none}
+details.answer summary::-webkit-details-marker{display:none}
+details.answer summary:after{content:"展开 ▾";color:var(--muted);font-size:11.5px;font-weight:700}
+details.answer[open] summary:after{content:"收起 ▴"}
+details.answer[open] summary{background:#f8faff}
+.answer-body{padding:2px 16px 15px;border-top:1px dashed #e5e7eb;font-size:14px}
+.answer-body ul,.answer-body ol{margin-top:6px}
+.flow{display:flex;flex-wrap:wrap;align-items:center;gap:8px;margin:12px 0}
+.flow .node{padding:7px 12px;border:1px solid #c7d2fe;border-radius:9px;background:#eef2ff;
+  color:#1e40af;font-size:12.5px;font-weight:800;text-align:center}
+.flow .arrow{color:#94a3b8;font-weight:900}
+.pair-list{display:grid;gap:8px;margin:12px 0}
+.pair-row{display:grid;grid-template-columns:1fr 42px 1fr;gap:8px;align-items:center}
+.pair-box{padding:8px 12px;border:1px solid #dbeafe;border-radius:9px;background:#f8faff;font-size:13px}
+.pair-box.test{background:#ecfdf5;border-color:#a7f3d0}
+.pair-arrow{text-align:center;color:#64748b;font-weight:900}
+.stack{max-width:560px;margin:14px auto;display:flex;flex-direction:column;align-items:center;gap:5px}
+.stack .box{width:100%;padding:9px 12px;border:1px solid var(--line);border-radius:10px;text-align:center;
+  font-size:13px;background:#f8faff}
+.stack .box.driver{background:#fef3c7;border-color:#fcd34d}
+.stack .box.target{background:#eef2ff;border-color:#c7d2fe;font-weight:800;color:#1e40af}
+.stack .box.stub{background:#ecfdf5;border-color:#a7f3d0}
+.stack .down{color:#64748b;font-weight:900;line-height:1}
+.ladder{display:flex;flex-wrap:wrap;gap:6px;margin:12px 0}
+.ladder span{padding:6px 11px;border-radius:8px;font-size:12.5px;font-weight:800;background:#eff6ff;color:#1e40af}
+.ladder span:nth-child(2){background:#dbeafe}
+.ladder span:nth-child(3){background:#bfdbfe}
+.ladder span:nth-child(4){background:#93c5fd}
+.ladder span:nth-child(5){background:#60a5fa;color:#fff}
+.ladder span:nth-child(6){background:#2563eb;color:#fff}
+.formula{margin:10px 0;padding:11px 14px;border-radius:10px;background:#0f2557;color:#dbeafe;
+  font-family:Consolas,"Courier New",monospace;font-size:13.5px;overflow-x:auto}
+.formula b{color:#fcd34d}
+.steps{counter-reset:s;list-style:none;margin-left:0}
+.steps>li{position:relative;margin:9px 0;padding-left:34px}
+.steps>li:before{counter-increment:s;content:counter(s);position:absolute;left:0;top:2px;width:22px;height:22px;
+  display:grid;place-items:center;border-radius:50%;background:#e0e7ff;color:#1e40af;font-size:11.5px;font-weight:900}
+.kv{display:grid;grid-template-columns:110px 1fr;gap:6px 12px;margin:10px 0;font-size:13.5px}
+.kv dt{font-weight:800;color:#1e3a8a}
+.kv dd{margin:0;color:#334155}
+.search-box{display:flex;gap:8px;align-items:center;margin:12px 0}
+.search-box input{flex:1;min-width:0;padding:9px 12px;border:1px solid #cbd5e1;border-radius:9px;
+  font-size:13.5px;outline:none;background:#fff}
+.search-box input:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.12)}
+.search-box span{font-size:12px;color:var(--muted);white-space:nowrap}
+.checklist{list-style:none;margin:10px 0;padding:0}
+.checklist li{display:flex;gap:9px;align-items:flex-start;padding:7px 0;border-bottom:1px dashed #e5e7eb;font-size:13.5px}
+.checklist li:last-child{border-bottom:none}
+.checklist input{margin-top:5px;accent-color:#2563eb;cursor:pointer}
+.back-top{position:fixed;right:20px;bottom:20px;z-index:70;width:42px;height:42px;border:none;border-radius:50%;
+  background:#0f2557;color:#fff;font-size:18px;cursor:pointer;box-shadow:0 8px 20px rgba(15,37,87,.25);
+  opacity:0;pointer-events:none;transition:.25s}
+.back-top.show{opacity:1;pointer-events:auto}
+.menu-btn{display:none;position:fixed;left:16px;bottom:18px;z-index:70;border:none;border-radius:999px;
+  background:#0f2557;color:#fff;padding:10px 15px;font-size:13px;font-weight:800;cursor:pointer;
+  box-shadow:0 8px 20px rgba(15,37,87,.25)}
+.overlay{display:none;position:fixed;inset:0;background:rgba(15,23,42,.45);z-index:60}
+.overlay.show{display:block}
+.footer{max-width:1180px;margin:0 auto;padding:0 20px 50px;color:#94a3b8;font-size:12px;text-align:center}
+@media(max-width:980px){
+  .layout{grid-template-columns:minmax(0,1fr);padding:16px 12px 84px;gap:0}
+  .sidebar{position:fixed;left:0;top:0;bottom:0;width:282px;max-height:none;border-radius:0;
+    transform:translateX(-105%);transition:transform .25s;padding-top:18px}
+  .sidebar.open{transform:none}
+  .icon-btn{display:block}
+  .menu-btn{display:block}
+  .section{padding:20px 16px;border-radius:14px}
+  h2{font-size:22px}
+  .grid2,.grid3{grid-template-columns:1fr}
+  .hero{padding:40px 18px 32px}
+  .pair-row{grid-template-columns:1fr 28px 1fr}
+  .kv{grid-template-columns:85px 1fr}
+}
+@media(max-width:520px){
+  .hero-actions .btn{flex:1 1 auto;text-align:center}
+  .section-head{flex-direction:column}
+  .review-check{align-self:flex-start}
+  .pair-row{grid-template-columns:1fr;gap:4px}
+  .pair-arrow{transform:rotate(90deg)}
+}
+@media print{
+  @page{margin:13mm}
+  body{background:#fff;font-size:10.8pt;line-height:1.6}
+  #topProgress,.sidebar,.menu-btn,.back-top,.overlay,.hero-actions,.hero-meta,.review-check{display:none!important}
+  .hero{padding:0 0 12px;background:#fff!important;color:#000;border-bottom:2px solid #1e3a8a}
+  .hero h1{color:#0f2557;font-size:24pt}
+  .eyebrow{color:#1d4ed8}
+  .hero .sub{color:#333}
+  .layout{display:block;max-width:none;padding:8px 0}
+  .section{box-shadow:none;border:1px solid #d1d5db;break-inside:auto;margin-bottom:10px;padding:12px}
+  h2,h3,h4{break-after:avoid}
+  .example,.callout,.mini-card{break-inside:avoid}
+  table{font-size:9pt;min-width:0}
+  thead th{background:#eef2ff!important;-webkit-print-color-adjust:exact;print-color-adjust:exact}
+  details.answer .answer-body{display:block!important}
+  details.answer summary{color:#1d4ed8}
+  a{color:#000;text-decoration:none}
+  .footer{display:none}
+}
+</style>
+</head>
+<body>
+<div id="topProgress"></div>
+
+<header class="hero">
+  <div class="hero-inner">
+    <p class="eyebrow">《软件测试基础教程（第 2 版）》 · 期末冲刺</p>
+    <h1>软件测试期末复习手册</h1>
+    <p class="sub">12 章知识框架 · 高频考点分级 · 解题模板 · 例题精讲 · 英文术语表 · 可自测的复习网页</p>
+    <div class="hero-actions">
+      <button class="btn primary" id="printBtn">打印 / 导出 PDF</button>
+      <button class="btn" id="expandBtn">展开全部答案</button>
+      <button class="btn" id="collapseBtn">收起全部答案</button>
+    </div>
+    <div class="hero-meta">
+      <span>分值重心：第 3–6 章</span>
+      <span>题型：选择 / 填空 / 判断 / 简答 / 用例设计 / 综合</span>
+      <span id="heroProgress">复习进度 0 / 10 个板块</span>
+    </div>
+  </div>
+</header>
+
+<div class="layout">
+  <aside class="sidebar" id="sidebar">
+    <div class="side-head">
+      <span class="side-title">目录</span>
+      <button class="icon-btn" id="closeSide" aria-label="关闭目录">×</button>
+    </div>
+    <div class="progress-wrap">
+      <div class="progress-label"><span>板块复习进度</span><span id="progressText">0 / 10</span></div>
+      <div class="progress-bar"><div id="progressFill"></div></div>
+    </div>
+    <nav>
+      <p class="nav-group">先看这里</p>
+      <a href="#overview" class="nav-link">00 一页速览与考试地图</a>
+      <p class="nav-group">基础篇</p>
+      <a href="#ch1" class="nav-link">01 软件测试概述</a>
+      <a href="#ch2" class="nav-link">02 开发过程与测试</a>
+      <p class="nav-group">核心方法 · 分值重心</p>
+      <a href="#ch3" class="nav-link">03 白盒测试</a>
+      <a href="#ch4" class="nav-link">04 黑盒测试</a>
+      <a href="#ch5" class="nav-link">05 单元 / 集成 / 系统测试</a>
+      <a href="#ch6" class="nav-link">06 面向对象测试</a>
+      <p class="nav-group">拓展与工程</p>
+      <a href="#ch7" class="nav-link">07 自动化测试与工具</a>
+      <a href="#ch10" class="nav-link">10 软件测试管理</a>
+      <a href="#ch11" class="nav-link">11 软件质量保证</a>
+      <a href="#ch12" class="nav-link">12 手机测试案例</a>
+      <p class="nav-group">冲刺资料</p>
+      <a href="#methods" class="nav-link">解题模板</a>
+      <a href="#examples" class="nav-link">综合例题精讲</a>
+      <a href="#pitfalls" class="nav-link">易错点与口诀</a>
+      <a href="#glossary" class="nav-link">英文术语表</a>
+      <a href="#quiz" class="nav-link">自测题（含答案）</a>
+      <a href="#checklist" class="nav-link">考前清单</a>
+    </nav>
+    <div class="side-note">建议顺序：先看“一页速览”→ 逐章框架 → 解题模板 → 做自测 → 回看错题。</div>
+  </aside>
+
+  <main>
+    <section id="overview" class="section">
+      <div class="section-head">
+        <div>
+          <p class="chapter-kicker">START HERE</p>
+          <h2>00 一页速览与考试地图</h2>
+        </div>
+      </div>
+      <p class="lead">先用十几分钟把这一页看完：先知道“考什么、怎么考、先复习什么”，再进入各章。</p>
+
+      <div class="callout exam">
+        <span class="label">最重要的一句话</span>
+        <p><strong>第 3–6 章是分值重心</strong>：白盒、黑盒、分阶段测试、面向对象测试。第 1、2、10、11 章以概念和简答为主，第 7–9 章以自动化与工具概念为主，第 12 章是综合案例。</p>
+      </div>
+
+      <h3>1. 先背这 15 个结论</h3>
+      <div class="grid2">
+        <div class="mini-card num-card"><span class="num">1</span><h4>错误、缺陷、失效</h4><p>错误属于“人”，缺陷属于“代码（静态）”，失效属于“运行（动态、可观察）”。</p></div>
+        <div class="mini-card num-card"><span class="num">2</span><h4>用例必须有预期输出</h4><p>没有可判定的期望结果，就无法判断测试是通过还是失败。</p></div>
+        <div class="mini-card num-card"><span class="num">3</span><h4>测试不能证明“没有错误”</h4><p>测试只能证明缺陷存在；穷尽测试不可能，必须按风险和优先级取舍。</p></div>
+        <div class="mini-card num-card"><span class="num">4</span><h4>两个分类维度别混</h4><p>静态/动态看“是否运行程序”；黑盒/白盒/灰盒看“是否利用程序内部结构信息”。</p></div>
+        <div class="mini-card num-card"><span class="num">5</span><h4>V 模型配对</h4><p>需求分析—验收测试；概要设计—系统测试；详细设计—集成测试；编码—单元测试。</p></div>
+        <div class="mini-card num-card"><span class="num">6</span><h4>W 模型改进</h4><p>开发一个 V、测试一个 V；测试与开发并行，需求、设计等文档也纳入测试对象。</p></div>
+        <div class="mini-card num-card"><span class="num">7</span><h4>逻辑覆盖强弱</h4><p>语句 → 判定 → 条件 → 判定/条件 → 条件组合 → 路径（课程口径，由弱到强）。</p></div>
+        <div class="mini-card num-card"><span class="num">8</span><h4>环形复杂度三算法</h4><p>V(G) = E − N + 2 = 判定节点数 + 1 = 区域数（含图外部区域）。</p></div>
+        <div class="mini-card num-card"><span class="num">9</span><h4>边界值三点</h4><p>上点、离点、内点。闭区间 [100, 300] 取 100/300、99/301、200。</p></div>
+        <div class="mini-card num-card"><span class="num">10</span><h4>因果图五约束</h4><p>E 互斥、I 包含、O 唯一、R 要求、M 屏蔽；M 是输出约束。</p></div>
+        <div class="mini-card num-card"><span class="num">11</span><h4>Driver 与 Stub</h4><p>Driver 模拟上级调用者；Stub 模拟下级被调模块。自顶向下用桩，自底向上用驱动。</p></div>
+        <div class="mini-card num-card"><span class="num">12</span><h4>四种集成策略</h4><p>大爆炸、自顶向下、自底向上、三明治；选策略看接口稳定性、缺陷定位和桩/驱动成本。</p></div>
+        <div class="mini-card num-card"><span class="num">13</span><h4>三层测试依据</h4><p>单元测试依据详细设计；集成测试依据概要设计；系统测试依据需求规格说明书。</p></div>
+        <div class="mini-card num-card"><span class="num">14</span><h4>CMM 五级</h4><p>初始 → 可重复 → 已定义 → 已管理 → 优化；“无序→有管理→标准化→量化→持续改进”。</p></div>
+        <div class="mini-card num-card"><span class="num">15</span><h4>三个必背清单</h4><p>ISO 9126 六大质量特性；IEEE 829 八类测试文档；整体缺陷清除率 = D1 / D。</p></div>
+      </div>
+
+      <h3>2. 考试地图</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>章节</th><th>重要度</th><th>常见题型</th><th>必须掌握</th></tr></thead>
+          <tbody>
+            <tr><td>第 1 章 概述</td><td>★★★☆</td><td>选择 / 判断 / 填空</td><td>error / fault / failure；用例要素；测试目的与原则</td></tr>
+            <tr><td>第 2 章 开发过程与测试</td><td>★★★☆</td><td>选择 / 简答</td><td>V / W / H / X / 前置测试模型；测试原则；测试分类</td></tr>
+            <tr><td>第 3 章 白盒测试</td><td>★★★★★</td><td>计算 / 用例设计 / 简答</td><td>逻辑覆盖六准则；V(G) 三算法；基本路径；循环；数据流</td></tr>
+            <tr><td>第 4 章 黑盒测试</td><td>★★★★★</td><td>用例设计 / 简答</td><td>等价类；边界值；决策表；因果图五约束；黑白盒对比</td></tr>
+            <tr><td>第 5 章 单元 / 集成 / 系统</td><td>★★★★★</td><td>简答 / 对比 / 选择</td><td>Driver / Stub；四种集成策略；三层测试对比</td></tr>
+            <tr><td>第 6 章 面向对象测试</td><td>★★★★</td><td>简答 / 案例</td><td>封装、继承、多态的影响；基于服务/状态测试；类簇集成</td></tr>
+            <tr><td>第 7 章 自动化测试</td><td>★★★</td><td>选择 / 简答</td><td>适用场合与前提；框架；过程模型；脚本维护</td></tr>
+            <tr><td>第 8–9 章 工具</td><td>★★☆</td><td>选择 / 填空 / 简答</td><td>QTP 对象库/检查点/参数化；LoadRunner 三组件与脚本增强</td></tr>
+            <tr><td>第 10 章 测试管理</td><td>★★★★</td><td>简答 / 计算</td><td>测试计划；风险；测试报告；覆盖率与缺陷清除率</td></tr>
+            <tr><td>第 11 章 质量保证</td><td>★★★★</td><td>选择 / 简答</td><td>CMM 五级；ISO 9126；IEEE 829；Alpha/Beta；SQA</td></tr>
+            <tr><td>第 12 章 手机案例</td><td>★★★</td><td>综合 / 案例</td><td>手机测试特殊性；用例设计；测试结果分析</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">重要度说明：★★★★★ 必考核心；★★★★ 高频；★★★ 常考概念；★★ 了解。具体以老师划的重点为准。</p>
+
+      <h3>3. 三轮复习路线</h3>
+      <div class="grid3">
+        <div class="mini-card"><h4>第一轮：搭框架</h4><p>看“一页速览”和 12 章知识框架，背 15 个结论，知道每章在干什么。</p></div>
+        <div class="mini-card"><h4>第二轮：攻专题</h4><p>重点看解题模板和综合例题，亲手写 3 套用例：白盒覆盖、黑盒等价类/边界值、决策表。</p></div>
+        <div class="mini-card"><h4>第三轮：查漏补缺</h4><p>做自测题，只回看错题对应的章节和术语；考前看“易错点与口诀”“考前清单”。</p></div>
+      </div>
+
+      <h3>4. 答题总原则</h3>
+      <div class="grid2">
+        <div class="mini-card"><h4>选择题</h4><p>抓关键词：依据、对象、阶段、强弱、谁模拟谁。绝对化表述通常有坑。</p></div>
+        <div class="mini-card"><h4>判断题</h4><p>看到“证明不存在”“所有情况”“一定”“完全替代”先警惕。</p></div>
+        <div class="mini-card"><h4>简答题</h4><p>按“定义 + 分类 + 对比 + 例子 + 结论”分点写，宁可多写要点，不要写成一段。</p></div>
+        <div class="mini-card"><h4>用例设计题</h4><p>每条用例必须有预期输出；无效等价类“一个用例只覆盖一个无效类”。</p></div>
+        <div class="mini-card"><h4>计算题</h4><p>先写公式，再代入数据，最后写结果含义。V(G)、覆盖率、缺陷清除率都要写步骤。</p></div>
+        <div class="mini-card"><h4>综合题</h4><p>先框架后细节：测试计划→需求分析→用例设计→执行→缺陷→报告，按项目主线写。</p></div>
+      </div>
+    </section>
+
+    <section id="ch1" class="section">
+      <div class="section-head">
+        <div>
+          <p class="chapter-kicker">CHAPTER 01</p>
+          <h2>第 1 章 软件测试概述</h2>
+        </div>
+        <label class="review-check"><input type="checkbox" data-chapter="ch1"> 已复习</label>
+      </div>
+      <div class="tags"><span class="tag high">高频概念</span><span class="tag mid">选择 / 判断 / 填空</span><span class="tag gray">约 1 个简答点</span></div>
+
+      <h3>1.1 本章主线</h3>
+      <div class="grid2">
+        <div class="mini-card"><h4>缺陷观</h4><p>软件缺陷从哪里来？错误、缺陷、失效是什么关系？</p></div>
+        <div class="mini-card"><h4>测试观</h4><p>测试是“验证正确”还是“发现错误”？测试为什么不可穷尽？</p></div>
+        <div class="mini-card"><h4>用例观</h4><p>一条完整测试用例由哪些要素构成？为什么必须有预期输出？</p></div>
+        <div class="mini-card"><h4>工程观</h4><p>测试环境、测试人员、测试流程如何支撑测试活动？</p></div>
+      </div>
+
+      <h3>1.2 错误、缺陷与失效</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>概念</th><th>英文</th><th>含义</th><th>例子</th></tr></thead>
+          <tbody>
+            <tr><td>错误</td><td>error</td><td>人产生的过失行为，属于人的思维或操作错误</td><td>程序员把 <code>sum = a + b</code> 误写成 <code>sum = a - b</code></td></tr>
+            <tr><td>缺陷 / 故障</td><td>fault / defect</td><td>错误在软件中留下的具体体现，静态地存在于代码或文档中</td><td>源代码中的语句 <code>sum = a - b</code></td></tr>
+            <tr><td>失效</td><td>failure</td><td>程序运行后表现出的、用户可观察到的不符合预期的行为</td><td>输入 3 和 5，输出 −2 而不是 8</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout mnemonic">
+        <span class="label">一句话记忆</span>
+        <p><strong>错误属于“人”，缺陷属于“代码（静态）”，失效属于“运行（动态、可观测）”。</strong>人犯 error，在软件中留下 defect，缺陷在特定输入被触发后才表现为 failure。</p>
+      </div>
+      <p class="note">补充：中文语境中的“故障”有时指缺陷被触发后系统功能异常的状态，是缺陷走向失效的中间表现。做题时按教材用词区分即可。</p>
+
+      <h3>1.3 软件测试的定义、目的与原则</h3>
+      <p>测试有两种经典定义：一是“验证程序正确”，二是“发现错误”。现代测试更强调后者：<strong>测试的目的是尽可能早、尽可能多地发现软件中的缺陷</strong>，而不是证明程序没有错误。</p>
+      <div class="callout exam">
+        <span class="label">必背判断</span>
+        <p>“软件测试的目的就是证明程序中不存在错误。”——<strong>错误。</strong>测试只能证明缺陷存在，不能证明缺陷不存在；即使所有用例都通过，也不能说明软件没有缺陷。</p>
+      </div>
+      <h4>软件测试的七条基本原则</h4>
+      <ol>
+        <li><strong>测试显示缺陷存在，但不能证明缺陷不存在。</strong></li>
+        <li><strong>穷尽测试是不可能的。</strong>输入组合与执行路径数量极其庞大，必须基于风险和优先级取舍。</li>
+        <li><strong>测试应尽早介入。</strong>缺陷发现得越晚，修复成本越高。</li>
+        <li><strong>缺陷集群性（二八原则）。</strong>约 80% 的缺陷集中在约 20% 的模块中，资源应向缺陷高发模块倾斜。</li>
+        <li><strong>杀虫剂悖论。</strong>长期重复使用同一组用例，发现新缺陷的能力会下降，必须定期评审和更新用例。</li>
+        <li><strong>测试活动依赖上下文。</strong>不同软件、不同阶段、不同风险，测试方法不同。</li>
+        <li><strong>不存在缺陷的谬论。</strong>软件没有缺陷，也可能不满足用户需求。</li>
+      </ol>
+
+      <h3>1.4 测试用例的构成</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>要素</th><th>说明</th><th>考试注意</th></tr></thead>
+          <tbody>
+            <tr><td>用例标识 / 名称</td><td>唯一编号与简明名称</td><td>便于追踪和管理</td></tr>
+            <tr><td>测试项</td><td>被测功能或模块</td><td>如“用户登录”</td></tr>
+            <tr><td>前置条件</td><td>执行前必须满足的环境或数据状态</td><td>如“已打开登录页”</td></tr>
+            <tr><td>输入</td><td>测试数据、操作</td><td>用户名、密码等</td></tr>
+            <tr><td>执行步骤</td><td>按顺序描述如何操作</td><td>步骤要可重复</td></tr>
+            <tr><td>预期输出</td><td>期望结果 / 判定标准</td><td><strong>最关键，不能缺</strong></td></tr>
+            <tr><td>重要级别</td><td>优先级</td><td>高 / 中 / 低</td></tr>
+            <tr><td>参照规范</td><td>需求或设计依据</td><td>便于追溯</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout warn">
+        <span class="label">最易失分</span>
+        <p>只写了“输入用户名和密码，点击登录”，却没有写“预期输出”，这条用例<strong>不完整</strong>。必须增加“登录成功，跳转到系统首页并显示当前用户名”等可判定的期望结果。</p>
+      </div>
+
+      <h3>1.5 测试环境与测试人员</h3>
+      <ul>
+        <li><strong>测试环境</strong>：硬件、操作系统、网络、数据库、中间件、被测软件、测试工具与测试数据等。环境应尽量接近用户真实使用环境，并保证可重复、可控制。</li>
+        <li><strong>测试人员</strong>：应具备测试方法与工具知识、一定的编程与业务理解能力、严谨细致的工作作风、良好的沟通与文档能力，以及职业道德和保密意识。</li>
+      </ul>
+
+      <h3>1.6 典型例题</h3>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例 1</span>某程序员编写“求两数之和”的程序时，把 <code>sum = a + b</code> 误写成 <code>sum = a - b</code>。程序上线后，用户输入 3 和 5，得到 −2 而不是 8，导致结算金额出错。请分别指出人为错误、软件缺陷和失效，并说明三者关系。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <ul>
+            <li><strong>人为错误（error）</strong>：程序员把加法误写成减法这一过失行为。</li>
+            <li><strong>软件缺陷（fault / defect）</strong>：源代码中的语句 <code>sum = a - b</code>，是静态存在于代码中的偏差。</li>
+            <li><strong>失效（failure）</strong>：程序运行后输入 3 与 5 却输出 −2，是用户可观察到的、与预期不符的行为。</li>
+            <li><strong>关系</strong>：人犯 error，在软件中留下 defect；缺陷在特定输入条件下被触发，才表现为 failure。</li>
+          </ul>
+        </div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例 2</span>以下是一条“用户登录”功能的测试用例，请指出它缺少哪一关键要素，并将其补全：测试项——用户登录；输入——用户名 test01、密码 123456；执行步骤——打开登录页，输入用户名和密码，点击“登录”按钮。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p>缺少<strong>预期输出（期望结果）</strong>。补全：预期输出——登录成功，页面跳转到系统首页并显示当前用户名 test01。</p>
+          <p>解析：判断一条用例是否完整，关键看它有没有“可判定的期望结果”。没有预期输出，就无法判定测试是通过还是失败。规范用例通常还包含用例标识、用例名称、重要级别、前置条件、参照规范等。</p>
+        </div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例 3</span>判断并说明理由：“软件测试的目的就是证明程序中不存在错误。”</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p><strong>错误。</strong>测试的目的是尽可能早、尽可能多地发现软件中存在的缺陷，而不是证明程序“没有错误”。测试只能证明缺陷存在，不能证明缺陷不存在；即使所有用例都通过，也不能说明软件没有缺陷。原因是输入组合与执行路径数量极其庞大，穷尽测试在时间和成本上都不可能实现，因此测试必须基于风险和优先级进行取舍。</p>
+        </div></details>
+      </div>
+
+      <div class="callout mnemonic">
+        <span class="label">本章速记</span>
+        <p>人错、码缺、运行失；用例必须有预期；测试只能证“有”，不能证“无”；穷尽不可能，尽早介入，缺陷扎堆，用例要更新。</p>
+      </div>
+    </section>
+
+    <section id="ch2" class="section">
+      <div class="section-head">
+        <div>
+          <p class="chapter-kicker">CHAPTER 02</p>
+          <h2>第 2 章 软件开发过程与软件测试</h2>
+        </div>
+        <label class="review-check"><input type="checkbox" data-chapter="ch2"> 已复习</label>
+      </div>
+      <div class="tags"><span class="tag high">高频模型</span><span class="tag mid">选择 / 简答</span><span class="tag gray">V/W 模型必考</span></div>
+
+      <h3>2.1 软件开发过程模型</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>模型</th><th>核心特点</th><th>适用场合</th><th>主要局限</th></tr></thead>
+          <tbody>
+            <tr><td>瀑布模型</td><td>阶段顺序推进，文档驱动，阶段评审</td><td>需求明确、稳定，项目可控</td><td>回溯困难，测试介入晚，需求变更成本高</td></tr>
+            <tr><td>原型模型</td><td>先做可运行原型，逐步明确需求</td><td>需求不清晰、用户参与度高</td><td>原型可能被误当产品，管理不当易失控</td></tr>
+            <tr><td>螺旋模型</td><td>迭代 + 风险分析，每圈都做风险评估</td><td>大型、高风险、复杂项目</td><td>风险分析需要专业能力，成本较高</td></tr>
+            <tr><td>增量模型</td><td>按功能分批开发、分批交付</td><td>可拆分功能、希望尽早交付</td><td>需要良好的架构与集成计划</td></tr>
+            <tr><td>迭代模型</td><td>反复细化，每轮逐步完善</td><td>需求逐步清晰、需要持续反馈</td><td>可能出现范围蔓延</td></tr>
+            <tr><td>敏捷模型</td><td>小步快跑、持续交付、响应变化、测试左移</td><td>需求变化快、团队协作紧密</td><td>对人员素质和自动化要求高</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>2.2 软件测试与开发的关系</h3>
+      <p>测试贯穿软件生命周期，与开发阶段一一对应：需求阶段对应验收测试准备，设计阶段对应系统/集成测试准备，编码阶段对应单元测试，交付阶段对应验收测试。测试不是开发完成后的“最后一道工序”，而是与开发并行、持续进行的质量活动。</p>
+
+      <h3>2.3 测试方法分类</h3>
+      <div class="grid2">
+        <div class="mini-card"><h4>按是否运行程序</h4><p><strong>静态测试</strong>：不运行程序，通过走查、审查、评审、静态分析发现代码/文档缺陷。<br><strong>动态测试</strong>：运行程序，比较实际输出与预期输出。</p></div>
+        <div class="mini-card"><h4>按是否利用内部结构</h4><p><strong>白盒</strong>：依据程序内部逻辑结构。<br><strong>黑盒</strong>：依据需求规格，只看输入输出。<br><strong>灰盒</strong>：二者结合，既关注接口也关注部分内部结构。</p></div>
+        <div class="mini-card"><h4>按执行方式</h4><p><strong>人工测试</strong>：依赖人的判断、探索和经验。<br><strong>自动化测试</strong>：工具/脚本执行，适合回归、性能、大量数据。</p></div>
+        <div class="mini-card"><h4>其他常用分类</h4><p>功能测试 / 性能测试；回归测试；冒烟测试；验收测试；Alpha / Beta 测试。</p></div>
+      </div>
+      <div class="callout warn">
+        <span class="label">易混点</span>
+        <p>静态/动态是按“是否运行程序”划分；黑盒/白盒/灰盒是按“是否利用程序内部结构信息”划分。两者是不同维度，不能混为一谈。例如静态分析属于白盒；只检查输入输出则属于黑盒。</p>
+      </div>
+
+      <h3>2.4 五个测试过程模型</h3>
+      <h4>（1）V 模型：开发与测试一一对应</h4>
+      <div class="pair-list">
+        <div class="pair-row"><div class="pair-box">需求分析</div><div class="pair-arrow">↔</div><div class="pair-box test">验收测试</div></div>
+        <div class="pair-row"><div class="pair-box">概要设计</div><div class="pair-arrow">↔</div><div class="pair-box test">系统测试</div></div>
+        <div class="pair-row"><div class="pair-box">详细设计</div><div class="pair-arrow">↔</div><div class="pair-box test">集成测试</div></div>
+        <div class="pair-row"><div class="pair-box">编码</div><div class="pair-arrow">↔</div><div class="pair-box test">单元测试</div></div>
+      </div>
+      <p><strong>V 模型的不足：</strong>测试被放在编码之后，介入过晚，缺陷到后期才被发现，修复成本高；图中未体现测试与开发的并行关系，容易让人误以为测试只是开发完成后的一个环节。</p>
+
+      <h4>（2）W 模型：开发一个 V，测试一个 V</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>开发活动</th><th>并行的测试活动</th><th>目的</th></tr></thead>
+          <tbody>
+            <tr><td>需求分析</td><td>需求评审、验收测试准备</td><td>尽早发现需求缺陷</td></tr>
+            <tr><td>概要设计</td><td>设计评审、系统测试准备</td><td>尽早发现架构与接口问题</td></tr>
+            <tr><td>详细设计</td><td>详细设计评审、集成测试准备</td><td>尽早发现模块设计问题</td></tr>
+            <tr><td>编码</td><td>单元测试、代码评审</td><td>尽早发现代码缺陷</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>W 相比 V 的改进：</strong>测试与开发并行推进；测试对象不仅是程序，还包括需求、设计等文档；文档在编写阶段就被评审和验证，缺陷可以在源头被发现，避免向后续阶段扩散。</p>
+
+      <h4>（3）H 模型：测试是独立流程</h4>
+      <p>H 模型强调测试是一个独立于开发的流程。只要测试条件具备、测试准备完成，测试就可以开展，不一定要等开发全部结束。其局限是对测试管理和测试人员素质要求较高。</p>
+
+      <h4>（4）X 模型：片段编码、片段测试、逐步集成</h4>
+      <p>X 模型主张先把各个程序片段分别编码、分别测试，再通过集成逐步构成整体，强调对单个片段的独立验证。</p>
+
+      <h4>（5）前置测试模型（Pretest）</h4>
+      <p>把测试计划、测试用例设计等活动提前到需求与设计阶段，使开发与测试紧密结合、同步推进，从而尽早发现需求与设计中的问题。</p>
+
+      <div class="callout mnemonic">
+        <span class="label">V 模型配对口诀</span>
+        <p><strong>需—验、概—系、详—集、编—单。</strong>需求分析对验收测试，概要设计对系统测试，详细设计对集成测试，编码对单元测试。</p>
+      </div>
+
+      <h3>2.5 典型例题</h3>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例 1</span>在 V 模型中完成配对：需求分析对应（ ）、概要设计对应（ ）、详细设计对应（ ）、编码对应（ ）；并指出 V 模型的不足。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p>需求分析—验收测试；概要设计—系统测试；详细设计—集成测试；编码—单元测试。</p>
+          <p>不足：测试放在编码之后，介入过晚，缺陷要到后期才被发现，修复成本高；图中未体现测试与开发的并行关系，容易让人误以为测试只是开发完成后的一个环节。</p>
+        </div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例 2</span>简述 W 模型与 V 模型的主要区别，并说明 W 模型为何能更早发现缺陷。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p>V 模型只有一个“V”形结构，测试在编码完成后才逐步开展；W 模型由两个“V”组成，开发一个 V、测试一个 V，测试与开发并行推进。区别的核心是：W 模型中测试贯穿软件生命周期始终，测试对象不仅是程序，还包括需求、设计等文档。因为文档在编写阶段就被评审和验证，缺陷可以在源头被发现，避免向后续阶段扩散。</p>
+        </div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例 3</span>下列活动属于静态测试还是动态测试？（1）代码走查；（2）运行程序并检查输出结果；（3）评审需求规格说明书；（4）用工具执行测试脚本并比较实际与预期结果。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p>（1）静态；（2）动态；（3）静态；（4）动态。静态测试不运行程序，通过分析代码、文档发现缺陷；动态测试必须运行程序，通过输入与输出比较判断是否符合预期。</p>
+        </div></details>
+      </div>
+
+      <div class="callout mnemonic">
+        <span class="label">本章速记</span>
+        <p>V 模型配四对；W 模型双 V 并行、评审文档；H 独立可早测；X 片段先测再集成；Pretest 计划用例提前做。</p>
+      </div>
+    </section>
+
+    <section id="ch3" class="section">
+      <div class="section-head">
+        <div>
+          <p class="chapter-kicker">CHAPTER 03</p>
+          <h2>第 3 章 白盒测试</h2>
+        </div>
+        <label class="review-check"><input type="checkbox" data-chapter="ch3"> 已复习</label>
+      </div>
+      <div class="tags"><span class="tag high">分值重心</span><span class="tag high">计算 + 用例设计</span><span class="tag mid">逻辑覆盖 / V(G) / 基本路径</span></div>
+
+      <h3>3.1 白盒测试是什么</h3>
+      <p>白盒测试又称结构测试，依据程序的内部逻辑结构设计用例，检查语句、判定、条件、路径、循环、数据流等是否正确。白盒测试主要用于单元测试阶段，通常由开发人员或白盒测试人员完成。</p>
+      <p><strong>静态白盒测试</strong>包括：代码走查、正式审查、评审、编码标准与规范检查、通用代码审查清单等。它不运行程序，直接分析代码和文档。</p>
+
+      <h3>3.2 控制流图与环形复杂度</h3>
+      <p>控制流图（CFG）用节点表示语句或语句块，用有向边表示控制流。绘制时可以把顺序执行的多个语句压缩成一个节点；判定节点通常有两条出边（真、假）；循环用回边表示。</p>
+      <h4>环形复杂度 V(G) 的三种计算方法</h4>
+      <div class="formula"><b>V(G) = E − N + 2</b>　（E 为边数，N 为节点数）<br><b>V(G) = P + 1</b>　（P 为判定节点数）<br><b>V(G) = 区域数</b>　（含图外部区域）</div>
+      <ul>
+        <li>三种方法的结果必须一致，可用于相互校验。</li>
+        <li><code>V(G) = E − N + 2</code> 只适用于<strong>连通</strong>流图。</li>
+        <li>V(G) 的物理含义：程序中<strong>独立路径的条数</strong>，也是覆盖所有语句所需的最少测试用例数，同时是程序逻辑复杂度的度量。</li>
+      </ul>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例</span>某程序的控制流图有节点数 N = 9、边数 E = 11、判定节点数 P = 3，区域数为 4（含图外部区域）。请用三种方法分别计算 V(G)，并说明其含义。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p>方法一：V(G) = E − N + 2 = 11 − 9 + 2 = 4。</p>
+          <p>方法二：V(G) = P + 1 = 3 + 1 = 4。</p>
+          <p>方法三：V(G) = 区域数 = 4。</p>
+          <p>含义：V(G) 等于程序中独立路径的条数，即为覆盖所有语句所需的最少测试用例数（基本路径集中的独立路径个数），同时也是衡量程序逻辑复杂程度的度量值。三种方法结果一致，可相互校验。</p>
+        </div></details>
+      </div>
+
+      <h3>3.3 逻辑覆盖六种准则</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>准则</th><th>要求</th><th>主要目的</th><th>典型弱点</th></tr></thead>
+          <tbody>
+            <tr><td>语句覆盖</td><td>每条可执行语句至少执行一次</td><td>让代码都被“走到”</td><td>最弱，可能漏掉判定中的逻辑错误</td></tr>
+            <tr><td>判定覆盖（分支覆盖）</td><td>每个判定的真、假分支各至少执行一次</td><td>覆盖每个分支</td><td>不保证每个条件都取到真/假</td></tr>
+            <tr><td>条件覆盖</td><td>每个条件取真、取假各至少一次</td><td>覆盖条件取值</td><td>不保证每个判定结果都出现</td></tr>
+            <tr><td>判定/条件覆盖</td><td>同时满足判定覆盖与条件覆盖</td><td>兼顾分支与条件</td><td>不一定覆盖条件组合</td></tr>
+            <tr><td>条件组合覆盖</td><td>每个判定内各条件取值的所有组合至少出现一次</td><td>覆盖判定内部组合</td><td>组合数随条件数指数增长</td></tr>
+            <tr><td>路径覆盖</td><td>覆盖程序中所有可能的执行路径</td><td>覆盖路径组合</td><td>路径数随分支指数增长，实际只能选关键路径</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h4>强弱顺序（课程口径）</h4>
+      <div class="ladder"><span>语句覆盖</span><span>判定覆盖</span><span>条件覆盖</span><span>判定/条件覆盖</span><span>条件组合覆盖</span><span>路径覆盖</span></div>
+      <div class="callout warn">
+        <span class="label">必须补充的一句话</span>
+        <p>判定覆盖与条件覆盖<strong>不是严格的包含关系</strong>：条件覆盖不一定满足判定覆盖，判定覆盖也不一定满足条件覆盖，二者侧重点不同。上面的“由弱到强”是教材/本题要求的课程顺序；简答题按此顺序写，同时补一句“二者侧重点不同”更稳妥。</p>
+      </div>
+
+      <h4>例：判定语句“A &gt; 1 并且 B = 0”</h4>
+      <p>设判定为 <code>if (A &gt; 1 &amp;&amp; B == 0)</code>，其内部有一条可执行语句。不同覆盖准则的用例可以这样取：</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>准则</th><th>测试数据</th><th>覆盖情况</th></tr></thead>
+          <tbody>
+            <tr><td>语句覆盖</td><td>(A=2, B=0)</td><td>判定为真，内部语句执行一次；未覆盖假分支</td></tr>
+            <tr><td>判定覆盖</td><td>(2, 0)、(1, 1)</td><td>判定分别为真、假</td></tr>
+            <tr><td>条件覆盖</td><td>(2, 1)、(1, 0)</td><td>A&gt;1 取真/假，B=0 取假/真；但两次判定都为假，未覆盖真分支</td></tr>
+            <tr><td>判定/条件覆盖</td><td>(2, 0)、(1, 1)</td><td>判定真/假、条件真/假都覆盖</td></tr>
+            <tr><td>条件组合覆盖</td><td>(2, 0)、(2, 1)、(1, 0)、(1, 1)</td><td>两个条件的四种组合全部出现</td></tr>
+            <tr><td>路径覆盖</td><td>所有可能路径</td><td>简单 if 结构中与组合覆盖类似；有循环/多分支时路径数迅速增长</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout exam">
+        <span class="label">高频问法</span>
+        <p>若把逻辑运算符“并且”误写成“或者”，只用语句覆盖能否发现？<strong>不能。</strong>取 A=2、B=0 一个用例即可让判定内的语句执行；无论运算符是“并且”还是“或者”，该用例的执行路径都相同，错误无法暴露。要发现该错误，需要取 A=2、B=1 或 A=1、B=0 这类一个条件真、一个条件假的用例。</p>
+      </div>
+
+      <h3>3.4 基本路径法</h3>
+      <ol class="steps">
+        <li>根据源程序或详细设计画出控制流图。</li>
+        <li>计算环形复杂度 V(G)，确定独立路径的条数。</li>
+        <li>确定一组基本路径（独立路径）集，使每条路径至少引入一条此前路径未使用的边。</li>
+        <li>为每条基本路径设计输入数据并写明预期输出，生成测试用例。</li>
+        <li>执行用例并比对结果。</li>
+      </ol>
+      <p><strong>路径条数与用例条数：</strong>基本路径集中独立路径的条数等于 V(G)。通常每条独立路径设计一条用例，但用例条数不必机械等于路径数——关键是保证每条独立路径至少被执行一次（即所有语句至少执行一次）。</p>
+
+      <h4>基本路径法实例：Rectangle 构造函数</h4>
+      <p>构造函数要求长、宽都在 (0, 50) 内；若不在范围内则取默认值 1。两个复合条件被拆成四个判定，因此判定节点数为 4，V(G) = 4 + 1 = 5，需要 5 条基本路径。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>路径</th><th>路径含义</th><th>输入 (w, h)</th><th>预期输出 (width, height)</th></tr></thead>
+          <tbody>
+            <tr><td>Path 1</td><td>w 合法、h 合法</td><td>(10, 20)</td><td>(10, 20)</td></tr>
+            <tr><td>Path 2</td><td>w ≤ 0，h 合法</td><td>(0, 20)</td><td>(1, 20)</td></tr>
+            <tr><td>Path 3</td><td>w ≥ 50，h 合法</td><td>(60, 20)</td><td>(1, 20)</td></tr>
+            <tr><td>Path 4</td><td>w 合法，h ≤ 0</td><td>(10, 0)</td><td>(10, 1)</td></tr>
+            <tr><td>Path 5</td><td>w 合法，h ≥ 50</td><td>(10, 60)</td><td>(10, 1)</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">注意：Path 2 与 Path 3 的预期输出相同，Path 4 与 Path 5 的预期输出相同，但它们经过的路径不同；基本路径法关心的是“路径是否被执行”，不能只看输出是否相同。</p>
+
+      <h3>3.5 循环测试</h3>
+      <p>对“最多循环 m 次”的简单循环，至少选取以下数据：</p>
+      <div class="flow">
+        <span class="node">0 次（跳过循环）</span><span class="arrow">→</span>
+        <span class="node">1 次</span><span class="arrow">→</span>
+        <span class="node">2 次</span><span class="arrow">→</span>
+        <span class="node">m−1 次</span><span class="arrow">→</span>
+        <span class="node">m 次</span><span class="arrow">→</span>
+        <span class="node">m+1 次（越界）</span><span class="arrow">→</span>
+        <span class="node">很多次（性能）</span>
+      </div>
+      <p>例如最多循环 10 次：取 0、1、2、9、10、11，以及可行的“很多次”。<strong>嵌套循环</strong>：从最内层开始，先按简单循环测试内层，并把外层循环次数设为最小值，再逐层向外推进。<strong>串接（并列）循环</strong>：可分别按简单循环处理。<strong>非结构循环</strong>：应重新设计为结构化循环后再测试。</p>
+
+      <h3>3.6 数据流测试</h3>
+      <p>数据流测试关注变量从“定义（def）”到“使用（use）”的路径，即 def-use 关系。若从定义点到使用点存在一条路径，且该路径上变量未被重新定义，则构成一条<strong>定义—使用路径</strong>（定义-清除路径），应设计用例覆盖这类路径。</p>
+      <p>它重点检查变量定义与使用是否匹配，想发现的问题包括：变量未定义就被使用、定义之后从未被使用（冗余或漏写）、定义与使用之间被错误重定义等。</p>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例</span>变量 x 在语句 5 被赋值（定义点），在语句 9 被使用（使用点）。简述数据流测试关注什么样的路径，并说明它想发现什么类型的问题。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p>数据流测试关注变量从“定义”到“使用”的路径（def-use 关系）：若从定义点 5 到使用点 9 存在一条路径，且该路径上 x 未被重新定义，则构成一条定义—使用路径（定义-清除路径），应设计用例覆盖这类路径。它重点检查变量的定义与使用是否匹配，想发现的问题包括：变量未定义就被使用、定义之后从未被使用、定义与使用之间被错误重定义等。</p>
+        </div></details>
+      </div>
+
+      <div class="callout mnemonic">
+        <span class="label">本章速记</span>
+        <p>三种算法算 V(G)：边减点加二、判定加一、数区域；覆盖强弱“语判条，判条组路”；基本路径五步走；循环取 0、1、2、m−1、m、m+1。</p>
+      </div>
+    </section>
+
+    <section id="ch4" class="section">
+      <div class="section-head">
+        <div>
+          <p class="chapter-kicker">CHAPTER 04</p>
+          <h2>第 4 章 黑盒测试</h2>
+        </div>
+        <label class="review-check"><input type="checkbox" data-chapter="ch4"> 已复习</label>
+      </div>
+      <div class="tags"><span class="tag high">分值重心</span><span class="tag high">用例设计大题</span><span class="tag mid">等价类 / 边界值 / 决策表 / 因果图</span></div>
+
+      <h3>4.1 黑盒测试是什么</h3>
+      <p>黑盒测试又称功能测试，把被测软件看成一个“黑盒子”，不关心内部代码结构，只依据<strong>需求规格说明书</strong>，通过输入与输出检查功能是否正确。黑盒测试主要用于集成测试、系统测试和验收测试阶段。</p>
+      <p>优点：站在用户视角、无需了解代码、可以尽早开展；缺点：用例可能冗余、难以覆盖内部路径、高度依赖需求文档的质量。</p>
+
+      <h3>4.2 等价类划分法</h3>
+      <p>把输入域划分成若干互不相交的子集（等价类），同一子集内任取一个数据，对发现缺陷的作用等效。因此每个等价类取一个代表即可，大幅压缩用例数量。</p>
+      <ul>
+        <li><strong>有效等价类</strong>：符合需求、合法的输入集合。</li>
+        <li><strong>无效等价类</strong>：不符合需求、非法的输入集合。</li>
+        <li><strong>设计原则</strong>：每个无效等价类至少设计一个用例，且<strong>一个用例只覆盖一个无效等价类</strong>，避免多个无效条件相互屏蔽。</li>
+      </ul>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例</span>某输入框要求用户输入 1 到 100 之间的整数。请划分有效等价类和无效等价类，并分别给出测试数据。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p><strong>有效等价类：</strong>1 到 100 之间的整数，任取一个代表，如 50。</p>
+          <p><strong>无效等价类：</strong>① 小于 1 的数（如 0）；② 大于 100 的数（如 101）；③ 非整数（如 3.5）；④ 非数字字符（如 abc）；⑤ 输入为空。</p>
+          <p>每个无效等价类单独设计一条用例，例如：0、101、3.5、abc、空。不要把多个无效条件放在同一条用例里，否则无法判断是哪个条件导致失败。</p>
+        </div></details>
+      </div>
+
+      <h3>4.3 边界值分析法</h3>
+      <p>大量缺陷发生在输入或输出范围的边界上，因此要专门取边界点及其两侧的点。三个关键点：</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>点</th><th>含义</th><th>闭区间 [100, 300]</th><th>开区间 (100, 300)</th></tr></thead>
+          <tbody>
+            <tr><td>上点</td><td>边界上的点</td><td>100、300</td><td>101、299（最接近端点的可取点）</td></tr>
+            <tr><td>离点</td><td>边界外最近的点</td><td>99、301</td><td>100、300（端点本身不可取）</td></tr>
+            <tr><td>内点</td><td>区间内任一点</td><td>200</td><td>200</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">开区间的取法在不同教材中表述略有差异；考试时先看题目给的是闭区间还是开区间，再按“上点=可取边界、离点=边界外最近”的原则取。边界值分析通常作为等价类划分的补充，用例取自等价类的边界。</p>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例</span>某程序要求输入一个位于 100 到 300 之间的整数，请用边界值分析法给出应选取的测试数据。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p>若为闭区间 [100, 300]：上点 100、300；离点 99、301；内点 200。</p>
+          <p>解析：边界值分析要取边界点及其两侧的点；内点用于确认区间内部正常情况。若题目明确是开区间 (100, 300)，则上点取 101、299，离点取 100、300，内点仍可取 200。</p>
+        </div></details>
+      </div>
+
+      <h3>4.4 决策表法</h3>
+      <p>决策表适合处理多个条件组合决定多个动作的情况。四个组成部分：</p>
+      <div class="kv">
+        <dt>条件桩</dt><dd>列出所有条件，如“是否 VIP”“消费是否满 100 元”。</dd>
+        <dt>动作桩</dt><dd>列出所有动作，如“打 8 折”“打 9 折”“无折扣”。</dd>
+        <dt>条件项</dt><dd>每个条件取真/假的各种组合。</dd>
+        <dt>动作项</dt><dd>每种条件组合下各动作是否执行。</dd>
+      </div>
+      <p><strong>列数：</strong>n 个条件有 2<sup>n</sup> 列；本例 2 个条件，共 4 列。每一列（每条规则）对应一条测试用例；结果相同的列可以合并化简。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>规则</th><th>1</th><th>2</th><th>3</th><th>4</th></tr></thead>
+          <tbody>
+            <tr><td>是否 VIP</td><td>是</td><td>是</td><td>否</td><td>否</td></tr>
+            <tr><td>消费满 100 元</td><td>是</td><td>否</td><td>是</td><td>否</td></tr>
+            <tr><td>打 8 折</td><td>√</td><td></td><td></td><td></td></tr>
+            <tr><td>打 9 折</td><td></td><td>√</td><td>√</td><td></td></tr>
+            <tr><td>无折扣</td><td></td><td></td><td></td><td>√</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">上表是示例规则，实际项目以需求文档为准。决策表法的关键环节是“列出全部组合 → 填动作 → 合并等价规则 → 每列生成用例”。</p>
+
+      <h3>4.5 因果图法</h3>
+      <p>因果图先用“原因（输入条件）”和“结果（输出状态）”画出逻辑关系，再标注约束，最后转换成决策表并生成用例。它特别适合检查多个输入条件的组合情况。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>约束</th><th>名称</th><th>含义</th><th>类型</th></tr></thead>
+          <tbody>
+            <tr><td>E</td><td>异 / 互斥（Exclusive）</td><td>a、b 中最多只能有一个为 1，不能同时为 1</td><td>输入约束</td></tr>
+            <tr><td>I</td><td>或 / 包含（Inclusive）</td><td>a、b、c 中至少有一个为 1，不能同时为 0</td><td>输入约束</td></tr>
+            <tr><td>O</td><td>唯一（One and only one）</td><td>a、b 中有且仅有一个为 1</td><td>输入约束</td></tr>
+            <tr><td>R</td><td>要求（Requires）</td><td>a 为 1 时，b 必须为 1</td><td>输入约束</td></tr>
+            <tr><td>M</td><td>屏蔽（Mask）</td><td>a 为 1 时，b 被强制为 0</td><td>输出约束</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <ol class="steps">
+        <li>列出所有原因（输入条件）和结果（输出状态）。</li>
+        <li>画出原因—结果之间的逻辑关系图。</li>
+        <li>在图上标注约束（E、I、O、R、M）。</li>
+        <li>把因果图转换成决策表。</li>
+        <li>由决策表每一列生成测试用例。</li>
+      </ol>
+      <div class="callout mnemonic">
+        <span class="label">五约束记忆</span>
+        <p><strong>E 互斥、I 包含、O 唯一、R 要求、M 屏蔽。</strong>前四个是输入约束，M 是输出约束。</p>
+      </div>
+
+      <h3>4.6 其他黑盒方法</h3>
+      <ul>
+        <li><strong>错误推测法</strong>：依据经验列出容易出错的情况，如空值、特殊字符、重复提交、异常中断。</li>
+        <li><strong>正交实验设计法</strong>：用正交表安排多因素、多水平的组合，减少用例数量，适合配置组合测试。</li>
+        <li><strong>场景法</strong>：按业务流程/事件流设计用例，覆盖正常流、备选流和异常流。</li>
+      </ul>
+
+      <h3>4.7 黑盒测试与白盒测试的比较</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>维度</th><th>黑盒测试</th><th>白盒测试</th></tr></thead>
+          <tbody>
+            <tr><td>测试依据</td><td>需求规格说明书</td><td>程序内部逻辑结构（代码/设计）</td></tr>
+            <tr><td>测试对象</td><td>软件功能与外部接口</td><td>语句、条件、路径、数据结构</td></tr>
+            <tr><td>实施时机</td><td>集成、系统、验收测试</td><td>单元测试（编码阶段）</td></tr>
+            <tr><td>常用方法</td><td>等价类、边界值、决策表、因果图、错误推测、正交实验、场景法</td><td>逻辑覆盖、基本路径、循环测试、数据流测试</td></tr>
+            <tr><td>优点</td><td>用户视角、无需代码、可尽早开展</td><td>覆盖内部结构、可度量覆盖、易发现代码级缺陷</td></tr>
+            <tr><td>缺点</td><td>可能冗余、难覆盖内部路径、依赖需求质量</td><td>成本高、难发现“漏写的需求”、依赖代码可读性</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>两者优缺点互补，实际项目常结合使用（灰盒测试），不能相互替代。</p>
+
+      <h3>4.8 典型例题</h3>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例 1</span>写出因果图中 E、I、O、R、M 五种约束的含义，并指出哪几种属于输入约束、哪一种属于输出约束。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p>E（异，Exclusive）：a、b 中最多只能有一个为 1，不能同时为 1。I（或，Inclusive）：a、b、c 中至少有一个为 1，不能同时为 0。O（唯一，One and only one）：a、b 中有且仅有一个为 1。R（要求，Requires）：a 为 1 时 b 必须为 1。M（屏蔽，Mask）：a 为 1 时 b 被强制为 0。</p>
+          <p>其中 E、I、O、R 是输入条件的约束，M 是输出条件的约束。</p>
+        </div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例 2</span>某系统依据“是否为 VIP”“消费金额是否满 100 元”两个条件给出不同折扣。请说明决策表的四个组成部分，并写出用决策表设计测试用例的步骤。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p>四个组成部分：条件桩（列出所有条件）、动作桩（列出所有动作）、条件项（每个条件取真/假的各种组合）、动作项（每种条件组合下各动作是否执行）。</p>
+          <p>步骤：① 列出条件桩与动作桩；② 列出所有条件取值的组合（n 个条件有 2<sup>n</sup> 列）；③ 为每一列确定应执行的动作；④ 把结果相同的等价规则合并化简；⑤ 决策表每一条规则（每一列）对应一条测试用例。</p>
+        </div></details>
+      </div>
+
+      <div class="callout mnemonic">
+        <span class="label">本章速记</span>
+        <p>等价类“一类一代表，无效一例一类”；边界“上点、离点、内点”；决策表“条件桩、动作桩、条件项、动作项，2 的 n 次方”；因果图“E 异 I 或 O 唯一，R 要求 M 屏蔽”。</p>
+      </div>
+    </section>
+
+    <section id="ch5" class="section">
+      <div class="section-head">
+        <div>
+          <p class="chapter-kicker">CHAPTER 05</p>
+          <h2>第 5 章 单元测试、集成测试和系统测试</h2>
+        </div>
+        <label class="review-check"><input type="checkbox" data-chapter="ch5"> 已复习</label>
+      </div>
+      <div class="tags"><span class="tag high">分值重心</span><span class="tag high">简答 / 对比</span><span class="tag mid">Driver / Stub / 集成策略</span></div>
+
+      <h3>5.1 单元测试</h3>
+      <p><strong>测试对象：</strong>单个模块、函数或类。单元测试以白盒测试为主、黑盒测试为辅，通常由开发人员在编码阶段完成。</p>
+      <h4>单元测试的五个任务</h4>
+      <ol>
+        <li><strong>模块接口</strong>：参数个数、类型、顺序是否正确，返回值是否正确。</li>
+        <li><strong>局部数据结构</strong>：变量初始化、类型、越界、指针等问题。</li>
+        <li><strong>重要的执行路径</strong>：独立路径与关键逻辑分支。</li>
+        <li><strong>出错处理路径</strong>：异常、错误分支是否正确处理。</li>
+        <li><strong>边界条件</strong>：最大、最小、越界的输入。</li>
+      </ol>
+
+      <h3>5.2 驱动模块与桩模块</h3>
+      <div class="stack">
+        <div class="box driver"><strong>驱动模块 Driver</strong>：模拟被测模块的上级调用者，负责传参、调用被测模块并接收返回结果</div>
+        <div class="down">↓ 调用 / 传参</div>
+        <div class="box target">被测模块（Unit Under Test）</div>
+        <div class="down">↓ 调用</div>
+        <div class="box stub"><strong>桩模块 Stub</strong>：模拟被测模块所调用的下级模块，只返回预设的（不一定正确的）结果</div>
+      </div>
+      <div class="callout mnemonic">
+        <span class="label">方向记忆</span>
+        <p><strong>Driver 在上，模拟“谁调用我”；Stub 在下，模拟“我调用谁”。</strong>自顶向下集成时下层未开发，需要桩模块；自底向上集成时上层未开发，需要驱动模块。</p>
+      </div>
+
+      <h3>5.3 集成测试</h3>
+      <p><strong>定义：</strong>把已测试的模块按设计要求组装起来，测试模块之间的接口与协作关系。<strong>依据：</strong>概要设计。<strong>目的：</strong>发现模块接口间的问题，而不是重复验证模块内部功能。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>策略</th><th>做法</th><th>需要的辅助模块</th><th>优点</th><th>缺点 / 适用</th></tr></thead>
+          <tbody>
+            <tr><td>大爆炸集成</td><td>把所有模块一次组装后测试</td><td>一般需要一个可启动的整体入口</td><td>工作量小、成本低</td><td>缺陷定位困难；适合模块少、风险可控的小系统</td></tr>
+            <tr><td>自顶向下集成</td><td>从主控模块开始，逐步向下集成</td><td>桩模块 Stub</td><td>尽早验证上层逻辑与主要控制流程</td><td>底层功能验证偏晚；需要开发桩</td></tr>
+            <tr><td>自底向上集成</td><td>从最底层模块开始，逐步向上集成</td><td>驱动模块 Driver</td><td>尽早验证底层接口与基础功能</td><td>上层设计缺陷发现偏晚；需要开发驱动</td></tr>
+            <tr><td>三明治集成</td><td>自顶向下与自底向上结合</td><td>桩 + 驱动</td><td>兼顾上下层，可减少桩/驱动开发量</td><td>中间层测试相对滞后，组织复杂</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h4>集成测试的五个阶段</h4>
+      <div class="flow"><span class="node">计划</span><span class="arrow">→</span><span class="node">设计</span><span class="arrow">→</span><span class="node">实施</span><span class="arrow">→</span><span class="node">执行</span><span class="arrow">→</span><span class="node">评估</span></div>
+
+      <h3>5.4 单元测试与集成测试的比较</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>维度</th><th>单元测试</th><th>集成测试</th></tr></thead>
+          <tbody>
+            <tr><td>测试单元</td><td>单个模块或函数</td><td>模块之间的接口与协作关系</td></tr>
+            <tr><td>测试依据</td><td>详细设计</td><td>概要设计</td></tr>
+            <tr><td>测试空间</td><td>局限于模块内部</td><td>跨越模块（调用与数据传递）</td></tr>
+            <tr><td>使用方法</td><td>以白盒为主</td><td>偏重黑盒（接口功能），辅以白盒</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>5.5 系统测试</h3>
+      <p><strong>测试对象：</strong>整个软件系统，包括程序、数据、文档以及所依赖的软硬件与网络环境。<strong>依据：</strong>需求规格说明书。<strong>方法：</strong>通常由独立的测试团队以黑盒方法，在集成完成后、接近真实的环境中进行。</p>
+      <h4>系统测试的主要内容</h4>
+      <div class="grid2">
+        <div class="mini-card"><h4>功能测试</h4><p>检查系统功能是否满足需求，是最基本、最常用的系统测试。</p></div>
+        <div class="mini-card"><h4>性能测试</h4><p>响应时间、吞吐量、并发用户数、资源利用率等。</p></div>
+        <div class="mini-card"><h4>安全性测试</h4><p>权限控制、数据保密、防攻击、隐私保护等。</p></div>
+        <div class="mini-card"><h4>兼容性测试</h4><p>操作系统、浏览器、数据库、硬件、网络等环境组合。</p></div>
+        <div class="mini-card"><h4>可靠性测试</h4><p>长时间运行、故障恢复、容错能力等。</p></div>
+        <div class="mini-card"><h4>其他</h4><p>易用性、安装/卸载、文档测试、恢复测试、压力测试等。</p></div>
+      </div>
+
+      <h3>5.6 典型例题</h3>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例 1</span>请说明驱动模块（Driver）和桩模块（Stub）各自模拟的调用方向，并指出它们在自顶向下集成与自底向上集成中分别扮演什么角色。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p>Driver 模拟被测模块的上级调用者，负责向被测模块传递参数、调用它并接收返回结果，模拟“谁调用我”这个方向。Stub 模拟被测模块所调用的下级模块，只返回预设结果，模拟“我调用谁”这个方向。</p>
+          <p>自顶向下集成时上层模块先测，下层尚未开发，需用桩模块充当下层；自底向上集成时下层模块先测，上层尚未开发，需用驱动模块充当上层。单元测试中被测模块的上下层都可能缺失，因此两种模块都可能用到。</p>
+        </div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例 2</span>某系统的底层接口不稳定、需要尽早验证，上层主控模块相对简单。请为该系统的集成测试选择一种合适的策略，并说明理由；同时简要比其他三种策略的优缺点。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p>宜采用<strong>自底向上集成</strong>。理由：底层模块先被集成并测试，可以在早期就验证底层接口与基础功能，符合“底层接口需尽早验证”的要求；代价是必须额外开发驱动模块。</p>
+          <p>对比：大爆炸集成把所有模块一次集成，工作量小、成本低，但缺陷定位困难，适用于模块少、风险可控的小系统；自顶向下集成先从主控模块开始、需开发桩模块，能尽早验证上层逻辑与主要控制流程，但底层功能验证偏晚；三明治集成是自顶向下与自底向上的结合，兼顾上下层、可缩减桩和驱动的开发量，但中间层模块的测试相对滞后。选用时应综合缺陷定位难度、桩与驱动的工作量、进度安排和风险大小决定。</p>
+        </div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例 3</span>从测试的单元、依据、空间和使用的方法四个方面，比较单元测试与集成测试。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p>测试的单元：单元测试针对单个模块或函数，集成测试针对模块之间的接口与协作关系。测试依据：单元测试依据详细设计，集成测试依据概要设计。测试空间：单元测试局限于模块内部，集成测试跨越模块（涉及模块间的调用与数据传递）。使用方法：单元测试以白盒测试为主，集成测试偏重黑盒（接口功能）并辅以白盒。</p>
+          <p>要点：集成测试的目的是发现模块接口间的问题，而不是重复验证模块内部功能。</p>
+        </div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例 4</span>系统测试的对象是什么？请至少列出五类系统测试的内容，并说明系统测试的主要依据。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p>对象：整个软件系统（包括程序、数据、文档以及所依赖的软硬件与网络环境）。内容至少包括：功能测试、性能测试、安全性测试、兼容性测试、可靠性测试，此外还可包括易用性测试、安装测试、文档测试等。依据：系统测试主要依据需求规格说明书，通常由独立的测试团队以黑盒方法在集成完成后实施。</p>
+          <p>要点：系统测试与单元/集成测试在对象和依据上都不同——它关心的是整个系统是否满足需求，而不关心内部实现。</p>
+        </div></details>
+      </div>
+
+      <div class="callout mnemonic">
+        <span class="label">本章速记</span>
+        <p>单元五任务：接口、数据、路径、出错、边界；上驱动、下桩；自顶向下用桩，自底向上用驱动；单元依据详细设计，集成依据概要设计，系统依据需求规格。</p>
+      </div>
+    </section>
+
+    <section id="ch6" class="section">
+      <div class="section-head">
+        <div>
+          <p class="chapter-kicker">CHAPTER 06</p>
+          <h2>第 6 章 面向对象测试</h2>
+        </div>
+        <label class="review-check"><input type="checkbox" data-chapter="ch6"> 已复习</label>
+      </div>
+      <div class="tags"><span class="tag high">分值重心</span><span class="tag mid">简答 / 案例</span><span class="tag gray">封装 / 继承 / 多态</span></div>
+
+      <h3>6.1 面向对象特性对测试的影响</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>特性</th><th>对测试的影响</th><th>应对思路</th></tr></thead>
+          <tbody>
+            <tr><td>封装</td><td>信息隐藏使对象内部状态不能直接被观察和设置，测试只能通过公开接口间接验证，状态相关错误不易暴露</td><td>增加只读的状态观察方法；测试时用测试类/友元类读取或设置状态，测试后移除</td></tr>
+            <tr><td>继承</td><td>父类缺陷会随继承扩散；子类继承和重定义的方法必须在子类环境中重新测试；父类改动后所有子类都需回归</td><td>按继承层次组织测试，父类在先、子类在后；父类变更后做回归测试</td></tr>
+            <tr><td>多态 / 动态绑定</td><td>同一消息在不同对象上绑定不同实现，实际执行代码要到运行期才能确定，路径组合骤增</td><td>覆盖所有可能的动态绑定组合；结合类图/对象图分析</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">结论：这些特性使以函数为单位的传统测试方法不足以覆盖，需要采用类测试、基于服务/状态的测试以及面向对象的集成测试。</p>
+
+      <h3>6.2 面向对象测试的层次</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>传统测试</th><th>面向对象测试</th><th>测试对象</th></tr></thead>
+          <tbody>
+            <tr><td>单元测试</td><td>类测试 / 对象测试</td><td>类、对象、成员方法、对象状态</td></tr>
+            <tr><td>集成测试</td><td>类簇集成测试</td><td>类之间的消息传递与协作</td></tr>
+            <tr><td>系统测试</td><td>系统测试</td><td>整个面向对象系统</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>面向对象系统中，系统的最小可测试单元不再是函数或过程，而是<strong>类和对象</strong>。类和对象封装了很多方法和属性，提高了聚合度、降低了耦合度，但也牺牲了单元测试的容易性。</p>
+
+      <h3>6.3 类测试（面向对象的单元测试）</h3>
+      <div class="grid2">
+        <div class="mini-card"><h4>基于服务的测试</h4><p>把类中的每个成员方法（服务）当作一个单元分别测试，属于类内部的单元测试。可用块分支图（BBD）建模，再按基本路径法设计用例。</p></div>
+        <div class="mini-card"><h4>基于状态的测试</h4><p>把对象的状态转换作为测试对象，先画状态转换图（OSD），再设计用例覆盖各状态及其迁移条件与结果。</p></div>
+        <div class="mini-card"><h4>基于对象的测试</h4><p>类只有实例化后才能起作用，因此需要测试构造函数、析构函数以及对象的创建与销毁。</p></div>
+        <div class="mini-card"><h4>基于响应状态的测试</h4><p>从类和对象的责任出发，以外界向对象发送特定的消息序列来测试对象的响应。</p></div>
+      </div>
+      <p class="note">课程重点是“基于服务”和“基于状态”两类；实际中两者结合：先用基于服务的方法验证各方法本身，再用基于状态的方法验证由方法调用序列引起的状态变化。</p>
+
+      <h4>块分支图（BBD）五元组（了解）</h4>
+      <p>服务 f 的 BBD 可写为 f = (Du, Dd, P, Fe, G)：Du 为引用的全局/类数据，Dd 为修改的数据，P 为参数与返回值，Fe 为被调用的其他服务，G 为块体（控制结构图）。BBD 可由源程序逆向构造，也可在设计阶段构造；后者更可靠。</p>
+      <p>得到 BBD 后，可将其转换为控制流图，计算 V(G)，用基本路径法设计用例。例如矩形类 Rectangle 的构造函数，四个判定对应 V(G)=5，设计 5 条基本路径用例即可。</p>
+
+      <h4>基于状态的测试：数组栈</h4>
+      <p>数组栈类含 Push、Pop 方法和属性 Top，状态可分为“正常、空、满”三种。测试用例必须遍历所有状态，并在每个状态中设计非法操作（例如在空状态调用 Pop），以验证健壮性。</p>
+      <p><strong>状态切换效率问题：</strong>若栈空间为 64 KB、每项 1 字节，要把空栈切换到满栈，必须调用 Push 64×1024 次；由于封装，测试无法直接修改属性。解决办法是引入测试类/友元类，直接读取或修改对象属性，实现状态快速切换，测试完成后移除这些辅助成员。</p>
+
+      <h3>6.4 面向对象的集成测试</h3>
+      <p>面向对象的集成测试主要测试<strong>类簇</strong>，通常需要在整个程序编译完成后进行。由于面向对象程序具有动态特性，控制流往往无法确定，因此常对整个编译后的程序做基于黑盒的集成测试。</p>
+      <h4>类簇测试的内容</h4>
+      <ul>
+        <li><strong>关联和聚合关系</strong>：选择主动发送消息的类的测试用例，加载驱动程序运行。</li>
+        <li><strong>继承关系</strong>：子类中继承的方法和重定义的方法必须在子类环境中重新测试。</li>
+        <li><strong>多态 / 动态绑定</strong>：实例变量中的每一种取值应至少在测试用例中出现一次。</li>
+      </ul>
+      <h4>两种类集成策略</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>策略</th><th>做法</th><th>特点</th></tr></thead>
+          <tbody>
+            <tr><td>基于线程的测试</td><td>集成对某输入或事件作出回应的相互协作的一组类（一个线程），分别集成并测试每个线程</td><td>关注一次事件引发的一连串消息；需回归测试保证无副作用</td></tr>
+            <tr><td>基于使用的测试</td><td>先测试很少使用其他类的“独立类”，再逐步测试使用独立类的“依赖类”，直到构成完整系统</td><td>从底层/独立类开始，逐步向外扩展</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p>面向对象集成测试可分两步：先进行静态测试（检查程序结构是否符合设计，如类关系图、调用关系图），再进行动态测试（按覆盖标准设计用例，如服务覆盖、消息线程覆盖、状态覆盖）。</p>
+
+      <h3>6.5 面向对象的系统测试</h3>
+      <p>面向对象的系统测试是对所有类和主程序构成的整个系统进行的整体测试，以验证软件系统的正确性和性能指标，满足规格说明书和任务书的要求。测试用例可从对象—行为模型和事件流图中导出。</p>
+      <p>具体内容包括：功能测试、强度测试、性能测试、安全测试、恢复测试、可用性测试、安装/卸载测试等。系统测试应尽量搭建与用户实际使用环境相同的测试平台。</p>
+
+      <h3>6.6 典型例题</h3>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例 1</span>简述面向对象的封装、继承、多态三个特性分别给软件测试带来了哪些新问题。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p><strong>封装：</strong>信息隐藏使对象内部状态不能直接被观察和设置，测试只能通过公开接口间接验证，增加了测试难度，也使状态相关的错误不易暴露。</p>
+          <p><strong>继承：</strong>子类复用父类的属性与方法，父类中的缺陷会随继承扩散；测试子类时必须连带重新测试继承来的方法，测试还要按继承层次组织，父类改动后所有子类都需回归。</p>
+          <p><strong>多态：</strong>同一条消息在不同对象上绑定不同的实现，实际执行的代码要到运行期才能确定，因此测试必须覆盖所有可能的动态绑定组合，否则会漏测某些实现。</p>
+          <p>结论：这些特性使以函数为单位的传统测试方法不足以覆盖，需要采用类测试、基于服务/状态的测试以及面向对象的集成测试。</p>
+        </div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例 2</span>某“银行账户”类含存入（deposit）和取出（withdraw）两个方法，账户余额存在“正常”与“透支”两种状态。请分别说明基于服务的测试与基于状态的测试应如何进行。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p><strong>基于服务的测试：</strong>把类中的每个成员方法当作一个单元分别测试。例如单独测试 deposit、withdraw 在正常参数、边界参数和异常参数（如负数金额、超额取出）下的行为，属于类内部的单元测试。</p>
+          <p><strong>基于状态的测试：</strong>把对象的状态转换作为测试对象。先画出该类的状态转换图（如“正常”状态在余额取完后再取出则迁移到“透支”状态），再设计用例覆盖各个状态及其迁移条件与迁移结果，验证状态转换是否正确。</p>
+          <p>实际中两者结合：先用基于服务的方法验证各方法本身，再用基于状态的方法验证由方法调用序列引起的状态变化。</p>
+        </div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例 3</span>面向对象的集成测试与传统（面向过程）的集成测试相比，主要不同之处是什么？</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p>传统集成测试关注模块或函数之间的调用关系，可按程序的层次结构采用自顶向下、自底向上等方式逐层集成；面向对象的软件中，功能由一组对象通过消息（方法调用）相互协作完成，对象之间往往不存在明显、严格的“上层—下层”层次结构，因此面向对象的集成测试更强调对象之间的消息传递与协作是否正确。</p>
+          <p>常用策略有：基于线程的测试（每个线程对应一次用户输入所引发的一连串事件，逐条集成并测试）和基于使用的测试（先测试使用其他类较少的类，再逐步向外扩展）。面向对象的系统测试则与传统系统测试基本一致，也以需求为依据、以黑盒方法为主。</p>
+        </div></details>
+      </div>
+
+      <div class="callout mnemonic">
+        <span class="label">本章速记</span>
+        <p>封装难观察、继承要重测、多态要覆盖所有绑定；类测试两条主线：基于服务（方法）与基于状态（状态机）；类簇集成两条策略：基于线程、基于使用。</p>
+      </div>
+    </section>
+
+    <section id="ch7" class="section">
+      <div class="section-head">
+        <div>
+          <p class="chapter-kicker">CHAPTER 07–09</p>
+          <h2>第 7–9 章 自动化测试与工具</h2>
+        </div>
+        <label class="review-check"><input type="checkbox" data-chapter="ch7"> 已复习</label>
+      </div>
+      <div class="tags"><span class="tag mid">选择 / 填空 / 简答</span><span class="tag gray">QTP / LoadRunner</span><span class="tag low">了解为主</span></div>
+
+      <h3>7.1 自动化测试的基本概念</h3>
+      <p><strong>定义：</strong>软件测试自动化是通过软件测试工具，按照测试人员预定的计划和测试用例对软件产品进行自动测试；是把以人为驱动的测试行为转化为机器执行的一种过程。</p>
+      <h4>自动化测试的意义</h4>
+      <ul>
+        <li>节约时间，提高执行效率。</li>
+        <li>更可靠，提高精确度和准确度。</li>
+        <li>有助于立即测试、持续回归。</li>
+        <li>减轻测试工程师的重复劳动，使其关注更有创造性的任务。</li>
+        <li>更好地利用全球资源；有些测试（如性能、并发、大量数据）必须自动化。</li>
+      </ul>
+      <h4>常用术语与技能类型</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>术语 / 类型</th><th>含义</th></tr></thead>
+          <tbody>
+            <tr><td>测试包</td><td>一组测试用例被组合并与一组场景关联</td></tr>
+            <tr><td>自动化测试框架</td><td>由基础模块、管理模块、统计模块等组成的工具集合</td></tr>
+            <tr><td>记录与回放</td><td>录制键盘/鼠标操作序列，以后按顺序回放；技能要求较低</td></tr>
+            <tr><td>数据驱动</td><td>测试脚本与测试数据分离，用数据表驱动同一脚本反复执行</td></tr>
+            <tr><td>行动（关键字）驱动</td><td>用户描述操作，框架自动生成并执行所需步骤</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>7.2 自动化测试框架的组成</h3>
+      <div class="grid2">
+        <div class="mini-card"><h4>外部模块</h4><p>测试用例数据库（用例、步骤、执行历史）与缺陷库（缺陷详细信息）。</p></div>
+        <div class="mini-card"><h4>场景与配置</h4><p>存放自动化中使用的变量，可动态改变以形成不同的执行、输入、输出和状态条件。</p></div>
+        <div class="mini-card"><h4>测试用例与框架</h4><p>把“要执行什么”和“如何执行”结合，从用例库提取用例、场景、变量并执行。</p></div>
+        <div class="mini-card"><h4>工具与结果</h4><p>调用模拟器/工具；保存每次执行结果、场景和变量值，且不能覆盖历史结果。</p></div>
+        <div class="mini-card"><h4>报告生成器</h4><p>提取结果并生成格式化报告与指标。</p></div>
+        <div class="mini-card"><h4>报告 / 指标库</h4><p>存储所有报告和指标，供日后分析。</p></div>
+      </div>
+
+      <h3>7.3 自动化测试的过程模型</h3>
+      <p><strong>教材三阶段：</strong>自动化测试需求分析 → 自动化测试框架搭建 → 产品和自动化测试包的测试。框架搭建要沉淀公用对象、公用环境、公用方法和测试数据。</p>
+      <p><strong>脚本生命周期四阶段（闭环）：</strong></p>
+      <div class="flow"><span class="node">脚本开发</span><span class="arrow">→</span><span class="node">测试运行</span><span class="arrow">→</span><span class="node">结果分析与报告</span><span class="arrow">→</span><span class="node">脚本维护</span><span class="arrow">↺</span></div>
+      <p><strong>为什么脚本维护是成败关键：</strong>脚本会因软件版本更新、界面控件改变、业务流程调整而大量失效，维护成本往往高于首次开发成本；如果维护跟不上，脚本会成批失效、无法回放，自动化就形同虚设。</p>
+
+      <h3>7.4 自动化测试的适用场合与选择</h3>
+      <h4>前提条件</h4>
+      <ul>
+        <li>需求变动不频繁。</li>
+        <li>项目周期足够长。</li>
+        <li>自动化测试脚本可重复使用。</li>
+        <li>被测软件已基本稳定，有成熟可复用的用例，具备工具与人员技能，预期收益（ROI）足够。</li>
+      </ul>
+      <h4>适合与不适合</h4>
+      <div class="grid2">
+        <div class="mini-card"><h4>适合</h4><p>回归测试、文档管理、测试报告生成、覆盖率统计；大量数据驱动、性能测试、并发压力测试；步骤频繁重复、手工难以完成的测试。</p></div>
+        <div class="mini-card"><h4>不适合</h4><p>需求频繁变化、功能与界面尚不稳定、只执行一次、需要较强人工判断与探索（探索性测试、易用性测试）的场合。</p></div>
+      </div>
+      <p><strong>选择因素：</strong>项目影响、实现复杂度、时间、代码/需求稳定性、资源、覆盖率、自动执行能力；同时要分析投入回报，自动化不能完全替代手工测试。</p>
+
+      <h3>7.5 自动化测试工具分类</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>类型</th><th>作用</th><th>常见工具</th></tr></thead>
+          <tbody>
+            <tr><td>白盒测试工具</td><td>动态错误检测、时间性能分析、覆盖率统计</td><td>Logiscope、PRQA、DevPartner、PurifyPlus</td></tr>
+            <tr><td>黑盒测试工具</td><td>录制回放、模拟用户操作、比较输出</td><td>WinRunner、QTP、QACenter、Team Test Robot</td></tr>
+            <tr><td>网络测试工具</td><td>网络故障定位、性能监测、网络模拟</td><td>Network Sniffer、LoadRunner</td></tr>
+            <tr><td>专用代码测试工具</td><td>特定语言的自动侦错、单元测试</td><td>BoundsCheck、CodeReview、Jcheck、JUnit、CppUnit</td></tr>
+            <tr><td>错误捕获工具</td><td>捕获软件错误后进行程序调试</td><td>Compuware NuMega 系列</td></tr>
+            <tr><td>测试管理工具</td><td>管理需求、计划、用例、实施、报告</td><td>TestDirector、TestManager、TrackRecord、Quality Center</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>7.6 QTP 的三个核心概念</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>概念</th><th>作用</th><th>一句话</th></tr></thead>
+          <tbody>
+            <tr><td>对象库（Object Repository）</td><td>存放被测对象的属性及逻辑名，脚本依靠它识别并操作界面控件</td><td>解决“操作谁”</td></tr>
+            <tr><td>检查点（Checkpoint）</td><td>在脚本中设置断言，把运行时实际值与期望值比较，判定测试是否通过</td><td>解决“结果对不对”</td></tr>
+            <tr><td>参数化（Parameterization）</td><td>用变量或数据表代替脚本中写死的常量，使同一脚本能用于不同数据与场景</td><td>解决“一套脚本跑多组数据”</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h4>数据驱动测试</h4>
+      <p>原理：把“测试脚本”与“测试数据”分离。脚本只开发一份，其中变化的输入值改成参数，测试数据放在数据表（DataTable）中；运行时脚本循环读取数据表的每一行，用不同数据反复执行同一套操作。</p>
+      <p>实现要点：① 录制或编写通用脚本，把写死的输入值改为参数；② 在数据表中准备多组数据；③ 设置循环，使脚本逐行取参数并执行；④ 对每行结果设置检查点判定期望输出。</p>
+      <h4>QTP 基本操作流程</h4>
+      <ol class="steps">
+        <li>启动 QTP，新建测试并选择被测应用类型。</li>
+        <li>录制测试脚本，QTP 自动生成脚本语句并把对象记录到对象库。</li>
+        <li>编辑脚本：插入检查点、进行参数化、调整语句逻辑。</li>
+        <li>调试脚本（断点、单步），确认无误后运行。</li>
+        <li>查看测试结果窗口，分析通过/失败情况及原因，生成测试报告。</li>
+      </ol>
+      <div class="callout warn">
+        <span class="label">关键提醒</span>
+        <p>录制只是手段，回放必须插入检查点校验预期结果，否则“回放通过”并不代表功能正确。</p>
+      </div>
+
+      <h3>7.7 LoadRunner 与性能测试</h3>
+      <h4>性能测试核心指标</h4>
+      <div class="kv">
+        <dt>并发用户数</dt><dd>同一时刻向系统发出请求的虚拟用户数量。</dd>
+        <dt>响应时间</dt><dd>从发出请求到收到完整响应所经历的时间，含网络传输与服务器处理时间。</dd>
+        <dt>吞吐量</dt><dd>单位时间内系统处理的请求数或数据量，如“请求数/秒”“字节/秒”。</dd>
+        <dt>TPS</dt><dd>每秒完成的事务数，用于衡量系统处理能力。</dd>
+        <dt>资源利用率</dt><dd>CPU、内存、磁盘、网络等资源的使用情况。</dd>
+        <dt>思考时间 / 集合点</dt><dd>思考时间模拟用户操作间的停顿；集合点让多个虚拟用户到达该点后同时释放，制造瞬时并发。</dd>
+      </div>
+      <p><strong>指标关系：</strong>系统未达到处理极限时，并发用户数增加，吞吐量随之上升而响应时间基本平稳；当达到饱和点后，并发继续增加，吞吐量不再上升甚至下降，响应时间急剧变长。性能测试的目的就是找到这个拐点，确定系统的最佳并发区间与最大处理能力。</p>
+      <h4>LoadRunner 三大组件</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>组件</th><th>作用</th></tr></thead>
+          <tbody>
+            <tr><td>VuGen（虚拟用户生成器）</td><td>录制或编写、调试虚拟用户脚本，并完成参数化、关联、事务、检查点等脚本增强</td></tr>
+            <tr><td>Controller（控制器）</td><td>设计并运行测试场景，设置虚拟用户数、负载生成器和运行策略，并实时监控</td></tr>
+            <tr><td>Analysis（分析器）</td><td>对测试数据进行分析，生成响应时间、吞吐量等图表和测试报告</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>数据流：</strong>VuGen 产出脚本 → Controller 创建场景、施加负载、采集数据 → Analysis 分析并给出结论。顺序可记为“脚本 → 场景 → 分析”。</p>
+      <h4>脚本增强技术</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>技术</th><th>解决的问题</th></tr></thead>
+          <tbody>
+            <tr><td>参数化</td><td>把写死的常量替换为参数，模拟不同用户使用不同数据</td></tr>
+            <tr><td>关联</td><td>提取服务器动态返回的值（如会话标识）并在后续请求中引用，解决回放失败</td></tr>
+            <tr><td>事务</td><td>把一组操作括起来，度量这组业务流程的响应时间</td></tr>
+            <tr><td>集合点</td><td>让多个虚拟用户到达该点后同时释放，制造瞬时并发压力</td></tr>
+            <tr><td>思考时间</td><td>模拟用户操作间的停顿，使负载更接近真实</td></tr>
+            <tr><td>检查点</td><td>校验返回内容是否正确</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h4>负载/压力测试步骤</h4>
+      <ol class="steps">
+        <li>制定负载测试计划，明确目标与性能指标（并发数、响应时间要求、持续时间等）。</li>
+        <li>开发测试脚本，用 VuGen 录制并进行参数化、关联、事务等增强。</li>
+        <li>创建运行场景，在 Controller 中设置虚拟用户数、负载生成器、集合点和运行策略。</li>
+        <li>运行测试场景并实时监控响应时间、吞吐量、服务器资源利用率等指标。</li>
+        <li>分析结果，用 Analysis 查看性能曲线、定位瓶颈，必要时调整参数后重复测试。</li>
+      </ol>
+
+      <h3>7.8 典型例题</h3>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例 1</span>判断并说明理由：“为了提高效率，项目一开始就应该尽可能把所有测试都自动化。”</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p><strong>错误。</strong>自动化测试并不适合所有场合。适合自动化的情形：需求相对稳定、需要反复进行回归测试、同一步骤被频繁重复执行、手工难以完成（如大量数据驱动测试、性能测试、并发压力测试）的场合。不适合的情形：需求频繁变化、功能与界面尚不稳定、只执行一次、需要较强人工判断与探索的场合。</p>
+          <p>前提条件包括：被测软件已基本稳定、有成熟且可复用的测试用例、具备相应工具与人员技能、预期收益（ROI）足够。由于脚本开发前期投入大，只有当脚本被多次复用才能真正体现自动化的价值。</p>
+        </div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例 2</span>为什么说“脚本维护”是决定自动化测试成败的关键？自动化测试的过程模型通常包含哪几个主要阶段？</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p>原因：自动化脚本会因被测软件版本更新、界面控件改变、业务流程调整而大量失效，维护成本往往高于首次开发成本；如果维护跟不上，脚本会成批失效、无法回放，自动化就形同虚设。</p>
+          <p>教材过程模型三阶段：自动化测试需求分析、自动化测试框架搭建、产品和自动化测试包的测试。脚本生命周期四阶段闭环：脚本开发、测试运行、结果分析与报告、脚本维护。</p>
+        </div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例 3</span>某登录功能需要用 20 组“用户名/密码”逐一验证。若采用录制回放的方式，需要录制 20 个脚本。请说明如何用数据驱动的方式减少工作量，并描述实现要点。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p>原理：把测试脚本与测试数据分离。脚本只开发一份，其中变化的输入值（用户名、密码）改成参数，测试数据放在数据表（DataTable）中；运行时脚本循环读取数据表的每一行，用不同的数据反复执行同一套操作，从而一份脚本驱动多组数据。</p>
+          <p>实现要点：① 录制或编写通用脚本，把写死的输入值改为参数；② 在数据表中准备好 20 组数据；③ 设置循环，使脚本逐行取参数并执行；④ 对每行结果设置检查点判定期望输出，最终输出 20 条执行结果。</p>
+        </div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例 4</span>分别说明 QTP 中对象库、检查点和参数化的作用，并指出三者之间的关系。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p>对象库：存放被测应用对象的属性及其逻辑名，脚本依靠对象库识别并操作界面控件，是脚本能“找到”控件的基础。检查点：在脚本中设置断言，把运行时实际值与期望值比较，用于判定这条测试是否通过。参数化：用变量或数据表代替脚本中写死的常量，使同一脚本能用于不同的输入数据与场景，是数据驱动测试的实现手段。</p>
+          <p>三者关系：对象库解决“操作谁”，检查点解决“结果对不对”，参数化解决“如何用一套脚本跑多组数据”。</p>
+        </div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例 5</span>LoadRunner 主要由哪三个组件构成？各自的作用是什么？请说明它们之间的数据流关系。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p>三大组件：① VuGen（虚拟用户生成器）——录制或编写、调试虚拟用户脚本，并完成参数化、关联、插入事务与检查点等脚本增强工作；② Controller（控制器）——设计并运行测试场景，设置虚拟用户数、负载生成器和运行策略，并在运行过程中实时监控；③ Analysis（分析器）——对测试采集到的数据进行分析，生成响应时间、吞吐量等图表和测试报告。</p>
+          <p>数据流：VuGen 产出的脚本交给 Controller 用于创建场景并施加负载、采集数据，采集的数据再由 Analysis 进行分析并给出结论。顺序可记为：脚本（VuGen）→ 场景（Controller）→ 分析（Analysis）。</p>
+        </div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例 6</span>分别说明 VuGen 脚本增强中参数化、关联、事务和集合点的作用，并各用一句话概括它们要解决的问题。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p>参数化：把脚本中写死的常量替换为参数，从参数列表中循环取值，模拟不同用户使用不同数据——解决“数据各不相同”的问题。关联：把服务器动态返回的值（如会话标识）提取为变量并在后续请求中引用，解决因动态数据变化导致回放失败——解决“数据是动态变化”的问题。事务：用事务把一组操作括起来，度量这组操作的响应时间——解决“如何度量一段业务流程的耗时”。集合点：设置集合点使多个虚拟用户到达该点后同时释放，制造真正的并发——解决“如何形成瞬时并发压力”。此外还常用检查点校验返回内容、用思考时间模拟用户操作间的停顿。</p>
+        </div></details>
+      </div>
+
+      <div class="callout mnemonic">
+        <span class="label">本章速记</span>
+        <p>自动化不是万能：需求稳、周期长、脚本可复用才适合；脚本维护决定成败。QTP：对象库“操作谁”、检查点“对不对”、参数化“多组数据”。LoadRunner：VuGen 脚本、Controller 场景、Analysis 分析。</p>
+      </div>
+    </section>
+
+    <section id="ch10" class="section">
+      <div class="section-head">
+        <div>
+          <p class="chapter-kicker">CHAPTER 10</p>
+          <h2>第 10 章 软件测试管理</h2>
+        </div>
+        <label class="review-check"><input type="checkbox" data-chapter="ch10"> 已复习</label>
+      </div>
+      <div class="tags"><span class="tag high">高频</span><span class="tag mid">简答 / 计算</span><span class="tag gray">计划 / 风险 / 报告 / 缺陷率</span></div>
+
+      <h3>10.1 测试计划</h3>
+      <p><strong>定义：</strong>测试计划描述了要进行的测试活动的范围、方法、资源和进度，确定测试项、被测特性、测试任务、谁执行任务以及可能的风险。它可以有效预防计划风险，保障计划顺利实施。</p>
+      <h4>测试目标的三类</h4>
+      <ul>
+        <li><strong>整体目标</strong>：针对整个软件项目或产品确定。</li>
+        <li><strong>阶段性目标</strong>：分别针对单元、集成、系统和验收测试定义期望结果。</li>
+        <li><strong>特定任务目标</strong>：针对某些具体任务确定。</li>
+      </ul>
+      <h4>测试计划的主要内容</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>要素</th><th>说明</th></tr></thead>
+          <tbody>
+            <tr><td>测试目的与目标</td><td>被测对象、质量目标</td></tr>
+            <tr><td>测试范围</td><td>测什么、不测什么，以及进入/退出准则</td></tr>
+            <tr><td>测试策略与方法</td><td>测试类型与所用方法</td></tr>
+            <tr><td>测试资源</td><td>人员、环境、设备、工具</td></tr>
+            <tr><td>测试进度与里程碑</td><td>阶段划分、关键节点</td></tr>
+            <tr><td>测试交付物与文档</td><td>计划、用例、报告等</td></tr>
+            <tr><td>风险与应对措施</td><td>识别、量化、缓解、跟踪</td></tr>
+            <tr><td>用例与缺陷管理流程</td><td>流程、标准、工具</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>测试策略要回答：</strong>在哪些阶段、按什么层次开展测试；采用哪些测试类型（功能、性能、安全、兼容性等）；用黑盒还是白盒、手工还是自动化；回归测试如何组织。</p>
+
+      <h3>10.2 测试范围分析与工作量估算</h3>
+      <p><strong>范围分析：</strong>一般先分析功能测试范围，再分析非功能测试范围。功能范围主要依据软件规格说明书，结合功能之间的逻辑关系和用户使用习惯细化；非功能范围可从性能、兼容性、适用性、安全性等方面分析。</p>
+      <p><strong>范围管理：</strong>理解哪些内容构成发布版本；将发布版本分解为特性；确定特性测试优先级；确定哪些特性测试、哪些不测试；收集数据，准备估计测试资源。</p>
+      <h4>工作量估算</h4>
+      <div class="grid2">
+        <div class="mini-card"><h4>规模度量</h4><p>代码行数、功能点（FP）、屏幕数/报表数/事务数。</p></div>
+        <div class="mini-card"><h4>影响规模的因素</h4><p>被测产品规模、所需自动化范围、要测试的平台与互操作环境数量。</p></div>
+        <div class="mini-card"><h4>常用估算方法</h4><p>类比法、专家判断法（Delphi）、按比例估算法、自下而上法（用例数 ÷ 每人日执行数）。</p></div>
+        <div class="mini-card"><h4>其他影响因素</h4><p>生产率数据、重用机会、过程健壮性、人员技能、缺陷修复与回归次数。</p></div>
+      </div>
+      <p class="note">估算应结合历史数据，并为缺陷修复和回归测试预留缓冲余量。</p>
+
+      <h3>10.3 资源安排与进度管理</h3>
+      <p><strong>测试角色：</strong>测试工程师、测试负责人、测试经理等；健全的测试组可包括测试组长、实验室管理员、自动化测试工程师、资深测试工程师和初级测试工程师。培训分为纵向（知识传递）和横向（跨团队交流）。</p>
+      <h4>两种常用的进度管理方法</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>方法</th><th>原理</th><th>用途</th></tr></thead>
+          <tbody>
+            <tr><td>累积缺陷曲线法</td><td>前期缺陷发现率高，随着时间推移和缺陷修复，发现速率降低；当缺陷越来越难发现时，预示测试进入尾声</td><td>通过累积缺陷曲线判断测试进度与收敛情况</td></tr>
+            <tr><td>测试进度 S 曲线法</td><td>把计划进度与实际进度（测试用例/测试点数量）画成曲线进行比较</td><td>发现差距、调查原因、纠正偏差</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>10.4 测试风险控制</h3>
+      <p><strong>风险管理要素：</strong>风险确定 → 风险量化 → 风险缓解策划 → 风险应对。风险管理是一个循环，随着一些风险被解决，其他风险又可能出现。</p>
+      <p><strong>风险量化：</strong>用数字描述风险，两个要素是“风险发生的可能性”和“风险影响的程度”。<strong>风险指数 = 风险可能性 × 风险影响</strong>，常用金额方式表示。</p>
+      <h4>常见风险</h4>
+      <ul>
+        <li>需求不明确或频繁变更。</li>
+        <li>进度依赖、开发延迟导致测试时间不足。</li>
+        <li>测试环境或测试数据不具备。</li>
+        <li>人员技能不足或人员流动。</li>
+        <li>缺陷修复不及时导致回归延误。</li>
+        <li>出现“影响测试继续进行”的缺陷。</li>
+        <li>不能获得自动化测试工具。</li>
+      </ul>
+      <p><strong>应对手段：</strong>测试尽早介入、提前设计并评审用例、按缺陷集群性把资源优先投向关键与高风险模块、预留进度缓冲、定期状态评审与进度跟踪。</p>
+
+      <h3>10.5 测试报告与测试评估</h3>
+      <h4>三类测试报告</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>报告</th><th>内容</th></tr></thead>
+          <tbody>
+            <tr><td>测试事件报告</td><td>测试周期内遇到缺陷时的沟通，是缺陷库中的一条记录，每个缺陷有唯一标识</td></tr>
+            <tr><td>测试周期报告</td><td>本周期完成的活动、发现的缺陷及严重性分类、缺陷修复进展、未修改的严重缺陷、进度与工作量偏差</td></tr>
+            <tr><td>测试总结报告</td><td>对测试周期结果进行总结，为纠正质量问题提供依据，为验收和交付打基础；给出测试和产品质量的结论</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>测试报告的主要内容：</strong>测试概述（目的、范围、被测对象与环境）、测试执行情况（用例总数、执行数、通过/失败数、进度）、缺陷统计与分析（按严重程度、模块、类型分布）、遗留问题与风险说明、测试结论与建议。</p>
+      <p><strong>测试报告与测试评估的区别与联系：</strong>报告记录并呈现测试活动的过程、结果与数据，面向事实与过程；评估对测试对象的质量以及测试活动本身的效果作出判断和结论，面向结论与决策。评估以报告提供的数据为依据，报告是评估的输入。</p>
+
+      <h3>10.6 覆盖率与缺陷度量（计算重点）</h3>
+      <h4>覆盖率</h4>
+      <div class="formula">覆盖率 = <b>至少被执行一次的 item 数</b> ÷ <b>item 总数</b></div>
+      <ul>
+        <li><strong>基于需求的测试覆盖</strong>：在测试生命周期中多次评测，并在里程碑处提供“已计划、已实施、已执行、成功”的覆盖标识。</li>
+        <li><strong>基于代码的测试覆盖</strong>：评测已执行代码的多少，与之相对的是剩余未执行代码的多少。</li>
+      </ul>
+      <div class="callout warn">
+        <span class="label">重要提醒</span>
+        <p>代码覆盖率达到 100% 也不能代表测试覆盖率很高：代码可能没有实现需求中定义的功能，或者实现的功能与用户需求不符，这类问题很难通过代码覆盖率发现。</p>
+      </div>
+      <h4>缺陷度量四指标</h4>
+      <div class="kv">
+        <dt>缺陷发现率</dt><dd>把发现的缺陷数量作为时间的函数来评估，创建缺陷趋势图。</dd>
+        <dt>缺陷潜伏期</dt><dd>缺陷处于特定状态下的时间长短；发现越晚，损害越大、修复成本越高。</dd>
+        <dt>缺陷分布（密度）</dt><dd>缺陷在软件规模上的分布，如每千行代码或每个功能点的缺陷数。</dd>
+        <dt>整体缺陷清除率</dt><dd>开发过程中发现的缺陷占发现的总缺陷的比例，越高说明质量越好。</dd>
+      </div>
+      <div class="formula">缺陷密度 = 缺陷数量 ÷ 代码行数（或功能点数）<br>设 F 为功能点，D1 为开发过程中发现的缺陷数，D2 为发布后发现的缺陷数，D = D1 + D2<br>质量 = <b>D2 / F</b>　缺陷注入率 = <b>D / F</b>　整体缺陷清除率 = <b>D1 / D</b></div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例</span>某软件项目有 100 个功能点，开发过程中发现 15 个错误，提交后又发现 5 个错误。请计算质量、缺陷注入率和整体缺陷清除率。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p>已知 F = 100，D1 = 15，D2 = 5，D = D1 + D2 = 20。</p>
+          <p>质量 = D2 / F = 5 / 100 = 0.05 = 5%。</p>
+          <p>缺陷注入率 = D / F = 20 / 100 = 0.2 = 20%。</p>
+          <p>整体缺陷清除率 = D1 / D = 15 / 20 = 0.75 = 75%。</p>
+          <p>整体缺陷清除率越高，软件产品的质量越好；否则清除率越低，质量越差。</p>
+          <p class="note">部分课件把缺陷注入率 0.2 误写成 2%，按公式应为 20%，考试以公式为准。</p>
+        </div></details>
+      </div>
+
+      <h3>10.7 测试管理工具</h3>
+      <p>测试管理包含测试框架、测试计划与组织、测试过程管理、测试分析与缺陷管理。测试管理的核心是<strong>测试用例和缺陷</strong>，因此测试管理系统以测试用例库、缺陷库为核心，覆盖测试需求、用例设计、计划、环境、执行、缺陷跟踪、结果统计等全过程。</p>
+      <div class="grid3">
+        <div class="mini-card"><h4>禅道</h4><p>国产开源项目管理软件，集产品、项目、质量、文档、组织、事务管理于一体。</p></div>
+        <div class="mini-card"><h4>SoapUI</h4><p>开源测试工具，通过 SOAP/HTTP 检查、调用、实现 Web Service 的功能/负载/符合性测试。</p></div>
+        <div class="mini-card"><h4>TestCenter</h4><p>面向业务流程、基于 B/S 的测试管理工具，覆盖完整测试过程，支持用例设计、缺陷跟踪、报表等。</p></div>
+      </div>
+
+      <div class="callout mnemonic">
+        <span class="label">本章速记</span>
+        <p>计划八要素；范围先功能后非功能；估算四方法；进度看累积缺陷曲线和 S 曲线；风险指数 = 可能性 × 影响；报告三类；覆盖率 = 执行 item / 总 item；清除率 = D1 / D。</p>
+      </div>
+    </section>
+
+    <section id="ch11" class="section">
+      <div class="section-head">
+        <div>
+          <p class="chapter-kicker">CHAPTER 11</p>
+          <h2>第 11 章 软件质量保证</h2>
+        </div>
+        <label class="review-check"><input type="checkbox" data-chapter="ch11"> 已复习</label>
+      </div>
+      <div class="tags"><span class="tag high">高频记忆</span><span class="tag mid">选择 / 简答</span><span class="tag gray">CMM / ISO 9126 / IEEE 829</span></div>
+
+      <h3>11.1 软件质量与质量标准</h3>
+      <p><strong>软件质量：</strong>软件与明确的和隐含的定义的需求相一致的程度。具体地说，软件质量是软件符合明确叙述的功能和性能需求、文档中明确描述的开发标准、以及所有专业开发的软件都应具有的隐含特征的程度。</p>
+      <h4>影响软件质量的主要因素（三组）</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>观点</th><th>质量因素</th></tr></thead>
+          <tbody>
+            <tr><td>产品运行</td><td>正确性、健壮性、效率、完整性、可用性、风险</td></tr>
+            <tr><td>产品修改</td><td>可理解性、可维修性、灵活性、可测试性</td></tr>
+            <tr><td>产品转移</td><td>可移植性、可再用性、互运行性</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h4>质量标准层级</h4>
+      <div class="flow"><span class="node">国际标准</span><span class="arrow">→</span><span class="node">国家标准</span><span class="arrow">→</span><span class="node">行业标准</span><span class="arrow">→</span><span class="node">企业标准</span><span class="arrow">→</span><span class="node">项目规范</span></div>
+      <h4>衡量软件质量的常用指标</h4>
+      <ul>
+        <li>SLOC（Source Lines of Code，源代码行）。</li>
+        <li>每个代码段/模块/时间段中的 bug 数。</li>
+        <li>代码覆盖率。</li>
+        <li>设计/开发约束。</li>
+        <li>圈复杂度（Cyclomatic Complexity）。</li>
+      </ul>
+
+      <h3>11.2 软件质量保证（SQA）</h3>
+      <p><strong>SQA 定义：</strong>建立一套有计划、有系统的方法，来向管理层保证拟定出的标准、步骤、实践和方法能够正确地被所有项目采用。其目的是使软件过程对于管理人员来说是可见的；它通过对软件产品和活动进行评审和审计来验证软件是否合乎标准。</p>
+      <h4>SQA 的基本目标</h4>
+      <ol>
+        <li>软件质量保证工作是有计划进行的。</li>
+        <li>客观地验证软件项目产品和工作是否遵循恰当的标准、步骤和需求。</li>
+        <li>将软件质量保证工作及结果通知给相关组别和个人。</li>
+        <li>高级管理层接触到在项目内部不能解决的不符合类问题。</li>
+        <li>软件质量需要全面的测试工作来保证。</li>
+      </ol>
+      <h4>全面质量管理（TQM）</h4>
+      <div class="grid2">
+        <div class="mini-card"><h4>全过程</h4><p>对产品质量产生、形成和实现的各个过程进行控制，预防为主，防检结合。</p></div>
+        <div class="mini-card"><h4>全员</h4><p>加强“质量第一”培训，增强责任心，使员工做好本职工作。</p></div>
+        <div class="mini-card"><h4>全企业</h4><p>组织层面各层次都参与质量管理，高层起决定性作用。</p></div>
+        <div class="mini-card"><h4>多方法</h4><p>根据不同的情况、因素，采取广泛、灵活、现代化的多种方法。</p></div>
+      </div>
+      <p><strong>TQM 核心理念：</strong>关注顾客、全员参与、持续改进。</p>
+      <p><strong>SQA 与测试的区别：</strong>SQA 面向“过程”，质量控制（测试）面向“产品”；SQA 通过评审、审计、过程改进等手段保证过程被正确执行，测试通过执行用例发现产品缺陷。</p>
+
+      <h3>11.3 CMM 能力成熟度模型</h3>
+      <p>CMM 首先作为一个“评估标准”出现，用于定义和评价软件公司开发过程的成熟度。它在美国国防部指导下，由软件开发团体、软件工程学院（SEI）及 Carnegie Mellon 大学共同开发。CMM 的核心是把软件开发视为一个过程，并对软件开发和维护进行过程监控和研究，使其更加科学化、标准化。</p>
+      <h4>CMM 的五个等级</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>等级</th><th>名称</th><th>核心特征</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>初始级（Initial）</td><td>开发过程无序，成功主要依赖个人能力，进度、成本与质量不可预测</td></tr>
+            <tr><td>2</td><td>可重复级（Repeatable）</td><td>建立了基本的项目管理过程与规程，能够重复以往项目的成功经验</td></tr>
+            <tr><td>3</td><td>已定义级（Defined）</td><td>开发与管理过程已标准化、文档化，形成组织级标准过程并按项目裁剪使用</td></tr>
+            <tr><td>4</td><td>已管理级（Managed）</td><td>对过程和产品质量建立定量目标，以数据量化管理，过程性能可以预测</td></tr>
+            <tr><td>5</td><td>优化级（Optimizing）</td><td>依据量化反馈持续改进过程，能够预防缺陷、引入新技术新方法</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout mnemonic">
+        <span class="label">记忆</span>
+        <p><strong>初 → 可重复 → 已定义 → 已管理 → 优化</strong>；一句话：由“无序”到“有管理”到“标准化”到“量化”到“持续改进”。</p>
+      </div>
+      <h4>CMM 的 18 个关键过程域（了解）</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>等级</th><th>关键过程域</th></tr></thead>
+          <tbody>
+            <tr><td>2 可重复级</td><td>需求管理、软件项目计划、软件项目跟踪与监督、软件子合同管理、软件质量保证、软件配置管理（6 个）</td></tr>
+            <tr><td>3 已定义级</td><td>组织过程焦点、组织过程定义、培训程序、集成软件管理、软件产品工程、组间协调、同行评审（7 个）</td></tr>
+            <tr><td>4 已管理级</td><td>定量过程管理、软件质量管理（2 个）</td></tr>
+            <tr><td>5 优化级</td><td>缺陷预防、技术变更管理、过程变更管理（3 个）</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p><strong>CMMI：</strong>软件能力成熟集成模型，是软件工程模型、系统工程模型、集成化产品模型、过程开发模型以及集成化供应管理模型等多个模型的集合。其过程域可分为项目管理、组织过程、工程、保证支持四组。SQA 在 CMM 可重复级中是 6 个关键过程域之一，在 CMMI 中升级为“过程与产品质量保证（PPQA）”。</p>
+
+      <h3>11.4 ISO 9000 与 ISO 9126</h3>
+      <p><strong>ISO 9000 族标准：</strong>国际标准化组织（ISO）于 1987 年颁布，是在全世界范围内通用的关于质量管理和质量保证的一系列标准，定义了一套基本达标的实践，帮助公司不断交付符合客户质量要求的产品。ISO 9001 是其中的质量管理体系要求标准。</p>
+      <h4>ISO 9126 六大质量特性</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>质量特性</th><th>含义</th><th>示例子特性</th></tr></thead>
+          <tbody>
+            <tr><td>功能性</td><td>满足明确或隐含需求的功能</td><td>适合性、准确性、互操作性、保密安全性</td></tr>
+            <tr><td>可靠性</td><td>在规定条件下维持规定性能的能力</td><td>成熟性、容错性、易恢复性</td></tr>
+            <tr><td>易用性</td><td>被理解、学习、使用和吸引用户的能力</td><td>易理解性、易学性、易操作性</td></tr>
+            <tr><td>效率</td><td>性能与资源利用的关系</td><td>时间特性、资源利用性</td></tr>
+            <tr><td>可维护性</td><td>修改、修复、适应变化的能力</td><td>易分析性、易改变性、稳定性、易测试性</td></tr>
+            <tr><td>可移植性</td><td>从一个环境迁移到另一个环境的能力</td><td>适应性、易安装性、共存性、易替换性</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout mnemonic">
+        <span class="label">记忆</span>
+        <p><strong>功、可、易、效、维、移。</strong>功能性、可靠性、易用性、效率、可维护性、可移植性。</p>
+      </div>
+
+      <h3>11.5 IEEE 829 测试文档标准</h3>
+      <p>IEEE 829 规定了八类主要测试文档，统一了文档格式，使测试活动更透明、可追溯；它规定格式但并不强制全部使用，项目可根据需要裁剪。</p>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>序号</th><th>文档</th><th>作用</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>测试计划</td><td>测试范围、方法、资源、进度、风险</td></tr>
+            <tr><td>2</td><td>测试设计规格说明</td><td>测试的设计考虑与方法</td></tr>
+            <tr><td>3</td><td>测试用例规格说明</td><td>用例的输入、预期输出、步骤</td></tr>
+            <tr><td>4</td><td>测试规程（过程）规格说明</td><td>执行测试的操作规程</td></tr>
+            <tr><td>5</td><td>测试项传递（移交）报告</td><td>测试对象的移交信息</td></tr>
+            <tr><td>6</td><td>测试日志</td><td>测试执行过程记录</td></tr>
+            <tr><td>7</td><td>测试事件（附加）报告</td><td>测试中发生的事件/差异记录</td></tr>
+            <tr><td>8</td><td>测试总结报告</td><td>测试结果与结论</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout mnemonic">
+        <span class="label">八文档记忆</span>
+        <p><strong>计、设、用、规，传、日、事、总。</strong>计划、设计规格、用例规格、规程；传递报告、日志、事件报告、总结报告。注意“测试事件报告”不等于“缺陷报告”，因为期望值与实际结果的差异也可能是期望值写错或执行有误造成的。</p>
+      </div>
+
+      <h3>11.6 Alpha 测试与 Beta 测试</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>维度</th><th>Alpha 测试</th><th>Beta 测试</th></tr></thead>
+          <tbody>
+            <tr><td>地点</td><td>开发方场所</td><td>用户真实使用环境</td></tr>
+            <tr><td>环境</td><td>受控环境</td><td>真实环境</td></tr>
+            <tr><td>执行者</td><td>用户或测试人员</td><td>实际用户</td></tr>
+            <tr><td>开发者在场</td><td>在场，可即时沟通修正</td><td>通常不在场</td></tr>
+            <tr><td>目的</td><td>在受控条件下发现并修正问题</td><td>收集真实环境下的问题与使用反馈</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>11.7 典型例题</h3>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例 1</span>按由低到高的顺序写出 CMM 的五个成熟度等级，并简述各等级的核心特征。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p>① 初始级：过程无序，成功依赖个人能力，进度、成本与质量不可预测。② 可重复级：建立基本的项目管理过程与规程，能重复以往成功经验。③ 已定义级：过程标准化、文档化，形成组织级标准过程并按项目裁剪。④ 已管理级：对过程和产品质量建立定量目标，以数据量化管理，过程性能可预测。⑤ 优化级：依据量化反馈持续改进过程，预防缺陷，引入新技术新方法。</p>
+          <p>递进关系：由“无序”到“有管理”到“标准化”到“量化”到“持续改进”，过程能力逐级提升。</p>
+        </div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例 2</span>按 ISO 9126 写出软件的六大质量特性，并为每个特性各举一个子特性。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p>功能性（适合性、准确性、互操作性、保密安全性）；可靠性（成熟性、容错性、易恢复性）；易用性（易理解性、易学性、易操作性）；效率（时间特性、资源利用性）；可维护性（易分析性、易改变性、稳定性、易测试性）；可移植性（适应性、易安装性、共存性、易替换性）。</p>
+          <p>要点：六大质量特性不仅是评价软件质量的框架，也是编写非功能需求、确定质量指标和设计测试用例的依据。</p>
+        </div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例 3</span>IEEE 829 标准规定了哪些主要测试文档？请至少写出六类。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p>共八类：① 测试计划；② 测试设计规格说明；③ 测试用例规格说明；④ 测试规程（过程）规格说明；⑤ 测试项传递（移交）报告；⑥ 测试日志；⑦ 测试事件（附加）报告；⑧ 测试总结报告。</p>
+          <p>解析：该标准统一了各类测试文档的格式，使测试活动更透明、可追溯；它规定文档格式但并不强制全部使用，项目可根据实际需要裁剪。注意“测试事件报告”不是单纯的“缺陷报告”，因为期望值与实际结果的差异也可能是期望值写错或测试执行有误造成的。</p>
+        </div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例 4</span>比较 Alpha 测试与 Beta 测试，并说明软件质量保证（SQA）的主要活动。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p>Alpha 测试：在开发方的场所、受控环境下，由用户或测试人员进行的测试，开发者在场，发现问题可即时沟通修正。Beta 测试：在用户真实的使用环境下，由实际用户进行的测试，开发者通常不在场，用于收集真实环境下的问题与使用反馈，是产品正式发布前的重要一环。</p>
+          <p>SQA 的主要活动：制定质量计划与标准、过程与产品评审（如需求、设计、代码评审）、配置管理、验证与确认、缺陷与变更管理、质量度量与质量审计、培训与过程改进等。要点：SQA 面向“过程”，质量控制（测试）面向“产品”。</p>
+        </div></details>
+      </div>
+
+      <div class="callout mnemonic">
+        <span class="label">本章速记</span>
+        <p>CMM 五级“初可定管优”；ISO 9126“功可易效维移”；IEEE 829 八文档“计设用规，传日事总”；Alpha 在开发方、Beta 在用户方；SQA 管过程，测试管产品。</p>
+      </div>
+    </section>
+
+    <section id="ch12" class="section">
+      <div class="section-head">
+        <div>
+          <p class="chapter-kicker">CHAPTER 12</p>
+          <h2>第 12 章 手机测试案例</h2>
+        </div>
+        <label class="review-check"><input type="checkbox" data-chapter="ch12"> 已复习</label>
+      </div>
+      <div class="tags"><span class="tag mid">综合案例</span><span class="tag mid">简答 / 用例设计</span><span class="tag gray">多机型 · 多网络 · 多中断</span></div>
+
+      <h3>12.1 手机基本知识与测试介入时机</h3>
+      <h4>手机的主要功能（9 类）</h4>
+      <div class="flow">
+        <span class="node">通话</span><span class="node">消息</span><span class="node">电话本</span><span class="node">增值服务</span><span class="node">其他功能</span>
+      </div>
+      <div class="flow">
+        <span class="node">特定语言功能</span><span class="node">附件</span><span class="node">数据连通</span><span class="node">其他应用程序</span>
+      </div>
+      <h4>手机的基本结构</h4>
+      <div class="grid2">
+        <div class="mini-card"><h4>软件结构</h4><p>用户界面（UI）、手机操作系统、总线设备等。</p></div>
+        <div class="mini-card"><h4>硬件结构</h4><p>RF（无线射频模块）、UEM（通用能量管理模块）、UPP（通用平台处理器）、Flash（闪存存储器）等。</p></div>
+      </div>
+      <div class="callout exam">
+        <span class="label">介入时机（必考判断）</span>
+        <p>手机测试<strong>不是</strong>等开发完成才开始：在制定开发计划的同时就要制定测试计划，在进行结构设计时测试就已经介入。这体现了“测试尽早介入”和测试左移的思想。</p>
+      </div>
+
+      <h3>12.2 手机软件测试的流程和方法</h3>
+      <h4>测试流程（6 步）</h4>
+      <ol class="steps">
+        <li>制定测试计划。</li>
+        <li>测试准备（环境、工具、用例、数据）。</li>
+        <li>测试执行。</li>
+        <li>测试评估。</li>
+        <li>文档收集。</li>
+        <li>测试总结报告。</li>
+      </ol>
+      <h4>测试方法（6 类）</h4>
+      <div class="grid3">
+        <div class="mini-card"><h4>正确性测试</h4><p>验证功能在正常输入下是否得到正确结果。</p></div>
+        <div class="mini-card"><h4>容错性测试</h4><p>异常输入、异常操作下系统能否正确处理而不崩溃。</p></div>
+        <div class="mini-card"><h4>边界性测试</h4><p>输入/存储/号码长度等边界与临界值。</p></div>
+        <div class="mini-card"><h4>性能与效率测试</h4><p>响应时间、功耗、流量、存储占用等。</p></div>
+        <div class="mini-card"><h4>易用性测试</h4><p>界面、操作流程、触屏交互是否符合用户习惯。</p></div>
+        <div class="mini-card"><h4>文档测试</h4><p>说明书、帮助文档与实际功能是否一致。</p></div>
+      </div>
+
+      <h4>手机测试常用的六种技术</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>技术</th><th>测试目的</th><th>规模 / 输出</th><th>注意事项</th></tr></thead>
+          <tbody>
+            <tr><td><strong>释放测试</strong></td><td>测试手机的基本功能是否实现，判断是否有进一步测试的必要</td><td>用例较少，约 200 条；输出测试和释放结果、无错误报告</td><td>用例要有典型性，反映最基本功能；通过率达到一定值才能宣布版本发布成功</td></tr>
+            <tr><td><strong>系统测试</strong></td><td>对手机所有功能进行全面测试（包括所有语言包）</td><td>用例很多，约 25000 条；输出总结报告、错误列表及错误报告</td><td>需要测试计划，覆盖全部功能</td></tr>
+            <tr><td><strong>部分测试</strong>（媒体等）</td><td>对手机的一部分功能进行全面测试</td><td>用例较多，取决于测试目的和范围；输出详细报告（通过率、错误、NA、NT）与总结报告</td><td>分“执行用例”和“自由测试”；自由测试负责重现前期跑 Case 遗留的不可重现错误</td></tr>
+            <tr><td><strong>焦点测试</strong></td><td>集中于一个或几个点进行测试</td><td>输出测试结果、错误报告</td><td>目标集中，适合验证重点功能或高风险点</td></tr>
+            <tr><td><strong>压力测试</strong></td><td>针对市场上发现的重大错误做有针对性的强度测试，主要利用边缘（临界）测试</td><td>输出期望结果</td><td>存储压力、边界压力、响应能力压力、网络流量压力（如通话中收短信）</td></tr>
+            <tr><td><strong>自由测试</strong></td><td>测试系统测试中没做完的不可重现错误，寻找平时忽略的错误</td><td>输出错误列表、错误报告</td><td>有明显目的性和范围；一是从 UI Spec 找灵感，二是关注不同 Feature 之间的 Interaction</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h4>测试相关文档（5 类）</h4>
+      <p>测试计划、测试用例、错误报告、进度报告、总结报告。</p>
+      <div class="callout mnemonic">
+        <span class="label">记忆</span>
+        <p>流程“计备执评，文总”；文档“计用例，错进总”；六技术“释系部焦压自”。</p>
+      </div>
+
+      <h3>12.3 中国移动智能终端系统软件测试</h3>
+      <h4>项目背景与业务模块</h4>
+      <p>智能终端版 CRM / ESOP 是 CRM（客户关系管理）/ ESOP（客户经理工作平台）系统在智能终端上的延伸，采用无线接入方式，利用智能终端的便携性拓展流动式营销服务手段。</p>
+      <div class="grid3">
+        <div class="mini-card"><h4>业务查询</h4><p>话费余额、实时话费、账单、缴费历史、客户资料、积分/M 值、已订购产品、免费资源、数据流量、已办营销活动、终端库存等。</p></div>
+        <div class="mini-card"><h4>业务办理</h4><p>入网开户、营业缴费、主体/附加产品变更、梦网业务查询退订、积分兑换、号码预约、国际漫游、停开机、密码变更、家庭成员管理、账单寄送等。</p></div>
+        <div class="mini-card"><h4>业务管理</h4><p>与查询、办理并列的管理类功能，支撑日常业务管理与配置。</p></div>
+      </div>
+      <h4>系统架构</h4>
+      <ul>
+        <li><strong>逻辑架构：</strong>终端应用、操作系统等。</li>
+        <li><strong>功能架构：</strong>分为业务功能和系统功能两部分。</li>
+        <li><strong>网络架构：</strong>智能终端通过无线网络接入后台 CRM 系统。</li>
+      </ul>
+      <h4>测试需求分析</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>测试类型</th><th>主要内容</th></tr></thead>
+          <tbody>
+            <tr><td>功能测试</td><td>操作员登录、退出、注销；用户身份认证与注销；业务查询、业务办理等</td></tr>
+            <tr><td>性能测试</td><td>主要由第三方厂家测试，包括压力测试、自动化测试；用 httpwatch 监控各请求 JSP 页面响应时间，定位网络问题或 SQL 查询不规范</td></tr>
+            <tr><td>链接测试</td><td>功能测试过程中检查各模块交互界面是否展示异常、链接目标页面是否正确</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <h4>身份认证方式</h4>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>认证方式</th><th>认证要素</th></tr></thead>
+          <tbody>
+            <tr><td>服务密码认证</td><td>服务密码</td></tr>
+            <tr><td>随机验证码认证</td><td>随机验证码</td></tr>
+            <tr><td>服务密码 + 随机验证码认证</td><td>服务密码、随机验证码</td></tr>
+            <tr><td>身份证件认证</td><td>证件号码</td></tr>
+            <tr><td>无认证</td><td>不需要认证要素（用于低风险业务）</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <p class="note">风险越高的业务（如主体产品变更、补换卡、实名登记）要求的认证越强；查询类业务通常认证较弱。隐私信息展示要受控。</p>
+
+      <h4>测试用例设计与测试报告</h4>
+      <p><strong>功能测试思路：</strong>从软件产品的页面、架构出发，依据需求文档编写用例；只考虑各模块、各功能，不考虑内部结构和代码；通过比较预期结果与实际结果验证是否满足用户要求。</p>
+      <div class="example">
+        <div class="example-q"><span class="q-label">报告样例</span>“操作员登录”功能的测试案例应包含哪些内容？</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p>案例描述：验证操作员登录功能是否正确；期望结果：操作员登录功能正确。</p>
+          <p>步骤：① 在终端点击微 OP 打开智能终端；② 在登录界面输入正确的工号和密码；③ 点击“登录系统”按钮。</p>
+          <p>预期结果：① 能正常打开智能终端并进入登录界面；② 输入正确工号和密码后进入主页。</p>
+          <p>功能要求还应覆盖：工号/密码/验证码合法性校验；读取终端唯一标识（IMEI、MAC）并发送服务端；支持短信验证码或图形验证码配置；支持密码错误尝试次数限制；使用设备证书对登录请求签名并验签。</p>
+        </div></details>
+      </div>
+      <p><strong>测试结果分析：</strong>缺陷记录表通常包含“所属模块、业务名称、问题描述、是否修复、备注”。例如：时间控件与需求不符、用户状态未转译、短信随机码功能未实现、二代证识别未实现暂以手工录入代替、家庭成员管理鉴权后姓名/品牌不展示等。分析时要区分“已修复 / 待优化 / 方案讨论中”，并评估对发布的影响。</p>
+
+      <h3>12.4 手机软件测试工程师的素质要求</h3>
+      <div class="grid3">
+        <div class="mini-card"><h4>项目领导</h4><p>熟悉组员能力；作为客户与组员的接口；分配任务与日程；总结每日结果并汇报重要错误；培训新人；回答组员问题；制作进度表；监督协调；收集建议；检查测试条件与质量。</p></div>
+        <div class="mini-card"><h4>管理员</h4><p>确认错误真实性；确定错误优先级与严重级别；与客户方负责人商量问题；每日处理解答测试人员问题；更熟悉 UI、性能评估、错误处理过程、错误生命周期和相关工具。</p></div>
+        <div class="mini-card"><h4>测试工程师</h4><p>态度端正、有责任心、严谨；良好沟通协调；掌握 UI 规范；会写错误报告和设计用例；熟练使用工具；执行测试；学习缺陷库中的报告；具备技术能力与语言水平。</p></div>
+      </div>
+
+      <h3>12.5 典型例题</h3>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例 1</span>与桌面软件测试相比，手机软件测试有哪些特殊的测试内容？</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p>① 多机型、多分辨率、多操作系统版本的兼容性测试；② 多网络制式（2G/3G/4G/5G、Wi-Fi）与弱网、网络切换场景；③ 中断事件测试，如来电、短信、电量不足、耳机插拔、锁屏等对应用使用过程的打断；④ 功耗与流量测试；⑤ 安装、卸载、升级与存储容量测试；⑥ 触屏手势与交互体验测试；⑦ 权限与隐私等安全性测试。</p>
+          <p>归纳：手机测试要覆盖“多机型、多网络、多中断”，这是桌面软件很少涉及的工程特殊性。</p>
+        </div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例 2</span>以“手机发送短信”功能为例，说明如何从需求出发设计测试用例，至少给出三类不同方法设计的用例及其预期输出。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p><strong>等价类划分：</strong>收信人号码分为有效（11 位手机号）与无效（不足 11 位、含字母、号码为空）；短信内容分为正常文本、空内容、超长内容。预期输出分别为发送成功、提示号码非法、提示内容不能为空或按规则拆分计费。</p>
+          <p><strong>边界值分析：</strong>短信内容长度取 0、1、69、70、71 个字符；收信人数量取上限、上限加 1。</p>
+          <p><strong>场景法：</strong>正常发送成功；发送过程中网络中断；发送失败后重发；群发部分成功。</p>
+          <p><strong>异常与中断测试：</strong>编辑短信时来电；发送瞬间关机或断网。</p>
+          <p><strong>兼容性测试：</strong>在不同机型与不同网络制式下发送。</p>
+          <p>要点：每条用例都必须写明可判定的预期输出（是否发送成功、失败时是否给出原因、是否进入已发件箱）。</p>
+        </div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">例 3</span>某手机项目一轮测试共执行用例 500 条，通过 460 条，发现缺陷 60 个（严重 8 个、一般 32 个、轻微 20 个），另有 5 条用例尚未执行。请说明应如何分析这一轮测试结果。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p><strong>执行与通过情况：</strong>已执行 495 条，用例执行率 = 495 ÷ 500 = 99%；用例通过率 = 460 ÷ 500 = 92%。说明执行较充分，合格率尚可。</p>
+          <p><strong>缺陷分布：</strong>按严重程度看，8 个严重缺陷必须优先确认修复情况；按所属模块或机型统计，可定位缺陷集中的模块，印证缺陷集群性，指导后续测试资源投放。</p>
+          <p><strong>遗留问题：</strong>5 条未执行用例和未修复缺陷会对发布产生什么影响，需列明并评估风险。</p>
+          <p><strong>质量趋势：</strong>与前一轮测试对比缺陷发现数与修复率，判断缺陷是否收敛（收敛是发布的重要判据）。</p>
+          <p><strong>结论：</strong>给出是否达到发布标准的结论、遗留风险说明以及后续建议（如严重缺陷必须清零、遗留用例需补测）。</p>
+        </div></details>
+      </div>
+
+      <div class="callout mnemonic">
+        <span class="label">本章速记</span>
+        <p>手机测试“多机型、多网络、多中断”；六技术“释系部焦压自”；流程“计备执评文总”；案例主线“登录→查询→办理→缺陷记录→结果分析”。</p>
+      </div>
+    </section>
+
+    <section id="methods" class="section">
+      <div class="section-head">
+        <div>
+          <p class="chapter-kicker">METHODS</p>
+          <h2>解题模板：大题按这个顺序写</h2>
+        </div>
+      </div>
+      <p class="lead">考试大题不是“想到哪写到哪”。下面 8 个模板覆盖最常见的用例设计、计算和简答题。做题时先判断题型，再套模板，最后补一句结论。</p>
+
+      <h3>模板 1　等价类划分 + 边界值</h3>
+      <p><strong>适用：</strong>输入框、号码、金额、长度、日期等“有范围、有格式”的题。</p>
+      <ol class="steps">
+        <li>从需求中找出所有输入项，并写出每个输入项的合法规则。</li>
+        <li>对每个输入项划分有效等价类和无效等价类，分别编号。</li>
+        <li>取边界：上点（边界上的点）、离点（紧邻边界的点）、内点（区间内部任意点）。</li>
+        <li>设计用例：有效等价类可以合并；<strong>每个无效等价类单独一条用例</strong>。</li>
+        <li>每条用例写清“输入 + 覆盖的等价类/边界 + 预期输出”。</li>
+      </ol>
+      <div class="callout exam">
+        <span class="label">阅卷点</span>
+        <p>① 有效/无效分清楚；② 无效用例不合并；③ 边界值有上点、离点、内点；④ 每条都有预期输出；⑤ 最后说明“这样能用较少用例覆盖主要输入空间”。</p>
+      </div>
+
+      <h3>模板 2　逻辑覆盖</h3>
+      <p><strong>适用：</strong>给一段含 if / while 的程序，要求“分别按语句、判定、条件、判定/条件、条件组合、路径覆盖设计用例”。</p>
+      <ol class="steps">
+        <li>把复合判定拆成单个条件，列出条件与判定的关系。</li>
+        <li>画一张小表：条件取值组合 → 判定结果 → 执行语句/路径。</li>
+        <li>按题目要求的覆盖准则挑选数据；能覆盖多个准则的用例可以复用。</li>
+        <li>逐条写“输入 → 预期输出 → 覆盖了哪些语句/分支/条件/路径”。</li>
+        <li>若题目问“某错误能否发现”，说明该错误需要哪类用例才能暴露。</li>
+      </ol>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>准则</th><th>选取思路</th><th>常见失分</th></tr></thead>
+          <tbody>
+            <tr><td>语句覆盖</td><td>让每条可执行语句至少走一次</td><td>只走真分支，漏掉 else</td></tr>
+            <tr><td>判定覆盖</td><td>每个判定真、假各一次</td><td>把“条件”当成“判定”</td></tr>
+            <tr><td>条件覆盖</td><td>每个条件真、假各一次</td><td>忽略判定结果可能仍为同一个</td></tr>
+            <tr><td>判定/条件覆盖</td><td>同时满足上面两者</td><td>只满足其中一个</td></tr>
+            <tr><td>条件组合覆盖</td><td>每个判定内所有条件组合都出现</td><td>漏组合，尤其 2 个条件要 4 组</td></tr>
+            <tr><td>路径覆盖</td><td>覆盖所有可能执行路径</td><td>把“独立路径”当成“所有路径”</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>模板 3　基本路径法</h3>
+      <ol class="steps">
+        <li>画控制流图：顺序语句可合并，判定有真/假两条出边，循环有回边。</li>
+        <li>算 V(G)：<code>E − N + 2</code>、<code>P + 1</code>、区域数，三选一并写出。</li>
+        <li>列基本路径集：条数 = V(G)；每条新路径至少引入一条此前未用的边。</li>
+        <li>为每条路径设计输入数据，写预期输出。</li>
+        <li>检查：是否所有语句至少执行一次；是否覆盖所有判定分支。</li>
+      </ol>
+      <div class="callout warn">
+        <span class="label">两个高频坑</span>
+        <p>① 复合条件在基本路径法里通常要拆成单个判定，拆完后判定节点数会增加，V(G) 也会变；② 不同路径可能得到相同输出，不能因为输出相同就认为路径重复。</p>
+      </div>
+
+      <h3>模板 4　决策表</h3>
+      <ol class="steps">
+        <li>列条件桩（所有条件）和动作桩（所有动作）。</li>
+        <li>列出条件的所有取值组合：n 个二值条件有 2<sup>n</sup> 列。</li>
+        <li>为每一列填动作项，确定该组合下执行哪些动作。</li>
+        <li>合并结果相同的规则，化简决策表。</li>
+        <li>每条规则（每一列）对应一条测试用例，写输入与预期输出。</li>
+      </ol>
+      <p class="note">决策表适合“多个条件组合决定多个动作”的题，如折扣、权限、计费、告警。条件越多，表越大，所以化简很关键。</p>
+
+      <h3>模板 5　因果图</h3>
+      <ol class="steps">
+        <li>把输入条件标为“原因”，把输出结果标为“结果”。</li>
+        <li>画出原因与结果之间的逻辑关系（与、或、非）。</li>
+        <li>标注约束：E、I、O、R 为输入约束，M 为输出约束。</li>
+        <li>把因果图转换成决策表。</li>
+        <li>由决策表每一列生成测试用例。</li>
+      </ol>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>约束</th><th>含义</th><th>一句话</th></tr></thead>
+          <tbody>
+            <tr><td>E（Exclusive，异）</td><td>a、b 最多一个为 1，不能同时为 1</td><td>不能同时发生</td></tr>
+            <tr><td>I（Inclusive，或）</td><td>a、b、c 至少一个为 1，不能同时为 0</td><td>至少要有一个</td></tr>
+            <tr><td>O（One and only one，唯一）</td><td>a、b 有且仅有一个为 1</td><td>必须有一个，且只有一个</td></tr>
+            <tr><td>R（Requires，要求）</td><td>a 为 1 时 b 必须为 1</td><td>有 a 就必须有 b</td></tr>
+            <tr><td>M（Mask，屏蔽）</td><td>a 为 1 时 b 被强制为 0</td><td>a 出现则 b 被屏蔽</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>模板 6　集成策略选择</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>题目信号</th><th>选什么</th><th>理由</th><th>代价</th></tr></thead>
+          <tbody>
+            <tr><td>模块少、风险低、想快速集成</td><td>大爆炸</td><td>工作量小、成本低</td><td>缺陷定位困难</td></tr>
+            <tr><td>上层主控逻辑关键，想尽早验证</td><td>自顶向下</td><td>从主控模块开始，尽早验证整体控制流</td><td>需开发桩模块，底层验证偏晚</td></tr>
+            <tr><td>底层接口不稳定，需要尽早验证</td><td>自底向上</td><td>底层先集成，尽早验证基础接口</td><td>需开发驱动模块</td></tr>
+            <tr><td>大型复杂系统，上下层都重要</td><td>三明治</td><td>兼顾上下层，减少桩/驱动工作量</td><td>中间层测试相对滞后</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>模板 7　覆盖率与缺陷度量计算</h3>
+      <div class="formula">
+        覆盖率 = 至少被执行一次的 item 数 ÷ item 总数<br>
+        缺陷密度 = 缺陷数量 ÷ 代码行数（KLOC）或功能点（FP）<br>
+        D = D1 + D2　（D1 开发中发现，D2 发布后发现）<br>
+        质量 = D2 / F　　缺陷注入率 = D / F　　整体缺陷清除率 = D1 / D
+      </div>
+      <ol class="steps">
+        <li>先写公式，再代入数据，最后写单位或百分比。</li>
+        <li>百分数要写清分母是谁，不要把“执行率”和“通过率”混在一起。</li>
+        <li>最后解释含义：清除率越高，说明开发阶段发现的缺陷占比越大，质量越好。</li>
+      </ol>
+      <div class="callout warn">
+        <span class="label">教材口径提醒</span>
+        <p>课件例题中“缺陷注入率 = 20/100 = 0.2（2%）”的括号百分比写错了，<strong>0.2 应为 20%</strong>。考试按公式计算，写 20%。</p>
+      </div>
+
+      <h3>模板 8　简答 / 对比题</h3>
+      <div class="grid2">
+        <div class="mini-card"><h4>“是什么”型</h4><p>定义 → 目的 → 组成/分类 → 一个例子 → 一句结论。</p></div>
+        <div class="mini-card"><h4>“比较 X 与 Y”型</h4><p>按四个维度写：依据、对象、时机、方法；最后写“二者互补，不能相互替代”。</p></div>
+        <div class="mini-card"><h4>“为什么”型</h4><p>先给结论 → 2～4 条理由 → 反例或后果 → 改进办法。</p></div>
+        <div class="mini-card"><h4>“如何做”型</h4><p>按流程分步：计划 → 分析 → 设计 → 执行 → 评估 → 报告。</p></div>
+      </div>
+      <div class="callout mnemonic">
+        <span class="label">通用收尾句</span>
+        <p>“因此，实际项目应根据需求、风险和资源选择合适的方法，并与其它方法结合使用，不能相互替代。”</p>
+      </div>
+    </section>
+
+    <section id="examples" class="section">
+      <div class="section-head">
+        <div>
+          <p class="chapter-kicker">EXAMPLES</p>
+          <h2>综合例题精讲</h2>
+        </div>
+      </div>
+      <p class="lead">下面 8 道题覆盖期末最可能出现的综合题型。先自己写，再展开答案对照；重点看“表格怎么列、预期输出怎么写、结论怎么收”。</p>
+
+      <h3>例 1　登录功能：等价类 + 边界值</h3>
+      <div class="example">
+        <div class="example-q"><span class="q-label">题目</span>某登录页面要求：用户名为 6～12 位字母或数字；密码为 6～16 位任意可见字符；验证码为 4 位数字。请用等价类划分和边界值分析设计测试用例。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p><strong>第一步：划分等价类。</strong></p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>输入项</th><th>有效等价类</th><th>无效等价类</th></tr></thead>
+              <tbody>
+                <tr><td>用户名</td><td>6～12 位字母或数字</td><td>① 为空；② 少于 6 位；③ 多于 12 位；④ 含字母、数字以外的字符</td></tr>
+                <tr><td>密码</td><td>6～16 位可见字符</td><td>① 为空；② 少于 6 位；③ 多于 16 位</td></tr>
+                <tr><td>验证码</td><td>4 位数字</td><td>① 为空；② 少于 4 位；③ 多于 4 位；④ 含非数字字符</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p><strong>第二步：取边界值。</strong>用户名取 5、6、7、11、12、13；密码取 5、6、7、15、16、17；验证码取 3、4、5。</p>
+          <p><strong>第三步：设计用例。</strong>有效类可合并；每个无效类单独一条。</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>编号</th><th>用户名</th><th>密码</th><th>验证码</th><th>覆盖情况</th><th>预期输出</th></tr></thead>
+              <tbody>
+                <tr><td>T01</td><td>test01</td><td>123456</td><td>1234</td><td>全部有效</td><td>登录成功，进入系统首页</td></tr>
+                <tr><td>T02</td><td>abcde</td><td>123456</td><td>1234</td><td>用户名少于 6 位</td><td>提示“用户名长度应为 6～12 位”</td></tr>
+                <tr><td>T03</td><td>abcdefghijklm</td><td>123456</td><td>1234</td><td>用户名多于 12 位</td><td>提示“用户名长度应为 6～12 位”</td></tr>
+                <tr><td>T04</td><td>test_01</td><td>123456</td><td>1234</td><td>用户名含非法字符</td><td>提示“用户名只能包含字母或数字”</td></tr>
+                <tr><td>T05</td><td>test01</td><td>12345</td><td>1234</td><td>密码少于 6 位</td><td>提示“密码长度应为 6～16 位”</td></tr>
+                <tr><td>T06</td><td>test01</td><td>12345678901234567</td><td>1234</td><td>密码多于 16 位</td><td>提示“密码长度应为 6～16 位”</td></tr>
+                <tr><td>T07</td><td>test01</td><td>123456</td><td>123</td><td>验证码少于 4 位</td><td>提示“验证码为 4 位数字”</td></tr>
+                <tr><td>T08</td><td>test01</td><td>123456</td><td>12ab</td><td>验证码含非数字</td><td>提示“验证码为 4 位数字”</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p><strong>结论：</strong>有效用例 1 条覆盖主要合法路径；无效用例共 8 条，每条只覆盖一个无效等价类，便于定位失败原因。实际还应补充“用户名已存在”“密码错误”“验证码过期”等业务规则用例。</p>
+        </div></details>
+      </div>
+
+      <h3>例 2　白盒逻辑覆盖：两个判定、四个条件</h3>
+      <div class="example">
+        <div class="example-q"><span class="q-label">题目</span>对下面的程序段，分别按语句覆盖、判定覆盖、条件覆盖、判定/条件覆盖、条件组合覆盖、路径覆盖设计测试用例（初始 a=0，b=0）。</div>
+        <div class="formula">
+          1　a = 0; b = 0;<br>
+          2　read(x, y);<br>
+          3　if (x &gt; 0 &amp;&amp; y &gt; 0)<br>
+          4　　　a = x + y;<br>
+          5　if (x &gt; 10 || y &gt; 10)<br>
+          6　　　b = a * 2;<br>
+          7　print(a, b);
+        </div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p><strong>条件与判定：</strong>C1：x&gt;0；C2：y&gt;0；C3：x&gt;10；C4：y&gt;10。D1 = C1 &amp;&amp; C2；D2 = C3 || C4。</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>编号</th><th>(x, y)</th><th>C1 C2 C3 C4</th><th>D1</th><th>D2</th><th>输出 (a, b)</th><th>路径</th></tr></thead>
+              <tbody>
+                <tr><td>T1</td><td>(11, 11)</td><td>T T T T</td><td>T</td><td>T</td><td>(22, 44)</td><td>D1真 → D2真</td></tr>
+                <tr><td>T2</td><td>(5, 5)</td><td>T T F F</td><td>T</td><td>F</td><td>(10, 0)</td><td>D1真 → D2假</td></tr>
+                <tr><td>T3</td><td>(11, 0)</td><td>T F T F</td><td>F</td><td>T</td><td>(0, 0)</td><td>D1假 → D2真</td></tr>
+                <tr><td>T4</td><td>(0, 11)</td><td>F T F T</td><td>F</td><td>T</td><td>(0, 0)</td><td>D1假 → D2真</td></tr>
+                <tr><td>T5</td><td>(0, 0)</td><td>F F F F</td><td>F</td><td>F</td><td>(0, 0)</td><td>D1假 → D2假</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p><strong>各准则的取法：</strong></p>
+          <ul>
+            <li><strong>语句覆盖：</strong>T1 即可让第 4、6 行都执行一次。</li>
+            <li><strong>判定覆盖：</strong>T1、T5（或 T1、T3）使 D1、D2 都取到真和假。</li>
+            <li><strong>条件覆盖：</strong>T1、T5 使 C1～C4 都取到真和假。</li>
+            <li><strong>判定/条件覆盖：</strong>T1、T5 同时满足判定覆盖和条件覆盖。</li>
+            <li><strong>条件组合覆盖：</strong>T1～T5，使 D1、D2 内部的条件组合都出现。</li>
+            <li><strong>路径覆盖：</strong>T1（真/真）、T2（真/假）、T3 或 T4（假/真）、T5（假/假），四条路径全覆盖。</li>
+          </ul>
+          <p><strong>注意：</strong>T3 与 T4 都走“D1 假 → D2 真”的同一条路径，但条件组合不同（T3 是 C1 真 C2 假，T4 是 C1 假 C2 真）。这说明“路径覆盖”和“条件组合覆盖”关注点不同，不能互相代替。</p>
+        </div></details>
+      </div>
+
+      <h3>例 3　基本路径法：折扣程序</h3>
+      <div class="example">
+        <div class="example-q"><span class="q-label">题目</span>阅读下面的折扣程序，画出控制流图，计算环形复杂度，列出基本路径集，并设计测试用例。</div>
+        <div class="formula">
+          1　read(amount, vip);<br>
+          2　if (amount &gt;= 100)<br>
+          3　　　if (vip)<br>
+          4　　　　　price = amount * 0.8;<br>
+          5　　　else<br>
+          6　　　　　price = amount * 0.9;<br>
+          7　else<br>
+          8　　　price = amount;<br>
+          9　print(price);
+        </div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p><strong>判定节点：</strong>2 个（amount&gt;=100、vip），所以 V(G) = P + 1 = 3。用边和节点计算也应得到 3，三种方法可互相校验。</p>
+          <p><strong>基本路径集（3 条）：</strong></p>
+          <ul>
+            <li>P1：1 → 2(真) → 3(真) → 4 → 9</li>
+            <li>P2：1 → 2(真) → 3(假) → 6 → 9</li>
+            <li>P3：1 → 2(假) → 8 → 9</li>
+          </ul>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>编号</th><th>amount</th><th>vip</th><th>路径</th><th>预期输出 price</th></tr></thead>
+              <tbody>
+                <tr><td>T1</td><td>200</td><td>是</td><td>P1</td><td>160</td></tr>
+                <tr><td>T2</td><td>200</td><td>否</td><td>P2</td><td>180</td></tr>
+                <tr><td>T3</td><td>50</td><td>是</td><td>P3</td><td>50</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p><strong>补充边界：</strong>amount = 99、100、101，验证“满 100”的临界；vip 在 amount&lt;100 时不被求值，T3 已覆盖该路径。</p>
+          <p><strong>结论：</strong>3 条独立路径对应 V(G)=3，每条路径至少一条用例；边界值用于补充判定条件的临界点。</p>
+        </div></details>
+      </div>
+
+      <h3>例 4　决策表：VIP 折扣</h3>
+      <div class="example">
+        <div class="example-q"><span class="q-label">题目</span>某商店规则：VIP 且消费满 100 元打 8 折；VIP 但不满 100 元打 9 折；非 VIP 但满 100 元打 9 折；非 VIP 且不满 100 元无折扣。请用决策表设计测试用例。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p><strong>条件桩：</strong>是否为 VIP；消费是否满 100 元。<strong>动作桩：</strong>8 折、9 折、无折扣。两个二值条件共 2² = 4 条规则。</p>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>规则</th><th>R1</th><th>R2</th><th>R3</th><th>R4</th></tr></thead>
+              <tbody>
+                <tr><td>是否 VIP</td><td>Y</td><td>Y</td><td>N</td><td>N</td></tr>
+                <tr><td>消费满 100 元</td><td>Y</td><td>N</td><td>Y</td><td>N</td></tr>
+                <tr><td>打 8 折</td><td>√</td><td></td><td></td><td></td></tr>
+                <tr><td>打 9 折</td><td></td><td>√</td><td>√</td><td></td></tr>
+                <tr><td>无折扣</td><td></td><td></td><td></td><td>√</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>编号</th><th>VIP</th><th>消费金额</th><th>规则</th><th>预期应付</th></tr></thead>
+              <tbody>
+                <tr><td>T1</td><td>是</td><td>200</td><td>R1</td><td>160</td></tr>
+                <tr><td>T2</td><td>是</td><td>50</td><td>R2</td><td>45</td></tr>
+                <tr><td>T3</td><td>否</td><td>200</td><td>R3</td><td>180</td></tr>
+                <tr><td>T4</td><td>否</td><td>50</td><td>R4</td><td>50</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p><strong>化简：</strong>R2 与 R3 的动作相同（都打 9 折），但条件不同，可以合并为“VIP 与‘满 100’两个条件恰有一个成立时打 9 折”。考试若要求保留完整组合，不化简也可以；若要求化简，需说明合并依据。</p>
+        </div></details>
+      </div>
+
+      <h3>例 5　集成策略选择</h3>
+      <div class="example">
+        <div class="example-q"><span class="q-label">题目</span>某系统的底层接口不稳定、需要尽早验证，上层主控模块相对简单。请选择集成测试策略并说明理由，同时比较其他三种策略。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p><strong>选择：自底向上集成。</strong>理由：底层模块先被集成和测试，可以在早期验证底层接口与基础功能，正好对应“底层接口不稳定、需要尽早验证”的需求；代价是需要额外开发驱动模块（Driver）来模拟上层调用。</p>
+          <p><strong>与其他策略比较：</strong></p>
+          <ul>
+            <li><strong>大爆炸：</strong>所有模块一次集成，工作量小、成本低，但缺陷定位困难，适合模块少、风险可控的小系统。</li>
+            <li><strong>自顶向下：</strong>从主控模块开始，需开发桩模块（Stub），能尽早验证上层逻辑与主要控制流，但底层功能验证偏晚。</li>
+            <li><strong>三明治：</strong>自顶向下与自底向上结合，兼顾上下层，可减少桩和驱动的工作量，但中间层模块测试相对滞后。</li>
+          </ul>
+          <p><strong>结论：</strong>选用时应综合缺陷定位难度、桩/驱动工作量、进度安排和风险大小决定；本题的关键信号是“底层接口不稳定”，因此优先自底向上。</p>
+        </div></details>
+      </div>
+
+      <h3>例 6　缺陷度量计算</h3>
+      <div class="example">
+        <div class="example-q"><span class="q-label">题目</span>某项目有 100 个功能点，开发过程中发现 15 个缺陷，发布后又发现 5 个缺陷。求质量、缺陷注入率、整体缺陷清除率，并说明含义。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p>已知 F = 100，D1 = 15，D2 = 5，D = D1 + D2 = 20。</p>
+          <ul>
+            <li>质量 = D2 / F = 5 / 100 = 0.05 = <strong>5%</strong>。</li>
+            <li>缺陷注入率 = D / F = 20 / 100 = 0.2 = <strong>20%</strong>。</li>
+            <li>整体缺陷清除率 = D1 / D = 15 / 20 = 0.75 = <strong>75%</strong>。</li>
+          </ul>
+          <p><strong>含义：</strong>整体缺陷清除率表示开发过程中发现的缺陷占全部缺陷的比例；75% 说明还有 25% 的缺陷漏到发布后。清除率越高，说明缺陷越早被发现和修复，产品质量越好。</p>
+          <p class="note">课件把 0.2 写成“2%”，是笔误；按公式应为 20%。考试写 20%，并保留计算过程。</p>
+        </div></details>
+      </div>
+
+      <h3>例 7　面向对象：银行账户类</h3>
+      <div class="example">
+        <div class="example-q"><span class="q-label">题目</span>某“银行账户”类含存入 deposit 和取出 withdraw 两个方法，余额有“正常”和“透支”两种状态。请说明基于服务的测试与基于状态的测试应如何进行。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <p><strong>基于服务的测试：</strong>把每个成员方法当作一个单元分别测试。</p>
+          <ul>
+            <li>deposit：正常金额、0、负数、极大金额；检查余额是否正确累加，非法金额是否被拒绝。</li>
+            <li>withdraw：正常取出、恰好取完、超额取出、0、负数；检查余额变化与错误提示。</li>
+            <li>边界：余额为 0 时取 1 元；余额等于取款额；余额比取款额少 1 元。</li>
+          </ul>
+          <p><strong>基于状态的测试：</strong>把对象看成一个有限状态自动机，先画状态转换图，再覆盖状态与迁移。</p>
+          <ul>
+            <li>正常状态：取款额 ≤ 余额 → 仍为正常状态，余额减少。</li>
+            <li>正常 → 透支：取款额 &gt; 余额 → 进入透支状态（若业务允许），余额为负。</li>
+            <li>透支 → 正常：存入金额足以补足欠款 → 回到正常状态。</li>
+            <li>透支状态再取款：按业务规则拒绝或继续透支，预期输出必须明确。</li>
+          </ul>
+          <p><strong>结论：</strong>先用基于服务的方法验证各方法本身，再用基于状态的方法验证“方法调用序列”引起的状态变化；两者结合，才能覆盖类的行为。</p>
+        </div></details>
+      </div>
+
+      <h3>例 8　手机 App 综合测试：计算器</h3>
+      <div class="example">
+        <div class="example-q"><span class="q-label">题目</span>为某手机计算器 App 设计一轮测试，至少覆盖功能、边界、异常/中断、兼容性、性能与易用性六个方面。</div>
+        <details class="answer"><summary>查看参考答案与解析</summary><div class="answer-body">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>方面</th><th>测试内容</th><th>示例用例与预期输出</th></tr></thead>
+              <tbody>
+                <tr><td>功能</td><td>加、减、乘、除、小数、负数、连续运算、清除</td><td>输入 12 ÷ 4 =，预期显示 3；输入 0.1 + 0.2，预期按产品规则显示 0.3 或明确精度</td></tr>
+                <tr><td>边界</td><td>0 作除数、最大位数、溢出、空表达式</td><td>输入 5 ÷ 0 =，预期提示“除数不能为 0”且不崩溃</td></tr>
+                <tr><td>异常/中断</td><td>运算中来电、短信、锁屏、横竖屏切换、耳机插拔</td><td>输入到一半来电，挂断后返回，预期已输入内容按规则保留或清空且界面正常</td></tr>
+                <tr><td>兼容性</td><td>不同机型、分辨率、系统版本、深浅色模式</td><td>在两种分辨率下按钮不重叠、数字完整显示</td></tr>
+                <tr><td>性能</td><td>启动时间、按键响应、连续运算、功耗</td><td>连续按 100 次运算，预期无明显卡顿、无闪退</td></tr>
+                <tr><td>易用性</td><td>按钮大小、触控反馈、错误提示、单手操作</td><td>误触清除键时是否有确认或撤销；提示文案是否易懂</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p><strong>结论：</strong>手机 App 的测试不能只看功能正确，还要覆盖“多机型、多网络、多中断”以及功耗、权限、安装升级等工程特殊性；每条用例都要有可判定的预期输出。</p>
+        </div></details>
+      </div>
+    </section>
+
+    <section id="pitfalls" class="section">
+      <div class="section-head">
+        <div>
+          <p class="chapter-kicker">PITFALLS</p>
+          <h2>易错点与口诀</h2>
+        </div>
+      </div>
+      <p class="lead">这些是选择题、判断题和简答题最容易被扣分的地方。先看“错误说法”，再看“正确说法”，最后用口诀压一遍。</p>
+
+      <h3>一、概念与过程</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>#</th><th>常见错误说法</th><th>正确说法 / 提醒</th></tr></thead>
+          <tbody>
+            <tr><td>1</td><td>error、fault、failure 是一回事</td><td>error 是人的过失；fault/defect 是留在代码或文档中的静态偏差；failure 是运行后用户可观察到的失效。</td></tr>
+            <tr><td>2</td><td>测试通过就证明软件没有缺陷</td><td>测试只能证明缺陷存在，不能证明缺陷不存在；穷尽测试不可能。</td></tr>
+            <tr><td>3</td><td>用例只要有输入和步骤就行</td><td>必须有<strong>预期输出</strong>，否则无法判定通过还是失败。</td></tr>
+            <tr><td>4</td><td>静态测试就是黑盒测试</td><td>静态/动态按“是否运行程序”分；黑盒/白盒/灰盒按“是否利用内部结构”分，是两个维度。</td></tr>
+            <tr><td>5</td><td>测试是开发完成后的最后一道工序</td><td>测试应尽早介入，贯穿整个生命周期；需求、设计阶段就可开展评审和测试准备。</td></tr>
+            <tr><td>6</td><td>V 模型中概要设计对应集成测试</td><td>需求分析—验收测试；概要设计—系统测试；详细设计—集成测试；编码—单元测试。</td></tr>
+            <tr><td>7</td><td>W 模型只是把 V 模型画两遍</td><td>W 模型是“开发一个 V、测试一个 V”，测试与开发并行，文档也纳入测试对象，能更早发现缺陷。</td></tr>
+            <tr><td>8</td><td>H 模型、X 模型、前置测试模型可以互相替代</td><td>它们强调的侧重点不同：H 强调测试独立并尽早准备；X 强调探索式、交错的测试；前置测试强调测试前移。</td></tr>
+            <tr><td>9</td><td>缺陷集群性是说缺陷平均分布</td><td>约 80% 的缺陷集中在约 20% 的模块，资源要向高发模块倾斜。</td></tr>
+            <tr><td>10</td><td>同一组用例可以一直用</td><td>杀虫剂悖论：长期重复同一组用例，发现新缺陷的能力下降，要定期评审和更新。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout mnemonic">
+        <span class="label">口诀</span>
+        <p>人错、码缺、运行失；测试证“有”不证“无”；用例必须有预期；V 模型“需验、概系、详集、编单”。</p>
+      </div>
+
+      <h3>二、白盒与黑盒</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>#</th><th>常见错误说法</th><th>正确说法 / 提醒</th></tr></thead>
+          <tbody>
+            <tr><td>11</td><td>V(G) = E − N + 2 对任何流图都适用</td><td>只适用于<strong>连通</strong>流图；非连通图要先处理连通分量。</td></tr>
+            <tr><td>12</td><td>区域数不算图外部区域</td><td>区域数要<strong>包含图外部区域</strong>；三种算法结果应一致。</td></tr>
+            <tr><td>13</td><td>复合条件只算一个判定节点</td><td>基本路径法通常先把复合条件拆成单个条件，判定节点数会增加，V(G) 也随之变化。</td></tr>
+            <tr><td>14</td><td>满足条件覆盖就一定满足判定覆盖</td><td>不一定；二者不是严格包含关系。判定覆盖也不一定满足条件覆盖。</td></tr>
+            <tr><td>15</td><td>逻辑覆盖由弱到强是“语句→条件→判定→……”</td><td>课程口径：语句 → 判定 → 条件 → 判定/条件 → 条件组合 → 路径；同时补一句“判定与条件侧重点不同”。</td></tr>
+            <tr><td>16</td><td>基本路径集就是所有可能的路径</td><td>基本路径集是<strong>独立路径</strong>，条数等于 V(G)，不要求覆盖所有路径组合。</td></tr>
+            <tr><td>17</td><td>循环测试只测 1 次和 m 次</td><td>简单循环至少取 0、1、2、m−1、m、m+1，必要时再测“很多次”。</td></tr>
+            <tr><td>18</td><td>无效等价类可以一条用例覆盖多个</td><td>每个无效等价类单独一条用例，避免多个无效条件相互屏蔽，无法定位原因。</td></tr>
+            <tr><td>19</td><td>边界值只取边界上的点</td><td>要取上点、离点、内点；开区间与闭区间的取法不同。</td></tr>
+            <tr><td>20</td><td>[100, 300] 的离点是 100 和 300</td><td>100、300 是上点；离点是 99、301；内点可取 200。</td></tr>
+            <tr><td>21</td><td>决策表不需要化简</td><td>条件组合随条件数指数增长，结果相同的规则应合并化简，否则用例爆炸。</td></tr>
+            <tr><td>22</td><td>E 约束和 O 约束含义相同</td><td>E 是“最多一个为 1”（可都不为 1）；O 是“有且仅有一个为 1”（必须有一个）。</td></tr>
+            <tr><td>23</td><td>M 是输入约束</td><td>E、I、O、R 是输入约束；<strong>M 是输出约束</strong>。</td></tr>
+            <tr><td>24</td><td>黑盒测试也要参考内部代码</td><td>黑盒依据需求规格说明书，只看输入输出；参考代码就变成白盒/灰盒了。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout mnemonic">
+        <span class="label">口诀</span>
+        <p>V(G) 三算法“边减点加二、判定加一、数区域”；覆盖“语判条，判条组路”；边界“上、离、内”；因果“E 互斥、I 包含、O 唯一、R 要求、M 屏蔽（输出）”。</p>
+      </div>
+
+      <h3>三、阶段、面向对象与自动化</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>#</th><th>常见错误说法</th><th>正确说法 / 提醒</th></tr></thead>
+          <tbody>
+            <tr><td>25</td><td>Driver 模拟下级被调模块</td><td>Driver 模拟<strong>上级调用者</strong>（谁调用我）；Stub 模拟<strong>下级被调模块</strong>（我调用谁）。</td></tr>
+            <tr><td>26</td><td>自顶向下集成需要驱动模块</td><td>自顶向下用<strong>桩</strong>（下层还没开发）；自底向上用<strong>驱动</strong>（上层还没开发）。</td></tr>
+            <tr><td>27</td><td>单元、集成、系统测试都依据需求规格</td><td>单元依据详细设计；集成依据概要设计；系统依据需求规格说明书。</td></tr>
+            <tr><td>28</td><td>集成测试要再验证每个模块内部功能</td><td>集成测试重点是模块之间的接口与协作，不是重复单元测试。</td></tr>
+            <tr><td>29</td><td>系统测试只测软件程序</td><td>系统测试对象是整个系统，包括程序、数据、文档及所依赖的软硬件与网络环境。</td></tr>
+            <tr><td>30</td><td>父类方法在子类中不用再测</td><td>继承会复制父类接口，父类缺陷会扩散；子类重写或调用继承方法时需重新测试，父类改动后子类要回归。</td></tr>
+            <tr><td>31</td><td>封装让测试更容易</td><td>封装隐藏内部状态，测试只能通过公开接口间接验证，状态相关错误更难暴露。</td></tr>
+            <tr><td>32</td><td>多态不影响测试用例数量</td><td>动态绑定增加运行期可能的执行路径和组合，测试必须覆盖各种绑定实现。</td></tr>
+            <tr><td>33</td><td>类测试就是逐个测试方法</td><td>类测试还包括基于对象、基于状态、基于响应状态的测试，要结合对象状态和消息序列。</td></tr>
+            <tr><td>34</td><td>自动化测试可以完全替代手工测试</td><td>自动化适合回归、大量数据、性能等；探索性、易用性、一次性测试仍依赖人工，二者互补。</td></tr>
+            <tr><td>35</td><td>需求频繁变动、周期短的项目最适合自动化</td><td>自动化前提是需求变动不频繁、项目周期足够长、脚本可重复使用。</td></tr>
+            <tr><td>36</td><td>录制回放是专业自动化的首选</td><td>专业建议“以录制为参考，以编写脚本为主”，避免冗余、公用元素不可调用、调试复杂。</td></tr>
+            <tr><td>37</td><td>QTP 的对象库、检查点、参数化是一回事</td><td>对象库识别对象；检查点验证结果；参数化用多组数据驱动同一脚本。</td></tr>
+            <tr><td>38</td><td>LoadRunner 的 VuGen 负责控制并发</td><td>VuGen 生成/增强脚本；Controller 组织场景、控制并发；Analysis 分析结果。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout mnemonic">
+        <span class="label">口诀</span>
+        <p>“驱动在上、桩在下”；“单详、概集、需系”；“父类改，子类归”；“录制作参考，编写为主线”；LoadRunner“生控分”。</p>
+      </div>
+
+      <h3>四、管理、质量与手机测试</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>#</th><th>常见错误说法</th><th>正确说法 / 提醒</th></tr></thead>
+          <tbody>
+            <tr><td>39</td><td>测试报告就是测试评估</td><td>报告呈现事实与过程数据；评估依据报告作出判断和结论。报告是评估的输入。</td></tr>
+            <tr><td>40</td><td>缺陷注入率 20/100 等于 2%</td><td>20/100 = 0.2 = <strong>20%</strong>；课件括号里的“2%”是笔误。</td></tr>
+            <tr><td>41</td><td>代码覆盖率 100% 就说明质量很高</td><td>覆盖率只说明代码被执行到；代码没实现需求、实现与需求不符等问题，覆盖率发现不了。</td></tr>
+            <tr><td>42</td><td>CMM 五级顺序是“初始、已定义、可重复……”</td><td>初始 → 可重复 → 已定义 → 已管理 → 优化；“初可定管优”。</td></tr>
+            <tr><td>43</td><td>Alpha 测试在用户真实环境进行</td><td>Alpha 在开发方场所、受控环境；Beta 在用户真实环境。</td></tr>
+            <tr><td>44</td><td>手机测试只要测功能是否正确</td><td>还要测多机型/多系统兼容、多网络与弱网、中断、功耗流量、安装卸载升级、触屏、权限隐私。</td></tr>
+            <tr><td>45</td><td>手机测试等开发完成后再开始</td><td>制定开发计划的同时制定测试计划，结构设计时测试已介入。</td></tr>
+            <tr><td>46</td><td>释放测试的用例比系统测试多</td><td>释放测试约 200 条，系统测试约 25000 条；释放测试是“基本功能 + 是否值得继续测”的关口。</td></tr>
+          </tbody>
+        </table>
+      </div>
+      <div class="callout mnemonic">
+        <span class="label">口诀</span>
+        <p>“报告记事实，评估下结论”；“初可定管优”；“Alpha 在开发方、Beta 在用户方”；手机“多机型、多网络、多中断”。</p>
+      </div>
+    </section>
+
+    <section id="glossary" class="section">
+      <div class="section-head">
+        <div>
+          <p class="chapter-kicker">GLOSSARY</p>
+          <h2>英文术语表（可搜索）</h2>
+        </div>
+      </div>
+      <p class="lead">按“英文 → 中文 → 一句话解释/考点”整理。输入英文、中文或缩写即可过滤；适合考前快速查词，也方便以后翻课件时对照。</p>
+      <div class="search-box">
+        <input id="glossarySearch" type="search" placeholder="输入关键词，如：V(G)、边界、LoadRunner、defect">
+        <span id="glossaryCount">共 0 条</span>
+      </div>
+
+      <h3>1. 基础概念与测试原则</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>英文</th><th>中文</th><th>解释 / 考点</th></tr></thead>
+          <tbody>
+            <tr class="term-row"><td>error</td><td>错误</td><td>人产生的过失行为，属于人的思维或操作错误。</td></tr>
+            <tr class="term-row"><td>fault</td><td>故障 / 缺陷</td><td>错误留在软件中的静态体现，存在于代码或文档中。</td></tr>
+            <tr class="term-row"><td>defect</td><td>缺陷</td><td>与 fault 近似，常指软件产品中不符合需求的地方。</td></tr>
+            <tr class="term-row"><td>failure</td><td>失效</td><td>缺陷被触发后，运行中表现出的、用户可观察到的不符合预期行为。</td></tr>
+            <tr class="term-row"><td>test case</td><td>测试用例</td><td>由输入、执行步骤、预期输出等要素构成的测试描述。</td></tr>
+            <tr class="term-row"><td>expected result</td><td>预期结果</td><td>用例中最重要的判定依据；没有它就无法判断测试是否通过。</td></tr>
+            <tr class="term-row"><td>actual result</td><td>实际结果</td><td>执行用例后系统真实产生的输出，要与预期结果比较。</td></tr>
+            <tr class="term-row"><td>test oracle</td><td>测试判定依据</td><td>用来判断实际结果是否正确的方法或来源（需求、规格、参考实现等）。</td></tr>
+            <tr class="term-row"><td>verification</td><td>验证</td><td>检查“是否正确地做了产品”，即是否符合规格说明。</td></tr>
+            <tr class="term-row"><td>validation</td><td>确认</td><td>检查“是否做了正确的产品”，即是否满足用户真实需求。</td></tr>
+            <tr class="term-row"><td>static testing</td><td>静态测试</td><td>不运行程序，通过走查、审查、评审、静态分析发现文档或代码缺陷。</td></tr>
+            <tr class="term-row"><td>dynamic testing</td><td>动态测试</td><td>运行程序，比较实际输出与预期输出。</td></tr>
+            <tr class="term-row"><td>white-box testing</td><td>白盒测试</td><td>依据程序内部逻辑结构设计用例，又称结构测试。</td></tr>
+            <tr class="term-row"><td>black-box testing</td><td>黑盒测试</td><td>依据需求规格，只看输入输出，不关心内部实现，又称功能测试。</td></tr>
+            <tr class="term-row"><td>grey-box testing</td><td>灰盒测试</td><td>结合黑盒与白盒，既关注外部接口也关注部分内部结构。</td></tr>
+            <tr class="term-row"><td>regression testing</td><td>回归测试</td><td>修改后重新测试，确认原有功能没有被破坏。</td></tr>
+            <tr class="term-row"><td>smoke testing</td><td>冒烟测试</td><td>快速验证核心功能是否可用，决定是否值得继续深入测试。</td></tr>
+            <tr class="term-row"><td>acceptance testing</td><td>验收测试</td><td>由用户或客户依据需求确认系统是否可接收。</td></tr>
+            <tr class="term-row"><td>alpha testing</td><td>Alpha 测试</td><td>在开发方场所、受控环境下进行，开发者在场。</td></tr>
+            <tr class="term-row"><td>beta testing</td><td>Beta 测试</td><td>在用户真实使用环境下由实际用户进行，开发者通常不在场。</td></tr>
+            <tr class="term-row"><td>exhaustive testing</td><td>穷尽测试</td><td>覆盖所有输入组合与路径；实际不可能完成，因此要按风险取舍。</td></tr>
+            <tr class="term-row"><td>defect clustering</td><td>缺陷集群性</td><td>约 80% 的缺陷集中在约 20% 的模块，资源应向高发模块倾斜。</td></tr>
+            <tr class="term-row"><td>pesticide paradox</td><td>杀虫剂悖论</td><td>长期重复同一组用例，发现新缺陷的能力会下降，需定期更新用例。</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>2. 开发过程与测试过程模型</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>英文</th><th>中文</th><th>解释 / 考点</th></tr></thead>
+          <tbody>
+            <tr class="term-row"><td>waterfall model</td><td>瀑布模型</td><td>阶段顺序推进、文档驱动；回溯困难，测试介入晚。</td></tr>
+            <tr class="term-row"><td>prototype model</td><td>原型模型</td><td>先做可运行原型逐步明确需求，适合需求不清晰的项目。</td></tr>
+            <tr class="term-row"><td>spiral model</td><td>螺旋模型</td><td>迭代 + 风险分析，适合大型、高风险、复杂项目。</td></tr>
+            <tr class="term-row"><td>incremental model</td><td>增量模型</td><td>按功能分批开发、分批交付。</td></tr>
+            <tr class="term-row"><td>iterative model</td><td>迭代模型</td><td>反复细化，每轮逐步完善。</td></tr>
+            <tr class="term-row"><td>agile model</td><td>敏捷模型</td><td>小步快跑、持续交付、响应变化、测试左移。</td></tr>
+            <tr class="term-row"><td>V-model</td><td>V 模型</td><td>左侧开发活动与右侧测试活动一一对应：需验、概系、详集、编单。</td></tr>
+            <tr class="term-row"><td>W-model</td><td>W 模型</td><td>开发一个 V、测试一个 V；测试与开发并行，文档也纳入测试对象。</td></tr>
+            <tr class="term-row"><td>H-model</td><td>H 模型</td><td>强调测试是一个独立流程，可尽早准备、与其他流程并行。</td></tr>
+            <tr class="term-row"><td>X-model</td><td>X 模型</td><td>强调探索式、交错进行的测试，适合需求不确定的场景。</td></tr>
+            <tr class="term-row"><td>pretest model</td><td>前置测试模型</td><td>把测试前移，在开发早期就开展测试准备与验证。</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>3. 白盒测试</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>英文</th><th>中文</th><th>解释 / 考点</th></tr></thead>
+          <tbody>
+            <tr class="term-row"><td>control flow graph (CFG)</td><td>控制流图</td><td>节点表示语句/语句块，边表示控制流；用于计算 V(G) 和设计路径。</td></tr>
+            <tr class="term-row"><td>cyclomatic complexity</td><td>环形复杂度</td><td>V(G) = E − N + 2 = P + 1 = 区域数；表示独立路径条数和逻辑复杂度。</td></tr>
+            <tr class="term-row"><td>statement coverage</td><td>语句覆盖</td><td>每条可执行语句至少执行一次，最弱的覆盖准则。</td></tr>
+            <tr class="term-row"><td>decision coverage</td><td>判定覆盖</td><td>每个判定的真、假分支各至少执行一次。</td></tr>
+            <tr class="term-row"><td>branch coverage</td><td>分支覆盖</td><td>与判定覆盖基本同义，强调每个分支都被执行。</td></tr>
+            <tr class="term-row"><td>condition coverage</td><td>条件覆盖</td><td>每个条件取真、取假各至少一次，不保证判定结果都出现。</td></tr>
+            <tr class="term-row"><td>decision/condition coverage</td><td>判定/条件覆盖</td><td>同时满足判定覆盖与条件覆盖。</td></tr>
+            <tr class="term-row"><td>multiple condition coverage</td><td>条件组合覆盖</td><td>每个判定内各条件取值的所有组合至少出现一次。</td></tr>
+            <tr class="term-row"><td>path coverage</td><td>路径覆盖</td><td>覆盖程序中所有可能的执行路径，路径数随分支指数增长。</td></tr>
+            <tr class="term-row"><td>basis path testing</td><td>基本路径测试</td><td>用独立路径集设计用例，路径条数等于 V(G)。</td></tr>
+            <tr class="term-row"><td>independent path</td><td>独立路径</td><td>至少引入一条此前路径未使用的边的路径。</td></tr>
+            <tr class="term-row"><td>data flow testing</td><td>数据流测试</td><td>关注变量从定义到使用的路径，检查定义与使用是否匹配。</td></tr>
+            <tr class="term-row"><td>definition-use (def-use)</td><td>定义—使用</td><td>变量被赋值（定义）到被引用（使用）之间的关系。</td></tr>
+            <tr class="term-row"><td>loop testing</td><td>循环测试</td><td>简单循环取 0、1、2、m−1、m、m+1；嵌套循环由内向外。</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>4. 黑盒测试</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>英文</th><th>中文</th><th>解释 / 考点</th></tr></thead>
+          <tbody>
+            <tr class="term-row"><td>equivalence partitioning</td><td>等价类划分</td><td>把输入域划成互不相交的子集，每个子集取一个代表。</td></tr>
+            <tr class="term-row"><td>valid equivalence class</td><td>有效等价类</td><td>符合需求、合法的输入集合。</td></tr>
+            <tr class="term-row"><td>invalid equivalence class</td><td>无效等价类</td><td>不符合需求、非法的输入集合；每个无效类单独一条用例。</td></tr>
+            <tr class="term-row"><td>boundary value analysis</td><td>边界值分析</td><td>取上点、离点、内点；边界是缺陷高发区。</td></tr>
+            <tr class="term-row"><td>upper point</td><td>上点</td><td>边界上的点，如闭区间 [100, 300] 的 100、300。</td></tr>
+            <tr class="term-row"><td>off point</td><td>离点</td><td>紧邻边界的点，如 99、301。</td></tr>
+            <tr class="term-row"><td>interior point</td><td>内点</td><td>区间内部的点，如 200。</td></tr>
+            <tr class="term-row"><td>decision table</td><td>决策表</td><td>用条件桩、条件项、动作桩、动作项描述多条件组合。</td></tr>
+            <tr class="term-row"><td>condition stub</td><td>条件桩</td><td>决策表中列出所有条件的那一列。</td></tr>
+            <tr class="term-row"><td>action stub</td><td>动作桩</td><td>决策表中列出所有动作的那一列。</td></tr>
+            <tr class="term-row"><td>cause-effect graph</td><td>因果图</td><td>用原因（输入）与结果（输出）的逻辑关系设计用例，常转决策表。</td></tr>
+            <tr class="term-row"><td>constraint</td><td>约束</td><td>因果图中的 E、I、O、R（输入）和 M（输出）约束。</td></tr>
+            <tr class="term-row"><td>error guessing</td><td>错误推测</td><td>依据经验和直觉推测可能出错的地方并设计用例。</td></tr>
+            <tr class="term-row"><td>orthogonal array testing</td><td>正交实验法</td><td>用正交表从大量组合中选出代表性组合，减少用例数。</td></tr>
+            <tr class="term-row"><td>scenario testing</td><td>场景法</td><td>按用户业务场景/事件流设计用例，覆盖基本流与异常流。</td></tr>
+            <tr class="term-row"><td>state transition diagram</td><td>状态转换图</td><td>描述对象状态及迁移条件，用于状态测试和场景设计。</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>5. 单元测试、集成测试与系统测试</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>英文</th><th>中文</th><th>解释 / 考点</th></tr></thead>
+          <tbody>
+            <tr class="term-row"><td>unit testing</td><td>单元测试</td><td>针对单个模块/函数，依据详细设计，以白盒为主。</td></tr>
+            <tr class="term-row"><td>integration testing</td><td>集成测试</td><td>针对模块间接口与协作，依据概要设计。</td></tr>
+            <tr class="term-row"><td>system testing</td><td>系统测试</td><td>针对整个系统，依据需求规格，以黑盒为主。</td></tr>
+            <tr class="term-row"><td>driver</td><td>驱动模块</td><td>模拟上级调用者，向被测模块传参、调用并接收结果。</td></tr>
+            <tr class="term-row"><td>stub</td><td>桩模块</td><td>模拟被测模块调用的下级模块，只返回预设结果。</td></tr>
+            <tr class="term-row"><td>big-bang integration</td><td>大爆炸集成</td><td>所有模块一次集成；成本低，但缺陷定位困难。</td></tr>
+            <tr class="term-row"><td>top-down integration</td><td>自顶向下集成</td><td>从主控模块开始，需桩模块；上层逻辑验证早。</td></tr>
+            <tr class="term-row"><td>bottom-up integration</td><td>自底向上集成</td><td>从底层模块开始，需驱动模块；底层接口验证早。</td></tr>
+            <tr class="term-row"><td>sandwich integration</td><td>三明治集成</td><td>自顶向下与自底向上结合，兼顾上下层。</td></tr>
+            <tr class="term-row"><td>interface</td><td>接口</td><td>模块之间传递数据与控制的边界，是集成测试的重点。</td></tr>
+            <tr class="term-row"><td>module</td><td>模块</td><td>可独立测试的程序单元，通常对应函数、类或文件。</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>6. 面向对象测试</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>英文</th><th>中文</th><th>解释 / 考点</th></tr></thead>
+          <tbody>
+            <tr class="term-row"><td>object-oriented testing</td><td>面向对象测试</td><td>以类/对象为测试单元，关注状态、消息与协作。</td></tr>
+            <tr class="term-row"><td>class</td><td>类</td><td>封装数据与操作的抽象定义，是对象的模板。</td></tr>
+            <tr class="term-row"><td>object</td><td>对象</td><td>类的实例，具有状态和行为。</td></tr>
+            <tr class="term-row"><td>encapsulation</td><td>封装</td><td>隐藏内部状态，只通过接口访问；给测试带来间接性。</td></tr>
+            <tr class="term-row"><td>inheritance</td><td>继承</td><td>子类复用父类特性；父类缺陷会扩散，子类需重测。</td></tr>
+            <tr class="term-row"><td>polymorphism</td><td>多态</td><td>同一消息在不同对象上绑定不同实现，增加运行期路径。</td></tr>
+            <tr class="term-row"><td>dynamic binding</td><td>动态绑定</td><td>运行期才确定调用哪个实现，测试要覆盖各种绑定。</td></tr>
+            <tr class="term-row"><td>class testing</td><td>类测试</td><td>面向对象的单元测试，包括服务、对象、状态、响应状态测试。</td></tr>
+            <tr class="term-row"><td>service-based testing</td><td>基于服务的测试</td><td>把类中每个方法（服务）当作单元分别测试。</td></tr>
+            <tr class="term-row"><td>state-based testing</td><td>基于状态的测试</td><td>把对象看作有限状态自动机，覆盖状态与迁移。</td></tr>
+            <tr class="term-row"><td>class cluster</td><td>类簇</td><td>一组相互协作、关系紧密的类，是 OO 集成测试的对象。</td></tr>
+            <tr class="term-row"><td>thread-based testing</td><td>基于线程的测试</td><td>按一次用户输入引发的事件序列集成并测试。</td></tr>
+            <tr class="term-row"><td>use-based testing</td><td>基于使用的测试</td><td>先测试使用其他类较少的类，再逐步向外扩展。</td></tr>
+            <tr class="term-row"><td>block branch diagram (BBD)</td><td>块分支图</td><td>类服务测试模型，五元组 (Du, Dd, P, Fe, G)。</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>7. 自动化测试与性能工具</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>英文</th><th>中文</th><th>解释 / 考点</th></tr></thead>
+          <tbody>
+            <tr class="term-row"><td>test automation</td><td>测试自动化</td><td>用工具按预定计划和用例自动执行测试，把人工驱动转为机器执行。</td></tr>
+            <tr class="term-row"><td>test suite</td><td>测试套件</td><td>一组测试用例与场景的组合。</td></tr>
+            <tr class="term-row"><td>test script</td><td>测试脚本</td><td>用脚本语言描述的测试执行过程。</td></tr>
+            <tr class="term-row"><td>test harness</td><td>测试执行框架</td><td>运行测试所需的驱动、桩、数据与结果收集设施。</td></tr>
+            <tr class="term-row"><td>record and playback</td><td>录制与回放</td><td>录制键鼠操作序列并回放；简单但脚本易冗余。</td></tr>
+            <tr class="term-row"><td>data-driven testing</td><td>数据驱动测试</td><td>脚本不变，用外部数据文件驱动多组输入输出。</td></tr>
+            <tr class="term-row"><td>keyword-driven / action-driven</td><td>关键字/行动驱动</td><td>用关键字或行动描述操作，由框架自动生成执行细节。</td></tr>
+            <tr class="term-row"><td>object repository</td><td>对象库</td><td>QTP 中存放被测对象识别属性的库。</td></tr>
+            <tr class="term-row"><td>checkpoint</td><td>检查点</td><td>QTP 中验证实际结果是否与预期一致的机制。</td></tr>
+            <tr class="term-row"><td>parameterization</td><td>参数化</td><td>用多组数据替换脚本中的固定值，实现数据驱动。</td></tr>
+            <tr class="term-row"><td>VuGen</td><td>虚拟用户生成器</td><td>LoadRunner 组件，用于录制、编写和增强脚本。</td></tr>
+            <tr class="term-row"><td>Controller</td><td>控制器</td><td>LoadRunner 组件，组织场景、控制并发与执行。</td></tr>
+            <tr class="term-row"><td>Analysis</td><td>分析器</td><td>LoadRunner 组件，汇总结果、生成图表与报告。</td></tr>
+            <tr class="term-row"><td>throughput</td><td>吞吐量</td><td>单位时间内系统处理的请求/事务数量。</td></tr>
+            <tr class="term-row"><td>response time</td><td>响应时间</td><td>从发出请求到收到响应的时间，是性能核心指标。</td></tr>
+            <tr class="term-row"><td>concurrent users</td><td>并发用户数</td><td>同一时刻同时向系统发起请求的用户数量。</td></tr>
+            <tr class="term-row"><td>TPS</td><td>每秒事务数</td><td>Transactions Per Second，衡量系统处理事务的能力。</td></tr>
+            <tr class="term-row"><td>rendezvous</td><td>集合点</td><td>让虚拟用户在同一时刻同时发起操作，制造并发峰值。</td></tr>
+            <tr class="term-row"><td>correlation</td><td>关联</td><td>把服务器动态返回的值（如 SessionID）传给后续请求。</td></tr>
+            <tr class="term-row"><td>transaction</td><td>事务</td><td>把一段操作作为一个整体计时与统计。</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>8. 测试管理与质量保证</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>英文</th><th>中文</th><th>解释 / 考点</th></tr></thead>
+          <tbody>
+            <tr class="term-row"><td>test plan</td><td>测试计划</td><td>描述测试范围、方法、资源、进度与风险的文档。</td></tr>
+            <tr class="term-row"><td>test strategy</td><td>测试策略</td><td>规定测试类型、阶段、方法、自动化程度与回归组织方式。</td></tr>
+            <tr class="term-row"><td>test report</td><td>测试报告</td><td>记录测试过程、执行情况、缺陷统计与结论的文档。</td></tr>
+            <tr class="term-row"><td>test evaluation</td><td>测试评估</td><td>依据报告对质量与测试效果作出判断和结论。</td></tr>
+            <tr class="term-row"><td>coverage</td><td>覆盖率</td><td>至少被执行一次的 item 数 ÷ item 总数。</td></tr>
+            <tr class="term-row"><td>defect density</td><td>缺陷密度</td><td>缺陷数量 ÷ 代码行数（KLOC）或功能点。</td></tr>
+            <tr class="term-row"><td>defect removal rate</td><td>缺陷清除率</td><td>整体缺陷清除率 = D1 / D，D = D1 + D2。</td></tr>
+            <tr class="term-row"><td>risk</td><td>风险</td><td>可能造成损失的不确定事件；风险指数 = 可能性 × 影响。</td></tr>
+            <tr class="term-row"><td>SQA</td><td>软件质量保证</td><td>面向过程，通过计划、评审、审计、度量保证过程被正确执行。</td></tr>
+            <tr class="term-row"><td>TQM</td><td>全面质量管理</td><td>全过程、全员、全企业、多方法，关注顾客与持续改进。</td></tr>
+            <tr class="term-row"><td>CMM</td><td>能力成熟度模型</td><td>五级：初始、可重复、已定义、已管理、优化。</td></tr>
+            <tr class="term-row"><td>CMMI</td><td>能力成熟度集成模型</td><td>多个模型的集成，过程域分项目管理、组织过程、工程、保证支持四组。</td></tr>
+            <tr class="term-row"><td>ISO 9001</td><td>质量管理体系要求</td><td>ISO 9000 族中关于质量管理体系要求的标准。</td></tr>
+            <tr class="term-row"><td>ISO 9126</td><td>软件质量特性标准</td><td>功能性、可靠性、易用性、效率、可维护性、可移植性。</td></tr>
+            <tr class="term-row"><td>IEEE 829</td><td>测试文档标准</td><td>规定八类测试文档：计、设、用、规，传、日、事、总。</td></tr>
+            <tr class="term-row"><td>quality characteristic</td><td>质量特性</td><td>衡量软件质量的特征，如功能性、可靠性等。</td></tr>
+            <tr class="term-row"><td>key process area (KPA)</td><td>关键过程域</td><td>CMM 每个等级要求实施的一组关键过程。</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>9. 手机测试</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>英文</th><th>中文</th><th>解释 / 考点</th></tr></thead>
+          <tbody>
+            <tr class="term-row"><td>mobile testing</td><td>手机测试</td><td>覆盖多机型、多网络、多中断、功耗流量等工程特殊性。</td></tr>
+            <tr class="term-row"><td>compatibility testing</td><td>兼容性测试</td><td>不同机型、分辨率、操作系统版本、网络制式下的表现。</td></tr>
+            <tr class="term-row"><td>interrupt testing</td><td>中断测试</td><td>来电、短信、电量不足、耳机插拔、锁屏等打断应用。</td></tr>
+            <tr class="term-row"><td>power consumption testing</td><td>功耗测试</td><td>测试应用/功能的电量消耗是否在可接受范围。</td></tr>
+            <tr class="term-row"><td>stress testing</td><td>压力测试</td><td>在临界或超负荷条件下测试系统的稳定性。</td></tr>
+            <tr class="term-row"><td>release testing</td><td>释放测试</td><td>验证基本功能是否实现、是否值得继续测试；用例约 200 条。</td></tr>
+            <tr class="term-row"><td>focus testing</td><td>焦点测试</td><td>集中一个或几个点进行测试。</td></tr>
+            <tr class="term-row"><td>free testing</td><td>自由测试</td><td>寻找系统测试中遗漏、不可重现的错误；有目的和范围。</td></tr>
+            <tr class="term-row"><td>partial testing</td><td>部分测试</td><td>对手机的一部分功能进行全面测试，含执行用例与自由测试。</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+
+    <section id="quiz" class="section">
+      <div class="section-head">
+        <div>
+          <p class="chapter-kicker">QUIZ</p>
+          <h2>自测题（含答案）</h2>
+        </div>
+      </div>
+      <p class="lead">共 32 题：选择 10、判断 8、填空 6、简答/用例/计算 8。先合上资料做，再逐题展开答案；错题回到对应章节。</p>
+
+      <h3>一、选择题（10 题）</h3>
+      <div class="example">
+        <div class="example-q"><span class="q-label">1</span>程序员因疏忽把加法写成减法，这种“人的过失行为”称为（　）。<br>A. fault　B. error　C. failure　D. defect</div>
+        <details class="answer"><summary>查看答案</summary><div class="answer-body"><p><strong>B. error。</strong>error 是人的过失；fault/defect 是留在软件中的静态偏差；failure 是运行后表现出的失效。</p></div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">2</span>一条完整测试用例中，用于判定测试是否通过的最关键要素是（　）。<br>A. 测试步骤　B. 输入数据　C. 预期输出　D. 用例编号</div>
+        <details class="answer"><summary>查看答案</summary><div class="answer-body"><p><strong>C. 预期输出。</strong>没有可判定的期望结果，就无法比较实际结果，也无法判断测试通过还是失败。</p></div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">3</span>某控制流图有 8 个节点、10 条边，且为连通图，则环形复杂度 V(G) 为（　）。<br>A. 2　B. 3　C. 4　D. 5</div>
+        <details class="answer"><summary>查看答案</summary><div class="answer-body"><p><strong>C. 4。</strong>V(G) = E − N + 2 = 10 − 8 + 2 = 4。</p></div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">4</span>某判定由 2 个二值条件组成，条件组合覆盖至少需要（　）组条件取值。<br>A. 2　B. 3　C. 4　D. 8</div>
+        <details class="answer"><summary>查看答案</summary><div class="answer-body"><p><strong>C. 4。</strong>2 个条件有 2² = 4 种组合：TT、TF、FT、FF。</p></div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">5</span>输入范围为闭区间 [100, 300]，下列哪组是“离点”？（　）<br>A. 100、300　B. 99、301　C. 101、299　D. 200</div>
+        <details class="answer"><summary>查看答案</summary><div class="answer-body"><p><strong>B. 99、301。</strong>100、300 是上点；99、301 是紧邻边界的离点；200 是内点。</p></div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">6</span>因果图中，属于输出约束的是（　）。<br>A. E　B. I　C. O　D. M</div>
+        <details class="answer"><summary>查看答案</summary><div class="answer-body"><p><strong>D. M（屏蔽）。</strong>E、I、O、R 是输入约束，M 是输出约束。</p></div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">7</span>采用自顶向下集成策略时，通常需要额外开发（　）。<br>A. 驱动模块　B. 桩模块　C. 测试数据生成器　D. 编译器</div>
+        <details class="answer"><summary>查看答案</summary><div class="answer-body"><p><strong>B. 桩模块（Stub）。</strong>上层先测，下层尚未开发，用桩模拟被调用的下级模块。</p></div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">8</span>单元测试的主要依据是（　）。<br>A. 需求规格说明书　B. 概要设计　C. 详细设计　D. 用户手册</div>
+        <details class="answer"><summary>查看答案</summary><div class="answer-body"><p><strong>C. 详细设计。</strong>单元依据详细设计；集成依据概要设计；系统依据需求规格说明书。</p></div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">9</span>面向对象软件中，最小的可测试单元通常是（　）。<br>A. 语句　B. 函数　C. 类/对象　D. 整个系统</div>
+        <details class="answer"><summary>查看答案</summary><div class="answer-body"><p><strong>C. 类/对象。</strong>面向对象测试以类和对象为单元，而不是传统的函数或过程。</p></div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">10</span>CMM 中“对过程和产品质量建立定量目标，以数据量化管理”属于（　）。<br>A. 可重复级　B. 已定义级　C. 已管理级　D. 优化级</div>
+        <details class="answer"><summary>查看答案</summary><div class="answer-body"><p><strong>C. 已管理级。</strong>已管理级强调定量目标与量化管理，过程性能可预测。</p></div></details>
+      </div>
+
+      <h3>二、判断题（8 题）</h3>
+      <div class="example">
+        <div class="example-q"><span class="q-label">11</span>只要所有测试用例都通过，就能证明软件中没有缺陷。</div>
+        <details class="answer"><summary>查看答案</summary><div class="answer-body"><p><strong>×。</strong>测试只能证明缺陷存在，不能证明缺陷不存在；穷尽测试不可能。</p></div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">12</span>语句覆盖率达到 100%，就一定能发现判定条件中的所有逻辑错误。</div>
+        <details class="answer"><summary>查看答案</summary><div class="answer-body"><p><strong>×。</strong>语句覆盖最弱，可能只走一个分支；把“并且”误写成“或者”这类错误，语句覆盖发现不了。</p></div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">13</span>满足条件覆盖，就一定满足判定覆盖。</div>
+        <details class="answer"><summary>查看答案</summary><div class="answer-body"><p><strong>×。</strong>二者不是严格包含关系。例如 (2,1)、(1,0) 可满足两个条件的真假，但两次判定都为假，未覆盖真分支。</p></div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">14</span>设计无效等价类用例时，一个用例只应覆盖一个无效等价类。</div>
+        <details class="answer"><summary>查看答案</summary><div class="answer-body"><p><strong>√。</strong>多个无效条件放在同一条用例里会相互屏蔽，无法判断是哪个条件导致失败。</p></div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">15</span>集成测试主要依据概要设计，重点是模块之间的接口与协作。</div>
+        <details class="answer"><summary>查看答案</summary><div class="answer-body"><p><strong>√。</strong>集成测试依据概要设计，关注接口与协作，不重复验证模块内部功能。</p></div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">16</span>自动化测试可以完全替代手工测试。</div>
+        <details class="answer"><summary>查看答案</summary><div class="answer-body"><p><strong>×。</strong>自动化适合回归、大量数据、性能等；探索性、易用性、一次性测试仍依赖人工，二者互补。</p></div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">17</span>Alpha 测试是在用户真实使用环境下进行的测试。</div>
+        <details class="answer"><summary>查看答案</summary><div class="answer-body"><p><strong>×。</strong>Alpha 在开发方场所、受控环境；Beta 才在用户真实环境。</p></div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">18</span>整体缺陷清除率越高，说明开发阶段发现并修复的缺陷占比越大，产品质量越好。</div>
+        <details class="answer"><summary>查看答案</summary><div class="answer-body"><p><strong>√。</strong>整体缺陷清除率 = D1 / D；越高说明漏到发布后的缺陷占比越小。</p></div></details>
+      </div>
+
+      <h3>三、填空题（6 题）</h3>
+      <div class="example">
+        <div class="example-q"><span class="q-label">19</span>写出下列术语的英文：错误 ______；缺陷/故障 ______；失效 ______。</div>
+        <details class="answer"><summary>查看答案</summary><div class="answer-body"><p>error；fault（或 defect）；failure。</p></div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">20</span>环形复杂度 V(G) 的三种计算方法：V(G) = ______ = ______ = ______。</div>
+        <details class="answer"><summary>查看答案</summary><div class="answer-body"><p>E − N + 2；P + 1；区域数（含图外部区域）。</p></div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">21</span>自顶向下集成主要需要 ______ 模块；自底向上集成主要需要 ______ 模块。</div>
+        <details class="answer"><summary>查看答案</summary><div class="answer-body"><p>桩（Stub）；驱动（Driver）。</p></div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">22</span>因果图的五种约束是 ______、______、______、______、______，其中 ______ 是输出约束。</div>
+        <details class="answer"><summary>查看答案</summary><div class="answer-body"><p>E、I、O、R、M；M（屏蔽）。</p></div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">23</span>ISO 9126 的六大质量特性是 ______、______、______、______、______、______。</div>
+        <details class="answer"><summary>查看答案</summary><div class="answer-body"><p>功能性、可靠性、易用性、效率、可维护性、可移植性（口诀“功可易效维移”）。</p></div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">24</span>IEEE 829 规定的八类测试文档是 ______、______、______、______、______、______、______、______。</div>
+        <details class="answer"><summary>查看答案</summary><div class="answer-body"><p>测试计划、测试设计规格说明、测试用例规格说明、测试规程规格说明、测试项传递报告、测试日志、测试事件报告、测试总结报告（口诀“计设用规，传日事总”）。</p></div></details>
+      </div>
+
+      <h3>四、简答 / 用例 / 计算（8 题）</h3>
+      <div class="example">
+        <div class="example-q"><span class="q-label">25</span>从测试依据、测试对象、实施时机、所用方法四个方面比较黑盒测试与白盒测试。</div>
+        <details class="answer"><summary>查看参考答案</summary><div class="answer-body">
+          <ul>
+            <li><strong>依据：</strong>白盒依据程序内部逻辑结构（代码/设计）；黑盒依据需求规格说明书。</li>
+            <li><strong>对象：</strong>白盒面向语句、条件、路径、数据结构等内部结构；黑盒面向功能与外部接口。</li>
+            <li><strong>时机：</strong>白盒主要用于单元测试（编码阶段）；黑盒主要用于集成、系统与验收测试。</li>
+            <li><strong>方法：</strong>白盒有逻辑覆盖、基本路径、循环、数据流；黑盒等价类、边界值、决策表、因果图、错误推测、正交实验、场景法。</li>
+          </ul>
+          <p>结论：二者优缺点互补，实际项目常结合使用（灰盒），不能相互替代。</p>
+        </div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">26</span>用户名要求为 6～12 位字母或数字。请划分等价类，给出边界值，并设计主要测试用例。</div>
+        <details class="answer"><summary>查看参考答案</summary><div class="answer-body">
+          <p><strong>有效等价类：</strong>6～12 位字母或数字，如 test01（6 位）。</p>
+          <p><strong>无效等价类：</strong>① 为空；② 少于 6 位（abcde）；③ 多于 12 位（abcdefghijklm）；④ 含非字母数字字符（test_01）。</p>
+          <p><strong>边界值：</strong>5、6、7、11、12、13 位。</p>
+          <p><strong>用例：</strong>test01 → 登录成功；abcde → 提示长度 6～12 位；abcdefghijklm → 提示长度 6～12 位；test_01 → 提示只能包含字母或数字；空 → 提示用户名不能为空。每个无效类单独一条。</p>
+        </div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">27</span>对判定 <code>if (A &gt; 1 &amp;&amp; B == 0)</code>，分别给出语句覆盖、判定覆盖、条件覆盖、判定/条件覆盖、条件组合覆盖的测试数据。</div>
+        <details class="answer"><summary>查看参考答案</summary><div class="answer-body">
+          <div class="table-wrap">
+            <table>
+              <thead><tr><th>准则</th><th>测试数据 (A, B)</th><th>说明</th></tr></thead>
+              <tbody>
+                <tr><td>语句覆盖</td><td>(2, 0)</td><td>判定为真，内部语句执行一次</td></tr>
+                <tr><td>判定覆盖</td><td>(2, 0)、(1, 1)</td><td>判定真、假各一次</td></tr>
+                <tr><td>条件覆盖</td><td>(2, 1)、(1, 0)</td><td>A&gt;1 真/假，B==0 假/真；但两次判定都为假</td></tr>
+                <tr><td>判定/条件覆盖</td><td>(2, 0)、(1, 1)</td><td>判定真/假、条件真/假都覆盖</td></tr>
+                <tr><td>条件组合覆盖</td><td>(2, 0)、(2, 1)、(1, 0)、(1, 1)</td><td>两个条件的四种组合全部出现</td></tr>
+              </tbody>
+            </table>
+          </div>
+          <p>注意：条件覆盖只保证每个条件取真/假，不保证判定结果；这正是它和判定覆盖不能互相替代的原因。</p>
+        </div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">28</span>对“满 100 元”折扣程序：若 amount≥100 且 vip 为真打 8 折，否则若 amount≥100 打 9 折，否则不打折。求 V(G)，列基本路径，设计用例。</div>
+        <details class="answer"><summary>查看参考答案</summary><div class="answer-body">
+          <p>判定节点 2 个（amount≥100、vip），V(G) = 2 + 1 = 3。</p>
+          <p>路径：P1 amount≥100 且 vip；P2 amount≥100 且非 vip；P3 amount&lt;100。</p>
+          <p>用例：T1 (200, VIP) → 160；T2 (200, 非 VIP) → 180；T3 (50, 任意) → 50。补充边界 amount = 99、100、101。</p>
+        </div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">29</span>某规则：VIP 且满 100 打 8 折；VIP 不满 100 打 9 折；非 VIP 满 100 打 9 折；非 VIP 不满 100 无折扣。列决策表并设计用例。</div>
+        <details class="answer"><summary>查看参考答案</summary><div class="answer-body">
+          <p>条件桩：是否 VIP、是否满 100；动作桩：8 折、9 折、无折扣。四条规则：</p>
+          <ul>
+            <li>R1：VIP=Y，满 100=Y → 8 折。</li>
+            <li>R2：VIP=Y，满 100=N → 9 折。</li>
+            <li>R3：VIP=N，满 100=Y → 9 折。</li>
+            <li>R4：VIP=N，满 100=N → 无折扣。</li>
+          </ul>
+          <p>用例：(VIP, 200)→160；(VIP, 50)→45；(非 VIP, 200)→180；(非 VIP, 50)→50。</p>
+        </div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">30</span>某系统底层接口不稳定、需要尽早验证，上层主控模块较简单。应选择哪种集成策略？说明理由并比较其他策略。</div>
+        <details class="answer"><summary>查看参考答案</summary><div class="answer-body">
+          <p><strong>自底向上集成。</strong>底层先集成，能尽早验证底层接口与基础功能；代价是需要开发驱动模块。</p>
+          <p>大爆炸成本低但缺陷定位难；自顶向下需桩、上层验证早但底层偏晚；三明治兼顾上下层但中间层滞后。选策略要综合缺陷定位、桩/驱动成本、进度和风险。</p>
+        </div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">31</span>某项目 100 个功能点，开发中发现 15 个缺陷，发布后发现 5 个。求质量、缺陷注入率、整体缺陷清除率。</div>
+        <details class="answer"><summary>查看参考答案</summary><div class="answer-body">
+          <p>F=100，D1=15，D2=5，D=20。</p>
+          <p>质量 = 5/100 = 5%；缺陷注入率 = 20/100 = 20%；整体缺陷清除率 = 15/20 = 75%。清除率越高，质量越好。</p>
+        </div></details>
+      </div>
+      <div class="example">
+        <div class="example-q"><span class="q-label">32</span>与桌面软件测试相比，手机软件测试有哪些特殊性？至少写出五点。</div>
+        <details class="answer"><summary>查看参考答案</summary><div class="answer-body">
+          <p>① 多机型、多分辨率、多操作系统版本的兼容性；② 多网络制式、弱网与网络切换；③ 来电、短信、电量不足、耳机插拔、锁屏等中断；④ 功耗与流量；⑤ 安装、卸载、升级与存储容量；⑥ 触屏手势与易用性；⑦ 权限与隐私安全。归纳为“多机型、多网络、多中断”。</p>
+        </div></details>
+      </div>
+    </section>
+
+    <section id="checklist" class="section">
+      <div class="section-head">
+        <div>
+          <p class="chapter-kicker">FINAL CHECKLIST</p>
+          <h2>考前清单与最后检查</h2>
+        </div>
+      </div>
+      <p class="lead">考前只看这一页：先背公式，再过必背清单，最后用检查项逐条自问。能全部打勾，说明主干已经掌握。</p>
+
+      <h3>一、必背公式（计算题先写公式，再代数）</h3>
+      <div class="table-wrap">
+        <table>
+          <thead><tr><th>指标</th><th>公式</th><th>说明 / 易错点</th></tr></thead>
+          <tbody>
+            <tr><td>环形复杂度</td><td><code>V(G) = E − N + 2 = P + 1 = 区域数</code></td><td>E 边数、N 节点数、P 判定节点数；三种算法必须一致，可互相校验；仅适用于连通流图。</td></tr>
+            <tr><td>语句覆盖率</td><td><code>被执行语句数 ÷ 语句总数 × 100%</code></td><td>判定覆盖率同理，按“已执行分支 ÷ 全部分支”计算。</td></tr>
+            <tr><td>缺陷密度</td><td><code>缺陷数 ÷ KLOC（或功能点）</code></td><td>注意单位统一，千行代码写作 KLOC。</td></tr>
+            <tr><td>缺陷注入率</td><td><code>D ÷ F</code></td><td>D 为开发期 + 发布后发现缺陷总数，F 为功能点/规模；课件中 D/F=20/100=0.2，即 20%。</td></tr>
+            <tr><td>整体缺陷清除率</td><td><code>D1 ÷ D</code></td><td>D1 为发布前发现并修复的缺陷数；数值越高，交付质量越好。</td></tr>
+            <tr><td>质量</td><td><code>D2 ÷ F</code></td><td>D2 为发布后发现的缺陷数；D = D1 + D2。</td></tr>
+            <tr><td>测试工作量</td><td><code>用例总数 ÷ 每人日执行用例数</code></td><td>得到人日数；也可用测试场景数、配置数估算。</td></tr>
+            <tr><td>风险指数</td><td><code>风险可能性 × 风险影响</code></td><td>用乘积把风险量化，便于排序和确定缓解优先级。</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <h3>二、必背清单（考前一晚过一遍）</h3>
+      <div class="grid2">
+        <div class="mini-card">
+          <h4>1. 测试七原则</h4>
+          <p>① 测试显示缺陷存在，不能证明缺陷不存在；② 穷尽测试不可能；③ 测试尽早介入；④ 缺陷集群性（二八原则）；⑤ 杀虫剂悖论；⑥ 测试活动依赖上下文；⑦ 不存在缺陷的谬论。</p>
+        </div>
+        <div class="mini-card">
+          <h4>2. 逻辑覆盖六准则（弱 → 强）</h4>
+          <p>语句 → 判定 → 条件 → 判定/条件 → 条件组合 → 路径。注意：判定覆盖与条件覆盖不是严格包含关系，二者侧重点不同。</p>
+        </div>
+        <div class="mini-card">
+          <h4>3. 因果图五约束</h4>
+          <p><strong>E</strong> 互斥（最多一个为 1）、<strong>I</strong> 包含（至少一个为 1）、<strong>O</strong> 唯一（有且仅有一个为 1）、<strong>R</strong> 要求（a=1 则 b 必须为 1）、<strong>M</strong> 屏蔽（a=1 则 b 强制为 0）。E/I/O/R 是输入约束，M 是输出约束。</p>
+        </div>
+        <div class="mini-card">
+          <h4>4. 四种集成策略</h4>
+          <p>大爆炸（一次性集成，定位难）、自顶向下（需桩 Stub，上层验证早）、自底向上（需驱动 Driver，底层验证早）、三明治（上下结合，中间层滞后）。</p>
+        </div>
+        <div class="mini-card">
+          <h4>5. 单元测试五任务</h4>
+          <p>模块接口、局部数据结构、独立执行路径、错误处理路径、边界条件。Driver 模拟上层调用，Stub 模拟下层被调。</p>
+        </div>
+        <div class="mini-card">
+          <h4>6. 测试过程模型</h4>
+          <p>V 模型（开发与测试一一对应，测试介入晚）、W 模型（双 V、测试与开发并行）、H 模型（测试独立流程，可尽早开展）、X 模型（分段编码分段测试再集成）、前置测试模型（测试计划与用例设计提前）。</p>
+        </div>
+        <div class="mini-card">
+          <h4>7. CMM 五级</h4>
+          <p>初始级 → 可重复级 → 已定义级 → 已管理级 → 优化级，共 18 个关键过程域（KPA）。口诀：初可定管优。</p>
+        </div>
+        <div class="mini-card">
+          <h4>8. ISO 9126 六特性</h4>
+          <p>功能性、可靠性、易用性、效率、可维护性、可移植性。口诀：功可易效维移。</p>
+        </div>
+        <div class="mini-card">
+          <h4>9. IEEE 829 八文档</h4>
+          <p>测试计划、测试设计说明、测试用例说明、测试规程说明、测试项传递报告、测试日志、测试事件报告、测试总结报告。口诀：计设用规，传日事总。</p>
+        </div>
+        <div class="mini-card">
+          <h4>10. 手机测试六技术</h4>
+          <p>释放测试、系统测试、部分测试、焦点测试、压力测试、自由测试。手机测试特殊性：多机型、多网络、多中断。</p>
+        </div>
+      </div>
+
+      <h3>三、最后检查项（逐条自问，能打勾再进考场）</h3>
+      <ul class="checklist">
+        <li><input type="checkbox"><span>我能一句话区分 error（人）、defect/fault（代码，静态）、failure（运行，可观测）。</span></li>
+        <li><input type="checkbox"><span>我知道测试用例必须有“预期输出”，并能补全一条登录用例。</span></li>
+        <li><input type="checkbox"><span>我能画 V 模型并完成四组配对：需求—验收、概要—系统、详细—集成、编码—单元。</span></li>
+        <li><input type="checkbox"><span>我能说出 W 模型比 V 模型改进在哪里（双 V、并行、评审文档）。</span></li>
+        <li><input type="checkbox"><span>我能用三种方法算 V(G)，并说明它等于独立路径数、也是最少用例数。</span></li>
+        <li><input type="checkbox"><span>我能按“语句→判定→条件→判定/条件→条件组合→路径”排序，并解释为何语句覆盖发现不了“与/或”写错。</span></li>
+        <li><input type="checkbox"><span>我能写出基本路径法的五个步骤，并知道路径条数 = V(G)，但用例条数不必等于路径数。</span></li>
+        <li><input type="checkbox"><span>我能对闭区间 [100,300] 取上点 100/300、离点 99/301、内点 200，并说明开区间如何调整。</span></li>
+        <li><input type="checkbox"><span>我能区分有效/无效等价类，并记住“一个无效用例只覆盖一个无效等价类”。</span></li>
+        <li><input type="checkbox"><span>我能写出决策表四部分（条件桩、动作桩、条件项、动作项）和因果图五约束。</span></li>
+        <li><input type="checkbox"><span>我没把 Driver 和 Stub 记反：Driver 在上（调用被测模块），Stub 在下（被被测模块调用）。</span></li>
+        <li><input type="checkbox"><span>我能对比四种集成策略的优缺点，并根据“底层不稳定”选自底向上、“上层简单”选自顶向下。</span></li>
+        <li><input type="checkbox"><span>我能写出性能测试指标（响应时间、吞吐量、并发用户数、资源利用率）和 LoadRunner 三组件。</span></li>
+        <li><input type="checkbox"><span>我能默写缺陷注入率、整体缺陷清除率、质量的公式，并注意百分比换算。</span></li>
+        <li><input type="checkbox"><span>我能说出 Alpha 测试与 Beta 测试的区别（场所、人员、开发者是否在场）。</span></li>
+      </ul>
+
+      <h3>四、考试当天策略</h3>
+      <div class="callout tip">
+        <span class="label">答题顺序</span>
+        <p>先做选择、填空、判断，把有把握的分拿稳；再攻简答与计算；最后回头补空。不要让一道不会的题卡住整场。</p>
+      </div>
+      <div class="callout exam">
+        <span class="label">计算题</span>
+        <p>一定先写公式再代入数字，保留计算过程；V(G) 算完用另一种方法验算一遍。覆盖率、清除率结果记得写成百分数。</p>
+      </div>
+      <div class="callout warn">
+        <span class="label">用例设计题</span>
+        <p>每条用例都要有“输入 + 执行步骤 + 预期输出”，并按编号列表呈现；等价类、边界值、决策表要写明划分依据，不要只给数据。</p>
+      </div>
+      <div class="callout mnemonic">
+        <span class="label">简答题</span>
+        <p>分点作答、先给结论再解释。比较类题目按“依据、对象、时机、方法、优缺点”固定维度写，阅卷更容易给分。</p>
+      </div>
+      <p class="note">提示：本页勾选状态不会保存，仅用于当场自查；各章“已复习”进度会自动保存在本机浏览器中。</p>
+    </section>
+  </main>
+</div>
+
+<button class="back-top" id="backTop" aria-label="回到顶部">↑</button>
+<button class="menu-btn" id="menuBtn">☰ 目录</button>
+<div class="overlay" id="overlay"></div>
+
+<footer class="footer">依据《软件测试基础教程（第 2 版）》课程课件与各章重难点配套例题整理 · 供期末复习使用</footer>
+
+<script>
+(function(){
+  var topProgress=document.getElementById('topProgress');
+  var backTop=document.getElementById('backTop');
+  var sidebar=document.getElementById('sidebar');
+  var overlay=document.getElementById('overlay');
+  var menuBtn=document.getElementById('menuBtn');
+  var closeSide=document.getElementById('closeSide');
+
+  function onScroll(){
+    var h=document.documentElement;
+    var max=h.scrollHeight-h.clientHeight;
+    var p=max>0?(h.scrollTop/max*100):0;
+    topProgress.style.width=p+'%';
+    if(h.scrollTop>420){backTop.classList.add('show');}else{backTop.classList.remove('show');}
+  }
+  window.addEventListener('scroll',onScroll,{passive:true});
+  onScroll();
+
+  backTop.addEventListener('click',function(){window.scrollTo({top:0,behavior:'smooth'});});
+
+  function openSide(){sidebar.classList.add('open');overlay.classList.add('show');}
+  function closeSidebar(){sidebar.classList.remove('open');overlay.classList.remove('show');}
+  menuBtn.addEventListener('click',openSide);
+  closeSide.addEventListener('click',closeSidebar);
+  overlay.addEventListener('click',closeSidebar);
+
+  var links=Array.prototype.slice.call(document.querySelectorAll('.nav-link'));
+  links.forEach(function(a){
+    a.addEventListener('click',function(){
+      if(window.innerWidth<=980){closeSidebar();}
+    });
+  });
+
+  var sections=Array.prototype.slice.call(document.querySelectorAll('main .section'));
+  var observer=new IntersectionObserver(function(entries){
+    entries.forEach(function(en){
+      if(en.isIntersecting){
+        var id=en.target.id;
+        links.forEach(function(a){a.classList.toggle('active',a.getAttribute('href')==='#'+id);});
+      }
+    });
+  },{rootMargin:'-12% 0px -75% 0px',threshold:0});
+  sections.forEach(function(s){observer.observe(s);});
+
+  document.getElementById('expandBtn').addEventListener('click',function(){
+    document.querySelectorAll('details').forEach(function(d){d.open=true;});
+  });
+  document.getElementById('collapseBtn').addEventListener('click',function(){
+    document.querySelectorAll('details').forEach(function(d){d.open=false;});
+  });
+  document.getElementById('printBtn').addEventListener('click',function(){
+    document.querySelectorAll('details').forEach(function(d){d.open=true;});
+    window.print();
+  });
+  window.addEventListener('beforeprint',function(){
+    document.querySelectorAll('details').forEach(function(d){d.open=true;});
+  });
+
+  var KEY='swtest_review_progress_v1';
+  var boxes=Array.prototype.slice.call(document.querySelectorAll('.review-check input[data-chapter]'));
+  var saved={};
+  try{saved=JSON.parse(localStorage.getItem(KEY)||'{}');}catch(e){saved={};}
+  boxes.forEach(function(b){
+    if(saved[b.dataset.chapter]){b.checked=true;}
+    b.addEventListener('change',function(){
+      saved[b.dataset.chapter]=b.checked;
+      try{localStorage.setItem(KEY,JSON.stringify(saved));}catch(e){}
+      updateProgress();
+    });
+  });
+  function updateProgress(){
+    var done=boxes.filter(function(b){return b.checked;}).length;
+    var total=boxes.length||12;
+    document.getElementById('progressText').textContent=done+' / '+total;
+    document.getElementById('progressFill').style.width=(done/total*100)+'%';
+    document.getElementById('heroProgress').textContent='复习进度 '+done+' / '+total+' 个板块';
+  }
+  updateProgress();
+
+  var gs=document.getElementById('glossarySearch');
+  var gCount=document.getElementById('glossaryCount');
+  if(gs&&gCount){
+    var termRows=Array.prototype.slice.call(document.querySelectorAll('#glossary tr.term-row'));
+    function refreshGlossaryCount(n){
+      gCount.textContent='共 '+n+' 条';
+    }
+    refreshGlossaryCount(termRows.length);
+    gs.addEventListener('input',function(){
+      var q=gs.value.trim().toLowerCase();
+      var n=0;
+      termRows.forEach(function(r){
+        var hit=!q||r.textContent.toLowerCase().indexOf(q)>-1;
+        r.style.display=hit?'':'none';
+        if(hit){n++;}
+      });
+      refreshGlossaryCount(n);
+    });
+  }
+})();
+</script>
+</body>
+</html>
